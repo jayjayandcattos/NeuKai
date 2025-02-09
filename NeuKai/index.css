@@ -8,6 +8,23 @@ body, html {
     overflow-x: hidden;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
+
+/* Scrollbar Hider */
+
+body {
+    -ms-overflow-style: none;  /* For Internet Explorer and Edge */
+    scrollbar-width: none;     /* For Firefox */
+    overflow-y: scroll;        /* Ensure vertical scrolling is active */
+}
+
+body::-webkit-scrollbar {
+    display: none;             /* For Chrome, Safari, and Opera */
+}
+
 .background {
     background: 
         linear-gradient(to bottom, rgba(0,0,0,0) 60%, rgba(0,0,0,1)),
@@ -77,7 +94,17 @@ body, html {
     color: #fff;
 }
 
-/* BODY NA TO*/
+#mobile-menu {
+    transform: translateX(100%);
+    transition: transform 0.5s ease-in-out;
+}
+
+#mobile-menu.active {
+    transform: translateX(0);
+}
+
+
+/* body yeah body human anatomy GRAHH*/
 
 .main-logo {
     width: 640.38px;
@@ -110,4 +137,32 @@ body, html {
         font-size: 14px;
         padding: 0 10px;
     }
+}
+
+/* SLIDESHOW */
+
+.slideshow-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    height: 300px;
+}
+
+.slideshow {
+    display: flex;
+    width: fit-content;
+    animation: slide 20s linear infinite;
+}
+
+.slideshow img {
+    width: 100%;
+    max-width: 400px; 
+    height: auto;
+    margin-right: 20px;
+    border-radius: 20px; 
+}
+
+@keyframes slide {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
 }
