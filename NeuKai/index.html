@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NEUKAI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="relative min-h-screen bg-black text-white font-poppins">
+
+        <!-- Navbar -->
+<div class="fixed top-0 w-full flex justify-between items-center px-6 py-4 bg-white/4 backdrop-blur-md z-50">
+    <img src="images/NEUKAI Logo White.svg" alt="Logo" class="w-[163px] h-[43.21px]" />
+
+        <!-- Hamburger Icon (767 WIDTH) -->
+        <button id="menu-toggle" class="md:hidden focus:outline-none">
+            <svg class="w-8 h-8" fill="none" stroke="#FBB901" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                      d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+        </button>
+        
+
+        <!-- Navigation Links -->
+    <div id="nav-links" class="hidden md:flex space-x-6 items-center">
+        <a href="#home" class="text-sm md:text-base hover:text-[#FBB901] transition duration-200">HOME</a>
+        <a href="#about" class="text-sm md:text-base hover:text-[#FBB901] transition duration-200">ABOUT</a>
+        <a href="#donate" class="hover:scale-105 transition-transform duration-200">
+            <img src="images/donatenow.png" alt="Donate Now" class="h-9 md:h-10 object-contain" />
+        </a>
+        <a href="#signin" class="hover:scale-105 transition-transform duration-200">
+            <img src="images/signin.png" alt="Sign In" class="h-8 md:h-8 object-contain" />
+        </a>
+    </div>
+</div>
+
+        <!-- Mobile Menu (Hidden pag desktop) -->
+        <div id="mobile-menu" class="menu-closed md:hidden bg-[#FBB901] fixed top-20 right-0 w2/4 h-auto flex flex-col items-end space-y-4 py-4 z-40 p-6 rounded-bl-2xl shadow-lg">
+            <a href="#home" class="text-sm text-white hover:text-black transition duration-200">HOME</a>
+            <a href="#about" class="text-sm text-white hover:text-black transition duration-200">ABOUT</a>
+            <a href="#donate" class="hover:scale-105 transition-transform duration-200">
+                <a href="#donate" class="hover:scale-105 transition-transform duration-200">
+                    <img src="images/donatenow.png" alt="Donate Now" class="h-10 w-40 xl:h-40 xl:w-40 " />
+                </a>
+                <a href="#signin" class="hover:scale-105 transition-transform duration-200">
+                    <img src="images/signinmobile.png" alt="Sign In" class="h-10 w-40 xl:h-40 xl:w-40 " />
+                </a>
+            </a>
+        </div>
+        
+    </div>  <!-- Boundaries -->
+
+        <!-- LOGO -->
+    <div class="flex flex-col items-center justify-center text-center pt-36 md:pt-44 px-4">
+      <img src="images/NEUKAI LOGO.svg" alt="NEUKAI Logo" class="w-[320px] md:w-[640.38px] h-auto" />
+      <h1 class="text-3xl md:text-5xl font-rubik font-bold text-[#FBB901] mt-4">NEW + UKAY</h1>
+      <p class="text-sm md:text-base text-gray-300 mt-2 max-w-xl">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      </p>
+    </div>
+
+        <!-- BG -->
+    <div class="absolute top-0 left-0 w-full h-full bg-cover bg-center z-[-1]" style="background-image: url('images/background.png');">
+      <div class="w-full h-full bg-gradient-to-b from-transparent via-black/50 to-black"></div>
+
+
+        <!-- NAVBAR MOBILE HIDER - SCRIPT -->
+      <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+      
+    </div>
+  </body>
+</html>
