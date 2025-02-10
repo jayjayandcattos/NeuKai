@@ -13,7 +13,6 @@
 
 <body class="relative min-h-screen bg-black text-white font-poppins">
 
-
     <!-- Navbar -->
     <div id="navbar"
         class="fixed top-0 w-full flex justify-between items-center px-12 py-4 bg-white/4 backdrop-blur-md z-50 transition-transform duration-300">
@@ -42,33 +41,33 @@
 
     <!-- Mobile Menu (Hidden pag desktop) -->
     <div id="mobile-menu"
-        class="menu-closed md:hidden bg-[#FBB901] fixed top-20 right-0 w2/4 h-auto flex flex-col items-end space-y-4 py-4 z-40 p-6 rounded-bl-2xl shadow-lg">
-        <a href="#home" class="text-sm text-white hover:text-black transition duration-200">HOME</a>
-        <a href="#about" class="text-sm text-white hover:text-black transition duration-200">ABOUT</a>
-        <a href="#donate" class="hover:scale-105 transition-transform duration-200">
-            <a href="#donate" class="hover:scale-105 transition-transform duration-200">
-                <img src="images/donatenow.png" alt="Donate Now" class="h-10 w-40 xl:h-40 xl:w-40 " />
-            </a>
-            <a href="#signin" class="hover:scale-105 transition-transform duration-200">
-                <img src="images/signinmobile.png" alt="Sign In" class="h-10 w-40 xl:h-40 xl:w-40 " />
-            </a>
+        class="menu-closed md:hidden bg-[#FBB901] fixed top-20 right-0 w-2/5 h-full flex flex-col items-end py-4 z-40 p-1.5 rounded-bl-2xl shadow-lg">
+        <a href="#home" class="text-sm text-white hover:text-black transition duration-200 mb-3">HOME</a>
+        <a href="#about" class="text-sm text-white hover:text-black transition duration-200 mb-3">ABOUT</a>
+        <a href="#donate" class="hover:scale-105 transition-transform duration-200 mb-2">
+            <img src="images/donatenow.png" alt="Donate Now" class="h-10 w-60 xl:h-20 xl:w-80 mb-1" />
+        </a>
+        <a href="#signin" class="hover:scale-105 transition-transform duration-200">
+            <img src="images/signinmobile.png" alt="Sign In" class="h-10 w-60 xl:h-20 xl:w-80 mb-2" />
         </a>
     </div>
+
 
     </div> <!-- Boundaries -->
 
     <!-- LOGO -->
     <div class="flex flex-col items-center justify-center text-center pt-36 md:pt-44 px-4">
         <img src="images/NEUKAI LOGO.svg" alt="NEUKAI Logo" class="w-[320px] md:w-[640.38px] h-auto" />
-        <h1 class="text-3xl md:text-5xl font-rubik font-bold text-[#FBB901] mt-4">NEW + UKAY</h1>
-        <p class="text-sm md:text-base text-gray-300 mt-2 max-w-xl">
+        <h1 class="text-3xl md:text-5xl font-rubik font-extrabold text-[#FBB901] mt-4 tracking-[2px]"
+            style="-webkit-text-stroke:1px black;">NEW + UKAY</h1>
+        <p class="text-sm md:text-base text-gray-300 mt-3 max-w-xl">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et
             dolore magna aliqua.
         </p>
         <br>
     </div>
 
-    <!-- HUGE WHITE RECTANGLE ULALA -->
+    <!-- HUGE WHITE RECTANGLE -->
     <div class="flex justify-center px-4">
         <div class="w-full max-w-[1300px] h-auto min-h-[600px] md:h-[1598px] bg-white rounded-3xl overflow-hidden">
 
@@ -82,7 +81,14 @@
                     </p>
                 </div>
             </div>
-            
+
+            <!-- HOME  -->
+
+
+
+
+
+
             <!-- SLIDESHOW -->
             <div class="slideshow-container">
                 <div class="slideshow">
@@ -96,24 +102,37 @@
                     <img src="images/rolling1.png" alt="Image 4 Duplicate">
                 </div>
             </div>
+
+
+                <p id="about" class="text-2xl md:text-4xl font-['Rubik_Mono_One'] uppercase mx-auto text-center text-black my-4 mb-2">
+                    Why donate your<br>
+                    clothes?
+                </p>
+            </a>
+            </a>
             <div
-            class="absolute top-10/2 left-1/2 transform -translate-x-1/2 -translate-y-2/2 text-black text-2xl font-bold font-poppins text-center">
-            Work in progress. -Justin
+                class="flex flex-col md:flex-row justify-center items-center md:space-x-4 space-y-4 md:space-y-0 mt-4 px-4">
+                <!-- Rectangle 1 -->
+                <div class="bg-white p-6 md:p-20 shadow-lg w-full md:w-64 text-center rounded-2xl">
+                    <img src="images/yellowcircle.svg" alt="Placeholder" class="mx-auto mb-4 w-16 h-16">
+                    <p class="text-sm text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                </div>
+
+                <!-- Rectangle 2 -->
+                <div class="bg-white p-6 md:p-20 shadow-lg w-full md:w-64 text-center rounded-2xl">
+                    <img src="images/yellowcircle.svg" alt="Placeholder" class="mx-auto mb-4 w-16 h-16">
+                    <p class="text-sm text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                </div>
+
+                <!-- Rectangle 3 -->
+                <div class="bg-white p-6 md:p-20 shadow-lg w-full md:w-64 text-center rounded-2xl">
+                    <img src="images/yellowcircle.svg" alt="Placeholder" class="mx-auto mb-4 w-16 h-16">
+                    <p class="text-sm text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                </div>
+            </div>
         </div>
-        </div>
-    </div>
-
-
     </div>
     </div>
-
-
-
-
-
-
-
-
     <!-- BG -->
     <div class="absolute top-0 left-0 w-full h-full bg-cover bg-center bg-fixed z-[-1] parallax "
         style="background-image: url('images/background.png');">
@@ -141,6 +160,8 @@
 
 
     </div>
+    <br>
+    <br>
 </body>
 
 </html>
