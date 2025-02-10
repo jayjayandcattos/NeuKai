@@ -7,13 +7,16 @@
     <title>NEUKAI</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="index.css">
-
+    <link rel="icon" href="images/TempIco.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap" rel="stylesheet">
 </head>
 
 <body class="relative min-h-screen bg-black text-white font-poppins">
 
+
     <!-- Navbar -->
-    <div class="fixed top-0 w-full flex justify-between items-center px-6 py-4 bg-white/4 backdrop-blur-md z-50">
+    <div id="navbar"
+        class="fixed top-0 w-full flex justify-between items-center px-12 py-4 bg-white/4 backdrop-blur-md z-50 transition-transform duration-300">
         <img src="images/NEUKAI Logo White.svg" alt="Logo" class="w-[163px] h-[43.21px]" />
 
         <!-- Hamburger Icon (767 WIDTH) -->
@@ -35,6 +38,7 @@
             </a>
         </div>
     </div>
+
 
     <!-- Mobile Menu (Hidden pag desktop) -->
     <div id="mobile-menu"
@@ -66,9 +70,20 @@
 
     <!-- HUGE WHITE RECTANGLE ULALA -->
     <div class="flex justify-center px-4">
-        <div class="w-full max-w-[1300px] h-auto min-h-[600px] md:h-[1598px] bg-white rounded-3xl">
-            <br>
-            <br>
+        <div class="w-full max-w-[1300px] h-auto min-h-[600px] md:h-[1598px] bg-white rounded-3xl overflow-hidden">
+
+            <div class="overflow-hidden bg-white py-4 rounded-t-3xl">
+                <div class="flex animate-slide whitespace-nowrap">
+                    <p class="text-2xl md:text-4xl font-['Rubik_Mono_One'] uppercase outlined-text mx-4">
+                        Pass the Warmth, Donate Today! Pass the Warmth, Donate Today! Pass the Warmth, Donate Today!
+                    </p>
+                    <p class="text-2xl md:text-4xl font-['Rubik_Mono_One'] uppercase outlined-text mx-4">
+                        Pass the Warmth, Donate Today! Pass the Warmth, Donate Today! Pass the Warmth, Donate Today!
+                    </p>
+                </div>
+            </div>
+            
+            <!-- SLIDESHOW -->
             <div class="slideshow-container">
                 <div class="slideshow">
                     <img src="images/rolling.png" alt="Image 1">
@@ -80,14 +95,16 @@
                     <img src="images/rolling.png" alt="Image 3 Duplicate">
                     <img src="images/rolling1.png" alt="Image 4 Duplicate">
                 </div>
-            
-                
             </div>
-            <div class="absolute top-10/2 left-1/2 transform -translate-x-1/2 -translate-y-2/2 text-black text-2xl font-bold font-poppins text-center">
-                Work in progress. -Justin
-            </div>
-
+            <div
+            class="absolute top-10/2 left-1/2 transform -translate-x-1/2 -translate-y-2/2 text-black text-2xl font-bold font-poppins text-center">
+            Work in progress. -Justin
         </div>
+        </div>
+    </div>
+
+
+    </div>
     </div>
 
 
@@ -103,9 +120,8 @@
         <div class="w-full h-full bg-gradient-to-b from-transparent via-black/50 to-black"></div>
     </div>
 
-    <!-- NAVBAR MOBILE HIDER - SCRIPT -->
+    <!-- NAVBAR MOBILE + NAVBAR ANIMATION - SCRIPT -->
     <script>
-
         const menuToggle = document.getElementById('menu-toggle');
         const mobileMenu = document.getElementById('mobile-menu');
         const icon = document.getElementById('hamburger-icon');

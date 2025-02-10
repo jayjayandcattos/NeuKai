@@ -163,6 +163,22 @@ body::-webkit-scrollbar {
 }
 
 @keyframes slide {
-    0% { transform: translateX(100%); }
-    100% { transform: translateX(-100%); }
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.animate-slide {
+    display: flex;
+    animation: slide 10s linear infinite;
+}
+
+.outlined-text {
+    color: transparent; 
+    -webkit-text-stroke: 2px rgb(251, 185, 1);
+    text-stroke: 2px rgb(251, 185, 1);
+    letter-spacing: 2px; 
 }
