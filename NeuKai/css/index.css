@@ -142,7 +142,7 @@ body::-webkit-scrollbar {
     }
 }
 
-/* SLIDESHOW */
+/* SLIDINGS */
 
 .slideshow-container {
     width: 100%;
@@ -154,7 +154,6 @@ body::-webkit-scrollbar {
 .slideshow {
     display: flex;
     width: fit-content;
-    animation: slide 20s linear infinite;
 }
 
 .slideshow img {
@@ -165,18 +164,8 @@ body::-webkit-scrollbar {
     border-radius: 20px; 
 }
 
-@keyframes slide {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(-50%);
-    }
-}
-
 .animate-slide {
     display: flex;
-    animation: slide 10s linear infinite;
 }
 
 .outlined-text {
