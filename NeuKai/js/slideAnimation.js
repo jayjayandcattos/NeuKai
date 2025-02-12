@@ -13,8 +13,6 @@ function slideText() {
 
 slideText(); 
 
-
-
 const slideshow = document.getElementById('slideshow-images');
 let imagePosition = 0;
 
@@ -28,3 +26,4 @@ function slideImages() {
 }
 
 slideImages(); 
+    
