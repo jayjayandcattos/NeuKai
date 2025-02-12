@@ -7,19 +7,20 @@ body, html {
     font-family: 'Poppins', sans-serif;
     height: 2000px;
     overflow-x: hidden;
+    overflow-y: 100%;
     scroll-behavior: smooth;
 }
 
 /* Scrollbar Hider */
 
 body {
-    -ms-overflow-style: none;  /* For Internet Explorer and Edge */
-    scrollbar-width: none;     /* For Firefox */
-    overflow-y: scroll;        /* Ensure vertical scrolling is active */
+    -ms-overflow-style: none;  
+    scrollbar-width: none;     
+    overflow-y: 100%;        
 }
 
 body::-webkit-scrollbar {
-    display: none;             /* For Chrome, Safari, and Opera */
+    display: none;             
 }
 
 .background {
