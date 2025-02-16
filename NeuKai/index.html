@@ -11,27 +11,43 @@
     <link rel="stylesheet" href="css/index.css">
     <link rel="icon" href="images/TempIco.png" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-color: black;
+            color: white;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        main {
+            flex: 1;
+        }
+
+        footer {
+            flex-shrink: 0;
+        }
+    </style>
+
 </head>
 
 <body class="relative min-h-screen bg-black text-white font-poppins">
 
     <!-- Navbar -->
     <div id="navbar"
-        class="fixed top-0 w-full flex justify-between items-center px-12 py-4 bg-white/4 backdrop-blur-md z-50 transition-all duration-500 ease-in-out">
-
+        class="fixed top-0 w-full flex justify-between items-center px-12 py-4 bg-[#FBB901] backdrop-blur-md z-50 transition-all duration-500">
         <img src="images/NEUKAI Logo White.svg" alt="Logo" class="w-[163px] h-[43.21px]" />
-
-        <!-- Hamburger Icon (767 WIDTH) -->
         <button id="menu-toggle" class="md:hidden focus:outline-none">
             <svg id="hamburger-icon" class="w-8 h-8" fill="none" stroke="#FFFFFF" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
             </svg>
         </button>
-
-        <!-- Navigation Links -->
         <div id="nav-links" class="hidden md:flex space-x-6 items-center">
-            <a href="#home" class="text-sm md:text-base hover:text-[#FBB901] transition duration-200">HOME</a>
-            <a href="#about" class="text-sm md:text-base hover:text-[#FBB901] transition duration-200">ABOUT</a>
+            <a href="#home" class="text-sm md:text-base hover:text-[#000000] transition duration-200">HOME</a>
+            <a href="#about" class="text-sm md:text-base hover:text-[#000000] transition duration-200">ABOUT</a>
             <a href="#donate" class="hover:scale-105 transition-transform duration-200">
                 <img src="images/donatenow.png" alt="Donate Now" class="h-9 md:h-10 object-contain" />
             </a>
@@ -41,153 +57,244 @@
         </div>
     </div>
 
-
-    <!-- Mobile Menu (Hidden pag desktop) -->
+    <!-- Mobile Menu -->
     <div id="mobile-menu"
-        class="menu-closed md:hidden bg-[#FBB901] fixed top-20 right-0 w-2/5 h-full flex flex-col items-end py-4 z-40 p-1.5 rounded-bl-2xl shadow-lg">
-        <a href="#home" class="text-sm text-white hover:text-black transition duration-200 mb-3">HOME</a>
-        <a href="#about" class="text-sm text-white hover:text-black transition duration-200 mb-3">ABOUT</a>
+        class="menu-closed md:hidden bg-[#FBB901] fixed top-20 right-0 w-full max-h-[200px] flex flex-col items-end py-5 z-40 p-1.5 rounded-bl-2xl shadow-lg pb-[9px] overflow-hidden transition-all duration-500 ease-in-out">
+        <a href="#home" class="text-sm text-white hover:text-black transition duration-200 mb-4">HOME</a>
+        <a href="#about" class="text-sm text-white hover:text-black transition duration-200 mb-4">ABOUT</a>
         <a href="#donate" class="hover:scale-105 transition-transform duration-200 mb-2">
-            <img src="images/donatenow.png" alt="Donate Now" class="h-10 w-60 xl:h-20 xl:w-80 mb-1" />
+            <img src="images/donatenow.png" alt="Donate Now" class="h-10 w-auto xl:h-20 xl:w-80 mb-1" />
         </a>
         <a href="#signin" class="hover:scale-105 transition-transform duration-200">
-            <img src="images/signinmobile.png" alt="Sign In" class="h-10 w-60 xl:h-20 xl:w-80 mb-2" />
+            <img src="images/signinmobile.png" alt="Sign In" class="h-10 w-auto xl:h-20 xl:w-80 mb-2" />
         </a>
     </div>
 
+    <!-- Main Content -->
+    <main class="flex-grow">
+        <!-- Logo Section -->
+        <section id="home" class="flex flex-col items-center justify-center text-center pt-36 md:pt-44 px-4">
+            <img src="images/NEUKAI LOGO.svg" alt="NEUKAI Logo" class="w-[320px] md:w-[640.38px] h-auto" />
+            <h1 class="text-3xl md:text-5xl font-rubik font-extrabold text-[#FBB901] mt-4 tracking-[2px]"
+                style="-webkit-text-stroke:1px black;">NEW + UKAY</h1>
+            <p class="text-sm md:text-base text-gray-300 mt-3 max-w-xl">
+                I would rather have some of you than none.
+            </p><br>
+        </section>
 
-    </div> <!-- Boundaries -->
+        <!-- Main Section -->
+        <div class="flex justify-center px-4">
+            <div class="w-full max-w-[1300px] h-auto min-h-[600px] md:h-[1900px] bg-white rounded-3xl overflow-hidden">
+                <!-- Left -->
+                <div class="flex flex-col md:flex-row items-center justify-between px-4 md:px-24 py-10 md:py-20">
+                    <!-- Left Section -->
+                    <div class="w-full md:w-1/2">
+                        <h1
+                            class="text-[#FBB901] font-bold uppercase text-3xl sm:text-4xl md:text-5xl mb-4 mt-0 font-['Rubik_Mono_One']">
+                            Losestreak ? Womp Womp
+                        </h1>
+                        <p
+                            class="font-poppins text-gray-700 text-sm sm:text-base md:text-lg mb-6 max-w-full md:max-w-[605px]">
+                            I like you, I like you, I like you
+                            sorry, I never meant to
+                            but who we kidding, it wasn't like I had a say
+                            one look at you and I won't have it any other way
+                            I want you, I want you, I want you
+                            I want you to want me too
+                            I know that I signed up for this casually
+                            but I fell for your tricks, now I'm the casualty.
+                        </p>
+                        <div class="flex gap-4 mt-6 md:justify-start justify-center">
+                            <button class="donor-btn shadow-lg shadow-[#FF5722]/70 font-poppins font-bold">
+                                Become a Donor
+                            </button>
+                            <button class="charity-btn shadow-lg shadow-[#0D0DAF]/70 font-poppins font-bold">
+                                Apply as Charity
+                            </button>
+                        </div>
+                    </div>
 
-    <!-- LOGO -->
-    <section id="home" class="flex flex-col items-center justify-center text-center pt-36 md:pt-44 px-4">
-        <img src="images/NEUKAI LOGO.svg" alt="NEUKAI Logo" class="w-[320px] md:w-[640.38px] h-auto" />
-        <h1 class="text-3xl md:text-5xl font-rubik font-extrabold text-[#FBB901] mt-4 tracking-[2px]"
-            style="-webkit-text-stroke:1px black;">NEW + UKAY</h1>
-        <p class="text-sm md:text-base text-gray-300 mt-3 max-w-xl">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua.
-        </p>
-        <br>
-    </section>
-
-
-    <!-- HUGE WHITE RECTANGLE -->
-    <div class="flex justify-center px-4">
-        <div class="w-full max-w-[1300px] h-auto min-h-[600px] md:h-[1598px] bg-white rounded-3xl overflow-hidden">
-
-
-            <!-- HOME  -->
-            <div id="none" class="flex flex-col md:flex-row items-center justify-between px-4 md:px-24 py-10 md:py-20">
-                <!-- Left Content -->
-                <div class="w-full md:w-1/2">
-                    <h1
-                        class="text-[#FBB901] font-bold uppercase text-3xl sm:text-4xl md:text-5xl mb-4 mt-2 font-['Rubik_Mono_One']">
-                        New + Ukay
-                    </h1>
-                    <p
-                        class="font-poppins text-gray-700 text-sm sm:text-base md:text-lg mb-6 max-w-full md:max-w-[605px]">
-                        JUSTIN WAS HERE.
-                    </p>
-                    <div class="flex flex-col sm:flex-row sm:space-x-6 space-y-2 sm:space-y-0">
-                        <img src="images/PLACEHOLDER.jpg" alt="Placeholder 1"
-                            class="w-full sm:w-[280px] h-[98px] object-cover">
-                        <img src="images/PLACEHOLDER2.jpg" alt="Placeholder 2"
-                            class="w-full sm:w-[280px] h-[98px] object-cover">
+                    <!-- Right Section (Ellipse) -->
+                    <div class="w-full md:w-4/6 flex justify-center md:justify-end relative mt-5 md:mt-0">
+                        <div class="w-[150%] h-auto md:w-[850px] flex items-center justify-center">
+                            <img src="images/ellipse.png" alt="Ellipse"
+                                class="w-full md:w-[850px] rounded-full object-cover md:transform md:translate-x-20 md:-mt-60">
+                        </div>
                     </div>
                 </div>
 
-                <!-- Right Content -->
-                <div class="w-full md:w-auto bg-gray-300 mt-4 md:mt-0 mx-20">
-                    <img src="images/PLACEHOLDER1.jpg" alt="Big Placeholder"
-                        class="w-full md:w-[338px] h-[330px] object-cover">
+                <!-- Sliding Text -->
+                <div id="sliding-container" class="overflow-hidden whitespace-nowrap mt-1">
+                    <div id="sliding-text" class="flex items-center gap-6">
+                        <p class="text-xl sm:text-2xl md:text-4xl font-['Rubik_Mono_One'] uppercase outlined-text">Pass
+                            the Warmth, Donate Today!</p>
+                        <img src="images/TempIco.png" alt="Vector Icon" class="w-16 md:w-22 h-auto">
+                        <p class="text-xl sm:text-2xl md:text-4xl font-['Rubik_Mono_One'] uppercase outlined-text">Pass
+                            the Warmth, Donate Today!</p>
+                        <img src="images/TempIco.png" alt="Vector Icon" class="w-16 md:w-22 h-auto">
+                        <p class="text-xl sm:text-2xl md:text-4xl font-['Rubik_Mono_One'] uppercase outlined-text">Pass
+                            the Warmth, Donate Today!</p>
+                        <img src="images/TempIco.png" alt="Vector Icon" class="w-16 md:w-22 h-auto">
+                        <p class="text-xl sm:text-2xl md:text-4xl font-['Rubik_Mono_One'] uppercase outlined-text">Pass
+                            the Warmth, Donate Today!</p>
+                        <img src="images/TempIco.png" alt="Vector Icon" class="w-16 md:w-24 h-auto">
+                    </div>
                 </div>
-            </div>
 
+                <!-- Sliding Images -->
+                <div class="slideshow-container overflow-hidden">
+                    <div class="slideshow flex" id="slideshow-images">
+                        <img src="images/rolling.png" alt="Image 1">
+                        <img src="images/rolling1.png" alt="Image 2">
+                        <img src="images/rolling2.png" alt="Image 3">
+                        <img src="images/rolling.png" alt="Image 4">
+                        <img src="images/rolling1.png" alt="Image 1 Duplicate">
+                        <img src="images/rolling2.png" alt="Image 2 Duplicate">
+                        <img src="images/rolling.png" alt="Image 3 Duplicate">
+                        <img src="images/rolling1.png" alt="Image 4 Duplicate">
+                    </div>
+                </div>
 
-            <!-- Sliding Text -->
-            <div class="overflow-hidden bg-white py-4 rounded-t-3xl">
-                <div class="flex whitespace-nowrap" id="sliding-text">
-                    <p class="text-xl sm:text-2xl md:text-4xl font-['Rubik_Mono_One'] uppercase outlined-text mx-4">
-                        Pass the Warmth, Donate Today! Pass the Warmth, Donate Today! Pass the Warmth, Donate Today!
+                <!-- About Section -->
+                <div id="about" class="pt-1 md:pt-1">
+                    <p
+                        class="text-2xl md:text-4xl font-['Rubik_Mono_One'] uppercase mx-auto text-center text-black my-2 mb-2">
+                        Why donate your clothes?
                     </p>
-                    <p class="text-xl sm:text-2xl md:text-4xl font-['Rubik_Mono_One'] uppercase outlined-text mx-4">
-                        Pass the Warmth, Donate Today! Pass the Warmth, Donate Today! Pass the Warmth, Donate Today!
+                    <p class="text-[18px] font-['Poppins'] text-center text-gray-700 mb-2">
+                        One of me is cute, but two though?
+                        Give it to me, baby..
+                        You make me wanna make you fall in love
                     </p>
                 </div>
-            </div>
 
-            <!-- Sliding Images -->
-            <div class="slideshow-container">
-                <div class="slideshow" id="slideshow-images">
-                    <img src="images/rolling.png" alt="Image 1">
-                    <img src="images/rolling1.png" alt="Image 2">
-                    <img src="images/rolling2.png" alt="Image 3">
-                    <img src="images/rolling.png" alt="Image 4">
-                    <img src="images/rolling1.png" alt="Image 1 Duplicate">
-                    <img src="images/rolling2.png" alt="Image 2 Duplicate">
-                    <img src="images/rolling.png" alt="Image 3 Duplicate">
-                    <img src="images/rolling1.png" alt="Image 4 Duplicate">
+                <!-- Cards Section -->
+                <div
+                    class="flex flex-col md:flex-row justify-center items-center md:space-x-4 space-y-4 md:space-y-0 mt-4 px-4">
+                    <div
+                        class="bg-white p-6 shadow-2xl w-[322px] h-[286px] text-center rounded-2xl flex flex-col justify-center items-center">
+                        <img src="images/firstsquare.png" alt="Placeholder" class="mb-4 w-16 h-16">
+                        <p class="text-sm text-gray-700">How you pick me up, pull 'em down, turn me 'round
+                            oh, it just makes sense</p>
+                    </div>
+                    <div
+                        class="bg-white p-6 shadow-2xl w-[322px] h-[286px] text-center rounded-2xl flex flex-col justify-center items-center">
+                        <img src="images/secondsquare.png" alt="Placeholder" class="mb-4 w-16 h-16">
+                        <p class="text-sm text-gray-700">How you talk so sweet when you're doing bad things
+                            that's bed chem</p>
+                    </div>
+                    <div
+                        class="bg-white p-6 shadow-2xl w-[322px] h-[286px] text-center rounded-2xl flex flex-col justify-center items-center">
+                        <img src="images/thridsquare.png" alt="Placeholder" class="mb-4 w-16 h-16">
+                        <p class="text-sm text-gray-700">How you're looking at me, yeah, I know what that means
+                            and I'm obsessed</p>
+                    </div>
                 </div>
-            </div>
-            <div id="about" class="pt-24 md:pt-22">
-                <p
-                    class="text-2xl md:text-4xl font-['Rubik_Mono_One'] uppercase mx-auto text-center text-black my-4 mb-2">
-                    Why donate your<br>
-                    clothes?
-                </p>
-            </div>
-            </p>
-            </a>
-            </a>
-            <div
-                class="flex flex-col md:flex-row justify-center items-center md:space-x-4 space-y-4 md:space-y-0 mt-4 px-4">
 
-                <div class="bg-white p-6 md:p-20 shadow-lg w-full md:w-64 text-center rounded-2xl">
-                    <img src="images/yellowcircle.svg" alt="Placeholder" class="mx-auto mb-4 w-16 h-16">
-                    <p class="text-sm text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                </div>
-                <div class="bg-white p-6 md:p-20 shadow-lg w-full md:w-64 text-center rounded-2xl">
-                    <img src="images/yellowcircle.svg" alt="Placeholder" class="mx-auto mb-4 w-16 h-16">
-                    <p class="text-sm text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                </div>
-                <div class="bg-white p-6 md:p-20 shadow-lg w-full md:w-64 text-center rounded-2xl">
-                    <img src="images/yellowcircle.svg" alt="Placeholder" class="mx-auto mb-4 w-16 h-16">
-                    <p class="text-sm text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <!-- Blue Card -->
+                <div
+                    class="relative w-full max-w-[1300px] h-[342px] mx-auto mt-10 flex items-center justify-between px-4 sm:px-12">
+                    <div class="absolute inset-0 rounded-2xl animate-rgb-glow"></div>
+                    <div
+                        class="absolute inset-[4px] rounded-2xl animate-blue-mix flex flex-col sm:flex-row items-center justify-between px-4 sm:px-12 py-8 sm:py-0">
+                        <!-- LEFT SECTION -->
+                        <div class="text-white text-center sm:text-left">
+                            <p class="text-2xl sm:text-[40px] font-['Rubik_Mono_One'] font-bold uppercase mb-4">START
+                                DONATING NOW!</p>
+                            <p class="text-sm sm:text-[18px] font-['Poppins'] text-gray-200 mt-2 mb-2">
+                                I was doing fine without ya<br>
+                                'til I saw your face, now I can't erase<br>
+                                givin' in to all his bullshit<br>
+                                Is this what you want? Is this who you are?</p>
+                            <div class="mt-4">
+                                <a href="#donate"
+                                    class="inline-block hover:scale-105 transition-transform duration-200">
+                                    <img src="images/donatenow.png" alt="Donate Now"
+                                        class="h-8 sm:h-10 object-contain" />
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- RIGHT SECTION -->
+                        <div class="text-[#FBB901] text-center sm:text-right mt-0 sm:mt-0">
+                            <p class="text-2xl sm:text-[40px] font-['Rubik_Mono_One'] font-bold">69420+ DONORS</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    </div>
-    <!-- BG -->
-    <div class="absolute top-0 left-0 w-full h-full bg-cover bg-center bg-fixed z-[-1] parallax "
-        style="background-image: url('images/background.png');">
-        <div class="w-full h-full bg-gradient-to-b from-transparent via-black/50 to-black"></div>
-    </div>
+    </main>
 
-    <!-- NAVBAR MOBILE + NAVBAR ANIMATION - SCRIPT -->
-    <script>
-        const menuToggle = document.getElementById('menu-toggle');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const icon = document.getElementById('hamburger-icon');
+    <body class="bg-black text-white">
 
-        menuToggle.addEventListener('click', () => {
-            mobileMenu.classList.toggle('active');
+        <!-- Footer -->
+        <footer class="w-full bg-black py-12">
+            <div class="container mx-auto px-5 sm:px-8 lg:px-16 flex justify-evenly">
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+                    <!-- First  -->
+                    <div class="flex flex-col space-y-4">
+                        <img src="images/Neukai Logo White.svg" alt="NEUKAI Logo" class="w-40 h-auto">
+                        <p class="text-lg font-semibold">Follow us!</p>
 
-            icon.classList.toggle('active');
-            if (icon.classList.contains('active')) {
-                icon.setAttribute('stroke', '#FBB901');
-            } else {
-                icon.setAttribute('stroke', '#FFFFFF');
-            }
-        });
+                        <!-- Icons -->
+                        <div class="flex space-x-4">
+                            <a href="#" class="text-gray-400 hover:text-white transition duration-200">
+                                <img src="images/Facebook.svg" alt="Facebook" class="w-6 h-6">
+                            </a>
+                            <a href="#" class="text-gray-400 hover:text-white transition duration-200">
+                                <img src="images/Twitter.svg" alt="Twitter" class="w-6 h-6">
+                            </a>
+                            <a href="#" class="text-gray-400 hover:text-white transition duration-200">
+                                <img src="images/Instagram.svg" alt="Instagram" class="w-6 h-6">
+                            </a>
+                        </div>
+                    </div>
 
-    </script>
+                    <!-- Second  -->
+                    <div class="flex flex-col space-y-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-200">Privacy Policy</a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-200">Terms of Use</a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-200">Our Team</a>
+                    </div>
 
+                    <!-- Third  -->
+                    <div class="flex flex-col space-y-4">
+                        <p class="text-gray-400">Contact Us</p>
+                        <p class="text-gray-400">0987-543-2103</p>
+                        <p class="text-gray-400">justin@gmail.com</p>
+                    </div>
 
-    </div>
-    <br>
-    <br>
+                    <!-- Fourth  -->
+                    <div class="flex flex-col space-y-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-200">Return to Top</a>
+                        <p class="text-gray-400">Copyright ©2025</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
 
-</body>
+        <!-- Parallax Background -->
+        <div class="absolute top-0 left-0 w-full h-full bg-cover bg-center bg-fixed z-[-1] parallax"
+            style="background-image: url('images/background.png');">
+            <div class="w-full h-full bg-gradient-to-b from-transparent via-black/50 to-black"></div>
+        </div>
+
+        <!-- Mobile Menu Script -->
+        <script>
+            const menuToggle = document.getElementById('menu-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const icon = document.getElementById('hamburger-icon');
+
+            menuToggle.addEventListener('click', () => {
+                mobileMenu.classList.toggle('active');
+                icon.classList.toggle('active');
+                if (icon.classList.contains('active')) {
+                    icon.setAttribute('stroke', '#FBB901');
+                } else {
+                    icon.setAttribute('stroke', '#FFFFFF');
+                }
+            });
+        </script>
+    </body>
 
 </html>

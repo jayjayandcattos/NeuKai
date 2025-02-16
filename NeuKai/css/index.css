@@ -5,10 +5,42 @@ body, html {
     margin: 0;
     padding: 0;
     font-family: 'Poppins', sans-serif;
-    height: 2000px;
-    overflow-x: hidden;
-    overflow-y: 100%;
+    height: 100vh;
     scroll-behavior: smooth;
+    height: 100%;
+    overflow-x: hidden;
+
+}
+
+body {
+    padding-top: 20px;
+}
+
+#sliding-container {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+#navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+#mobile-menu {
+    position: fixed;
+    top: 80px;
+    right: 0;
+    width: 100%;
+    z-index: 999;
+}
+.parallax {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
 }
 
 /* Scrollbar Hider */
@@ -54,9 +86,14 @@ body::-webkit-scrollbar {
     z-index: 1000;
 }
 
-#navbar {
-    transition: background-color 0.5s ease, box-shadow 0.5s ease, transform 0.3s ease;
-    will-change: background-color, box-shadow, transform;
+.navbar-orange {
+    background-color: #FBB901 !important; 
+}
+
+.menu-open {
+    height: auto !important; /* Adjust height to fit content */
+    max-height: 100vh; /* Ensure it doesn't exceed viewport height */
+    overflow-y: auto; /* Allow scrolling if content overflows */
 }
 
 
@@ -107,42 +144,6 @@ body::-webkit-scrollbar {
     transform: translateX(0);
 }
 
-
-/* body yeah body human anatomy GRAHH*/
-
-.main-logo {
-    width: 640.38px;
-    height: 169.74px;
-}
-
-.main-heading {
-    font-family: 'Rubik Mono One', sans-serif;
-    font-size: 48px;
-    color: orange;
-    margin: 20px 0;
-}
-
-.description {
-    font-family: 'Poppins', sans-serif;
-    font-size: 16px;
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-@media (max-width: 768px) {
-    .main-logo {
-        width: 80%;
-        height: auto;
-    }
-    .main-heading {
-        font-size: 36px;
-    }
-    .description {
-        font-size: 14px;
-        padding: 0 10px;
-    }
-}
-
 /* SLIDINGS */
 
 .slideshow-container {
@@ -150,28 +151,165 @@ body::-webkit-scrollbar {
     overflow: hidden;
     position: relative;
     height: 300px;
+    white-space: nowrap;
 }
 
 .slideshow {
-    display: flex;
-    width: fit-content;
+  display: flex;
 }
 
 .slideshow img {
     width: 100%;
     max-width: 400px; 
-    height: auto;
+    height: 200px;
     margin-right: 20px;
     border-radius: 20px; 
 }
 
-.animate-slide {
-    display: flex;
-}
 
 .outlined-text {
     color: transparent; 
     -webkit-text-stroke: 2px rgb(251, 185, 1);
     text-stroke: 2px rgb(251, 185, 1);
     letter-spacing: 2px; 
+}   
+
+/* butones */
+
+.donor-btn, .charity-btn {
+    font-family: inherit;
+    display: inline-block;
+    width: 291px;
+    height: 58px;
+    line-height: 2.5em;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    border: 2px solid;
+    transition: color 0.5s;
+    z-index: 1;
+    font-size: 17px;
+    border-radius: 6px;
+    font-weight: 500;
+    text-align: center;
+    background: transparent;
+  }
+  
+  .donor-btn {
+    --color: #FF5722;
+    color: var(--color);
+    border-color: var(--color);
+  }
+  
+  .donor-btn:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    background: var(--color);
+    height: 150px;
+    width: 300px;
+    border-radius: 50%;
+    top: 100%;
+    left: 100%;
+    transition: all 0.7s;
+  }
+  
+  .donor-btn:hover {
+    color: #fff;
+  }
+  
+  .donor-btn:hover:before {
+    top: -20px;
+    left: -20px;
+  }
+  
+  .donor-btn:active:before {
+    background: #E64A19;
+    transition: background 0s;
+  }
+  
+  /* Charity Button */
+  .charity-btn {
+    --color: #0D0DAF;
+    color: var(--color);
+    border-color: var(--color);
+  }
+  
+  .charity-btn:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    background: var(--color);
+    height: 150px;
+    width: 300px;
+    border-radius: 50%;
+    top: 100%;
+    left: 100%;
+    transition: all 0.7s;
+  }
+  
+  .charity-btn:hover {
+    color: #fff;
+  }
+  
+  .charity-btn:hover:before {
+    top: -20px;
+    left: -20px;
+  }
+  
+  .charity-btn:active:before {
+    background: #0A0A8F;
+    transition: background 0s;
+  }
+  
+  @media (max-width: 700px) {
+    .donor-btn, .charity-btn {
+      width: 240px;
+    }
+  }
+  
+  @media (max-width: 500px) {
+    .donor-btn, .charity-btn {
+      width: 100%;
+    }
+  }
+
+  /* FOOTERCARD */
+
+  @keyframes rgb-glow {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+
+@keyframes blue-mix {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.animate-rgb-glow {
+  background: linear-gradient(270deg, #ff073a, #76ff03, #0033ff, #ff00ff, #ffff33, #00f5ff);
+    background-size: 300% 300%;
+    animation: rgb-glow 30s ease infinite;
+}
+
+.animate-blue-mix {
+    background: linear-gradient(270deg, 
+        #00008b, #0000cd, #0000ff, #1e90ff, #3206ac, #0f769f, #035570);
+    background-size: 400% 400%;
+    animation: blue-mix 20s ease infinite;
 }
