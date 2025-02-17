@@ -19,5 +19,4 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-
-// ARCHIVED FOR NOWWWWW 
+// ARCHIVED (FOR NOWWWWW)

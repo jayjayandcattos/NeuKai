@@ -302,11 +302,11 @@ body::-webkit-scrollbar {
     }
 }
 
-.animate-rgb-glow {
-  background: linear-gradient(270deg, #ff073a, #76ff03, #0033ff, #ff00ff, #ffff33, #00f5ff);
+ .animate-rgb-glow {
+  background: linear-gradient(270deg, #ffffff, #ff0303, #ff6200, #ff6200, #ffae00, #00f5ff);
     background-size: 300% 300%;
     animation: rgb-glow 15s ease infinite;
-}
+} 
 
 .animate-blue-mix {
     background: linear-gradient(270deg, 
