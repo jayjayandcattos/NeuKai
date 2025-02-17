@@ -38,7 +38,7 @@
 
     <!-- Navbar -->
     <div id="navbar"
-        class="fixed top-0 w-full flex justify-between items-center px-12 py-4 bg-[#FBB901] backdrop-blur-md z-50 transition-all duration-500">
+        class="fixed top-0 w-full flex justify-between items-center px-12 py-4 bg-[#fbb801b3] backdrop-blur-md z-50 transition-all duration-500">
         <img src="images/NEUKAI Logo White.svg" alt="Logo" class="w-[163px] h-[43.21px]" />
         <button id="menu-toggle" class="md:hidden focus:outline-none">
             <svg id="hamburger-icon" class="w-8 h-8" fill="none" stroke="#FFFFFF" viewBox="0 0 24 24">
@@ -59,14 +59,14 @@
 
     <!-- Mobile Menu -->
     <div id="mobile-menu"
-        class="menu-closed md:hidden bg-[#FBB901] fixed top-20 right-0 w-full max-h-[200px] flex flex-col items-end py-5 z-40 p-1.5 rounded-bl-2xl shadow-lg pb-[9px] overflow-hidden transition-all duration-500 ease-in-out">
-        <a href="#home" class="text-sm text-white hover:text-black transition duration-200 mb-4">HOME</a>
-        <a href="#about" class="text-sm text-white hover:text-black transition duration-200 mb-4">ABOUT</a>
-        <a href="#donate" class="hover:scale-105 transition-transform duration-200 mb-2">
-            <img src="images/donatenow.png" alt="Donate Now" class="h-10 w-auto xl:h-20 xl:w-80 mb-1" />
+        class="menu-closed md:hidden bg-[#fbb801] fixed top-20 right-0 w-full max-h-[200px] flex flex-row items-center justify-end py-5 z-40 p-1.5 rounded-bl-2xl shadow-lg pb-[9px] overflow-hidden transition-all duration-500 ease-in-out">
+        <a href="#home" class="text-sm text-white hover:text-black transition duration-200 mx-4">HOME</a>
+        <a href="#about" class="text-sm text-white hover:text-black transition duration-200 mx-4">ABOUT</a>
+        <a href="#donate" class="hover:scale-105 transition-transform duration-200 mx-1">
+            <img src="images/donatenow.png" alt="Donate Now" class="h-auto w-auto xl:h-20 xl:w-20" />
         </a>
-        <a href="#signin" class="hover:scale-105 transition-transform duration-200">
-            <img src="images/signinmobile.png" alt="Sign In" class="h-10 w-auto xl:h-20 xl:w-80 mb-2" />
+        <a href="#signin" class="hover:scale-105 transition-transform duration-200 mx-1">
+            <img src="images/signinmobile.png" alt="Sign In" class="h-auto w-auto xl:h-20 xl:w-20" />
         </a>
     </div>
 
@@ -281,19 +281,19 @@
 
         <!-- Mobile Menu Script -->
         <script>
-            const menuToggle = document.getElementById('menu-toggle');
-            const mobileMenu = document.getElementById('mobile-menu');
-            const icon = document.getElementById('hamburger-icon');
+                const menuToggle = document.getElementById('menu-toggle');
+                const mobileMenu = document.getElementById('mobile-menu');
+                const icon = document.getElementById('hamburger-icon');
 
-            menuToggle.addEventListener('click', () => {
-                mobileMenu.classList.toggle('active');
-                icon.classList.toggle('active');
-                if (icon.classList.contains('active')) {
-                    icon.setAttribute('stroke', '#FBB901');
-                } else {
-                    icon.setAttribute('stroke', '#FFFFFF');
-                }
-            });
+                menuToggle.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('active');
+                    icon.classList.toggle('active');
+                    if (icon.classList.contains('active')) {
+                        icon.setAttribute('stroke', '#000000');
+                    } else {
+                        icon.setAttribute('stroke', '#FFFFFF');
+                    }
+                });
         </script>
     </body>
 

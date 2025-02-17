@@ -136,12 +136,13 @@ body::-webkit-scrollbar {
 }
 
 #mobile-menu {
-    transform: translateX(100%);
-    transition: transform 0.5s ease-in-out;
+  transform: translateY(-100%); 
+  transition: transform 0.5s ease-in-out;
+  top: 60px; 
 }
 
 #mobile-menu.active {
-    transform: translateX(0);
+  transform: translateY(0); 
 }
 
 /* SLIDINGS */
@@ -304,12 +305,12 @@ body::-webkit-scrollbar {
 .animate-rgb-glow {
   background: linear-gradient(270deg, #ff073a, #76ff03, #0033ff, #ff00ff, #ffff33, #00f5ff);
     background-size: 300% 300%;
-    animation: rgb-glow 30s ease infinite;
+    animation: rgb-glow 15s ease infinite;
 }
 
 .animate-blue-mix {
     background: linear-gradient(270deg, 
-        #00008b, #0000cd, #0000ff, #1e90ff, #3206ac, #0f769f, #035570);
+        #00008b, #0000cd, #0000ff, #1e90ff, #3206ac, #0f769f, #3299bb);
     background-size: 400% 400%;
-    animation: blue-mix 20s ease infinite;
+    animation: blue-mix 10s ease infinite;
 }
