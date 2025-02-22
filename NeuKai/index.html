@@ -9,6 +9,7 @@
     <script src="js/navbarScroll.js" defer></script>
     <script src="js/slideAnimation.js" defer></script>
     <script src="js/loading.js" defer></script>
+    <script src="js/mobilenav.js" defer></script>
     <link rel="stylesheet" href="css/index.css">
     <link rel="icon" href="images/TempIco.png" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap" rel="stylesheet">
@@ -37,9 +38,10 @@
 
 <body class="relative min-h-screen bg-black text-white font-poppins">
 
-    <div id="loading-overlay" class="fixed inset-0 bg-black flex items-center justify-center z-50 opacity-0 pointer-events-none transition-opacity duration-300">
+    <div id="loading-overlay"
+        class="fixed inset-0 bg-black flex items-center justify-center z-50 opacity-0 pointer-events-none transition-opacity duration-300">
         <img src="images/Neukai Logo.svg" alt="Loading" class="loading-logo w-50 h-50" />
-      </div>
+    </div>
     <!-- Navbar -->
     <div id="navbar"
         class="fixed top-0 w-full flex justify-between items-center px-12 py-4 bg-black/50 backdrop-blur-md z-50 transition-all duration-500 ease-in-out">
@@ -109,9 +111,12 @@
                             but I fell for your tricks, now I'm the casualty.
                         </p>
                         <div class="flex gap-4 mt-6 md:justify-start justify-center">
-                            <button class="donor-btn shadow-lg shadow-[#FF5722]/70 font-poppins font-bold">
-                                Become a Donor
-                            </button>
+                            <a href="donor.html">
+                                <button class="donor-btn shadow-lg shadow-[#FF5722]/70 font-poppins font-bold">
+                                    Become a Donor
+                                </button>
+                            </a>
+
                             <button class="charity-btn shadow-lg shadow-[#0D0DAF]/70 font-poppins font-bold">
                                 Apply as Charity
                             </button>
@@ -146,7 +151,7 @@
                 </div>
 
                 <!-- Sliding Images -->
-                <div id ="about" class="slideshow-container overflow-hidden">
+                <div id="about" class="slideshow-container overflow-hidden">
                     <div class="slideshow flex" id="slideshow-images">
                         <img src="images/rolling.png" alt="Image 1">
                         <img src="images/rolling1.png" alt="Image 2">
@@ -175,17 +180,20 @@
                 <!-- Cards Section -->
                 <div
                     class="flex flex-col md:flex-row justify-center items-center md:space-x-4 space-y-4 md:space-y-0 mt-4 px-4">
-                    <div class="bg-white p-6 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.6)] w-[322px] h-[286px] text-center rounded-2xl flex flex-col justify-center items-center">
+                    <div
+                        class="bg-white p-6 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.6)] w-[322px] h-[286px] text-center rounded-2xl flex flex-col justify-center items-center">
                         <img src="images/1stsquare.png" alt="Placeholder" class="mb-4 w-16 h-16">
                         <p class="text-sm text-gray-700">How you pick me up, pull 'em down, turn me 'round
                             oh, it just makes sense</p>
                     </div>
-                    <div class="bg-white p-6 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.6)] w-[322px] h-[286px] text-center rounded-2xl flex flex-col justify-center items-center">
+                    <div
+                        class="bg-white p-6 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.6)] w-[322px] h-[286px] text-center rounded-2xl flex flex-col justify-center items-center">
                         <img src="images/2ndsquare.png" alt="Placeholder" class="mb-4 w-16 h-16">
                         <p class="text-sm text-gray-700">How you talk so sweet when you're doing bad things
                             that's bed chem</p>
                     </div>
-                    <div class="bg-white p-6 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.6)] w-[322px] h-[286px] text-center rounded-2xl flex flex-col justify-center items-center">
+                    <div
+                        class="bg-white p-6 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.6)] w-[322px] h-[286px] text-center rounded-2xl flex flex-col justify-center items-center">
                         <img src="images/3rdsquare.png" alt="Placeholder" class="mb-4 w-16 h-16">
                         <p class="text-sm text-gray-700">How you're looking at me, yeah, I know what that means
                             and I'm obsessed</p>
@@ -196,7 +204,8 @@
                 <div
                     class="relative w-full max-w-[1300px] h-[342px] mx-auto mt-10 flex items-center justify-between px-4 sm:px-12">
                     <div class="absolute inset-0"></div>
-                    <div class="absolute inset-0 animate-blue-mix flex flex-col sm:flex-row items-center justify-between px-4 sm:px-12 py-8 sm:py-0">
+                    <div
+                        class="absolute inset-0 animate-blue-mix flex flex-col sm:flex-row items-center justify-between px-4 sm:px-12 py-8 sm:py-0">
                         <!-- LEFT SECTION -->
                         <div class="text-white text-center sm:text-left">
                             <p class="text-2xl sm:text-[40px] font-['Rubik_Mono_One'] font-bold uppercase mb-4">START
@@ -231,24 +240,24 @@
         <footer class="w-full bg-black py-12">
             <div class="container mx-auto px-5 sm:px-8 lg:px-16 flex justify-evenly">
                 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10">
-                        <!-- First  -->
-                        <div class="flex flex-col space-y-4 mr-10">
-                            <img src="images/Neukai Logo White.svg" alt="NEUKAI Logo" class="w-40 h-auto">
-                            <p class="text-lg font-semibold">Follow us!</p>
+                    <!-- First  -->
+                    <div class="flex flex-col space-y-4 mr-10">
+                        <img src="images/Neukai Logo White.svg" alt="NEUKAI Logo" class="w-40 h-auto">
+                        <p class="text-lg font-semibold">Follow us!</p>
 
-                            <!-- Icons -->
-                            <div class="flex space-x-4">
-                                <a href="#" class="text-gray-400 hover:text-white transition duration-200">
-                                    <img src="images/Facebook.svg" alt="Facebook" class="w-6 h-6">
-                                </a>
-                                <a href="#" class="text-gray-400 hover:text-white transition duration-200">
-                                    <img src="images/Twitter.svg" alt="Twitter" class="w-6 h-6">
-                                </a>
-                                <a href="#" class="text-gray-400 hover:text-white transition duration-200">
-                                    <img src="images/Instagram.svg" alt="Instagram" class="w-6 h-6">
-                                </a>
-                            </div>
+                        <!-- Icons -->
+                        <div class="flex space-x-4">
+                            <a href="#" class="text-gray-400 hover:text-white transition duration-200">
+                                <img src="images/Facebook.svg" alt="Facebook" class="w-6 h-6">
+                            </a>
+                            <a href="#" class="text-gray-400 hover:text-white transition duration-200">
+                                <img src="images/Twitter.svg" alt="Twitter" class="w-6 h-6">
+                            </a>
+                            <a href="#" class="text-gray-400 hover:text-white transition duration-200">
+                                <img src="images/Instagram.svg" alt="Instagram" class="w-6 h-6">
+                            </a>
                         </div>
+                    </div>
 
                     <!-- Second  -->
                     <div class="flex flex-col space-y-4 mr-10">
@@ -279,22 +288,6 @@
             <div class="w-full h-full bg-gradient-to-b from-transparent via-black/50 to-black"></div>
         </div>
 
-        <!-- Mobile Menu Script -->
-        <script>
-                const menuToggle = document.getElementById('menu-toggle');
-                const mobileMenu = document.getElementById('mobile-menu');
-                const icon = document.getElementById('hamburger-icon');
-
-                menuToggle.addEventListener('click', () => {
-                    mobileMenu.classList.toggle('active');
-                    icon.classList.toggle('active');
-                    if (icon.classList.contains('active')) {
-                        icon.setAttribute('stroke', '#fbb801');
-                    } else {
-                        icon.setAttribute('stroke', '#FFFFFF');
-                    }
-                });
-        </script>
     </body>
 
 </html>

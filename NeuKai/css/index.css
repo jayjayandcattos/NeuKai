@@ -277,7 +277,7 @@ body::-webkit-scrollbar {
 #loading-overlay {
     background: rgba(6, 0, 0, 0.588);
     backdrop-filter: blur(300px);
-    transition: opacity 0.3s ease-in-out;
+    transition: opacity 0.5s ease-in-out;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -289,7 +289,7 @@ body::-webkit-scrollbar {
   .loading-logo {
     width: 200px;
     height: 200px;
-    animation: float 1s ease-in-out infinite, pulse 2s ease-in-out infinite;
+    animation: float 2s ease-in-out infinite, pulse 2s ease-in-out infinite;
     filter: drop-shadow(0 0 30px rgba(0, 0, 0, 0.2));
   }
   
@@ -310,3 +310,65 @@ body::-webkit-scrollbar {
       transform: scale(1.2);
     }
   }
+
+  /* CHECKER */
+
+  .selection-btn.active {
+    width: 130px;
+    background-color: #FD5008;
+    color: white;
+}
+
+
+.selection-btn.active::before {
+    content: "✓";
+    margin-right: 8px;
+    font-weight: bold;
+}
+
+.selection-btn:hover {
+    transform: scale(1.05);
+}
+
+.group:hover .text-overlay {
+  transform: translateY(-12px);
+}
+
+.group:hover .donate-btn {
+  opacity: 1;
+  transform: translateY(-40px);
+}
+
+.donate-btn {
+  background: #16a34a; 
+  color: white;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.donate-btn:hover {
+  background: #15803d;
+}
+
+.pagination-btn {
+  width: 40px;
+  height: 40px; 
+  border-radius: 50%; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #e5e7eb; 
+  color: #4b5563;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.pagination-btn:hover {
+  background-color: #FD5008; 
+  color: white;
+}
+
+.pagination-btn.active {
+  background-color: #FD5008; 
+  color: white;
+}

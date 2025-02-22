@@ -1,4 +1,5 @@
 //eme lang to, can be deleted anytime HAHAHA
+//parang di na kailangan idelete, angas !!! TANGINa pls lets keep this
 
 document.addEventListener('DOMContentLoaded', function () {
     const loadingOverlay = document.getElementById('loading-overlay');
