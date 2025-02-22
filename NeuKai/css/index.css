@@ -176,105 +176,69 @@ body::-webkit-scrollbar {
 }   
 
 /* butones */
-
 .donor-btn, .charity-btn {
-    font-family: inherit;
-    display: inline-block;
-    width: 291px;
-    height: 58px;
-    line-height: 2.5em;
-    position: relative;
-    cursor: pointer;
-    overflow: hidden;
-    border: 2px solid;
-    transition: color 0.5s;
-    z-index: 1;
-    font-size: 17px;
-    border-radius: 6px;
-    font-weight: 500;
-    text-align: center;
-    background: transparent;
-  }
-  
-  .donor-btn {
-    --color: #FF5722;
-    color: var(--color);
-    border-color: var(--color);
-  }
-  
-  .donor-btn:before {
-    content: "";
-    position: absolute;
-    z-index: -1;
-    background: var(--color);
-    height: 150px;
-    width: 300px;
-    border-radius: 50%;
-    top: 100%;
-    left: 100%;
-    transition: all 0.7s;
-  }
-  
-  .donor-btn:hover {
-    color: #fff;
-  }
-  
-  .donor-btn:hover:before {
-    top: -20px;
-    left: -20px;
-  }
-  
-  .donor-btn:active:before {
-    background: #E64A19;
-    transition: background 0s;
-  }
-  
-  /* Charity Button */
-  .charity-btn {
-    --color: #0D0DAF;
-    color: var(--color);
-    border-color: var(--color);
-  }
-  
-  .charity-btn:before {
-    content: "";
-    position: absolute;
-    z-index: -1;
-    background: var(--color);
-    height: 150px;
-    width: 300px;
-    border-radius: 50%;
-    top: 100%;
-    left: 100%;
-    transition: all 0.7s;
-  }
-  
-  .charity-btn:hover {
-    color: #fff;
-  }
-  
-  .charity-btn:hover:before {
-    top: -20px;
-    left: -20px;
-  }
-  
-  .charity-btn:active:before {
-    background: #0A0A8F;
-    transition: background 0s;
-  }
-  
-  @media (max-width: 700px) {
-    .donor-btn, .charity-btn {
-      width: 240px;
-    }
-  }
-  
-  @media (max-width: 500px) {
-    .donor-btn, .charity-btn {
-      width: 100%;
-    }
-  }
+  font-family: inherit;
+  display: inline-block;
+  width: 291px;
+  height: 80px;
+  line-height: 2.5em;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  border: 2px solid transparent; 
+  transition: all 0.3s ease; 
+  z-index: 1;
+  font-size: 20px;
+  border-radius: 6px;
+  font-weight: 500;
+  text-align: center;
+  color: white; 
+}
 
+/* Donor Button */
+.donor-btn {
+  background: #FF5722; 
+  border-color: #FF5722; 
+}
+
+.donor-btn:hover, .donor-btn:active {
+  background: white; 
+  color: #FF5722; 
+  border-color: #FF5722; 
+  transform: translateY(-5px); 
+}
+
+/* Charity Button */
+.charity-btn {
+  background: #0D0DAF; 
+  border-color: #0D0DAF; 
+}
+
+.charity-btn:hover, .charity-btn:active {
+  background: white; 
+  color: #0D0DAF; 
+  border-color: #0D0DAF; 
+  transform: translateY(-5px); 
+}
+
+
+@media (max-width: 700px) {
+  .donor-btn, .charity-btn {
+      width: 240px;
+  }
+}
+
+@media (max-width: 999px) {
+  .donor-btn, .charity-btn {
+      font-size: 15px; 
+  }
+}
+
+@media (max-width: 500px) {
+  .donor-btn, .charity-btn {
+      width: 100%;
+  }
+}
   /* FOOTERCARD */
 
   @keyframes rgb-glow {
@@ -295,18 +259,12 @@ body::-webkit-scrollbar {
         background-position: 0% 50%;
     }
     50% {
-        background-position: 100% 50%;
+        background-position: 100% 50%;  
     }
     100% {
         background-position: 0% 50%;
     }
 }
-
- .animate-rgb-glow {
-  background: linear-gradient(270deg, #ffffff, #ff0303, #ff6200, #ff6200, #ffae00, #00f5ff);
-    background-size: 300% 300%;
-    animation: rgb-glow 15s ease infinite;
-} 
 
 .animate-blue-mix {
     background: linear-gradient(270deg, 
@@ -314,3 +272,41 @@ body::-webkit-scrollbar {
     background-size: 400% 400%;
     animation: blue-mix 10s ease infinite;
 }
+
+/* Loading para maangas*/
+#loading-overlay {
+    background: rgba(6, 0, 0, 0.588);
+    backdrop-filter: blur(300px);
+    transition: opacity 0.3s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+  }
+  
+  .loading-logo {
+    width: 200px;
+    height: 200px;
+    animation: float 1s ease-in-out infinite, pulse 2s ease-in-out infinite;
+    filter: drop-shadow(0 0 30px rgba(0, 0, 0, 0.2));
+  }
+  
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  
+  @keyframes pulse {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.2);
+    }
+  }

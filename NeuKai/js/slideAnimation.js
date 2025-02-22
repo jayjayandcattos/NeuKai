@@ -1,8 +1,16 @@
 const slidingText = document.getElementById("sliding-text");
+const slideshow = document.getElementById("slideshow-images");
+
+slidingText.innerHTML += slidingText.innerHTML;
+slideshow.innerHTML += slideshow.innerHTML;
+
 let textPosition = 0;
+let imagePosition = 0;
+const textSpeed = 0.5;
+const imageSpeed = 0.5; 
 
 function slideText() {
-  textPosition -= 1;
+  textPosition -= textSpeed;
   if (Math.abs(textPosition) >= slidingText.scrollWidth / 2) {
     textPosition = 0;
   }
@@ -10,13 +18,8 @@ function slideText() {
   requestAnimationFrame(slideText);
 }
 
-slideText();
-
-const slideshow = document.getElementById("slideshow-images");
-let imagePosition = 0;
-
 function slideImages() {
-  imagePosition -= 1;
+  imagePosition -= imageSpeed;
   if (Math.abs(imagePosition) >= slideshow.scrollWidth / 2) {
     imagePosition = 0;
   }
@@ -24,4 +27,5 @@ function slideImages() {
   requestAnimationFrame(slideImages);
 }
 
+slideText();
 slideImages();
