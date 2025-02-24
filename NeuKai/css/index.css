@@ -164,7 +164,6 @@ body::-webkit-scrollbar {
     max-width: 400px; 
     height: 200px;
     margin-right: 20px;
-    border-radius: 20px; 
 }
 
 
@@ -185,42 +184,48 @@ body::-webkit-scrollbar {
   position: relative;
   cursor: pointer;
   overflow: hidden;
-  border: 2px solid transparent; 
-  transition: all 0.3s ease; 
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
   z-index: 1;
   font-size: 20px;
-  border-radius: 6px;
+  border-radius: 16px;
   font-weight: 500;
   text-align: center;
-  color: white; 
+  color: white;
+}
+
+/* Donor & Charity Button */
+.donor-btn, .charity-btn {
+  width: 291px; 
 }
 
 /* Donor Button */
 .donor-btn {
-  background: #FF5722; 
-  border-color: #FF5722; 
+  background: #FF5722;
+  border-color: #FF5722;
 }
 
 .donor-btn:hover, .donor-btn:active {
-  background: white; 
-  color: #FF5722; 
-  border-color: #FF5722; 
-  transform: translateY(-5px); 
+  background: white;
+  color: #FF5722;
+  border-color: #FF5722;
+  border-width: 8px; 
+  transform: translateY(-5px);
 }
 
 /* Charity Button */
 .charity-btn {
-  background: #0D0DAF; 
-  border-color: #0D0DAF; 
+  background: #0D0DAF;
+  border-color: #0D0DAF;
 }
 
 .charity-btn:hover, .charity-btn:active {
-  background: white; 
-  color: #0D0DAF; 
-  border-color: #0D0DAF; 
-  transform: translateY(-5px); 
+  background: white;
+  color: #0D0DAF;
+  border-color: #0D0DAF;
+  border-width: 8px; 
+  transform: translateY(-5px);
 }
-
 
 @media (max-width: 700px) {
   .donor-btn, .charity-btn {
@@ -230,7 +235,7 @@ body::-webkit-scrollbar {
 
 @media (max-width: 999px) {
   .donor-btn, .charity-btn {
-      font-size: 15px; 
+      font-size: 15px;
   }
 }
 
@@ -239,6 +244,7 @@ body::-webkit-scrollbar {
       width: 100%;
   }
 }
+
   /* FOOTERCARD */
 
   @keyframes rgb-glow {
