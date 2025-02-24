@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NEUKAI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="js/optionchecks.js" defer></script>
+    <script src="js/loading.js" defer></script>
+    <script src="js/mobilenav.js" defer></script>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="icon" href="images/TempIco.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+
+<body class="relative min-h-screen flex flex-col">
+    <!-- Loading Overlay -->
+    <div id="loading-overlay"
+        class="fixed inset-0 bg-black flex items-center justify-center z-50 opacity-0 pointer-events-none transition-opacity duration-300">
+        <img src="images/Neukai Logo.svg" alt="Loading" class="loading-logo w-50 h-50" />
+    </div>
+
+    <!-- Navbar -->
+    <div id="navbar"
+        class="fixed top-0 w-full flex justify-between items-center px-4 md:px-12 py-4 bg-black/50 backdrop-blur-md z-50 transition-all duration-500 ease-in-out">
+        <a href="index.html">
+            <img src="images/NEUKAI Logo.svg" alt="Logo" class="w-[120px] md:w-[163px] h-auto" />
+        </a>
+        <button id="menu-toggle" class="md:hidden focus:outline-none">
+            <svg id="hamburger-icon" class="w-8 h-8" fill="none" stroke="#FFFFFF" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+        </button>
+        <div id="nav-links" class="hidden md:flex space-x-6 items-center">
+            <a href="index.html" class="text-white md:text-base hover:text-[#fbb801] transition duration-200">HOME</a>
+            <a href="index.html#about"
+                class="text-white md:text-base hover:text-[#fbb801] transition duration-200">ABOUT</a>
+            <a href="#donate" class="hover:scale-105 transition-transform duration-200">
+                <img src="images/donatenow.png" alt="Donate Now" class="h-9 md:h-10 object-contain" />
+            </a>
+            <a href="#signin" class="hover:scale-105 transition-transform duration-200">
+                <img src="images/signin.png" alt="Sign In" class="h-8 md:h-8 object-contain" />
+            </a>
+        </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu"
+        class="menu-closed md:hidden bg-black/50 backdrop-blur-md fixed top-20 right-0 w-full max-h-[200px] flex flex-row items-center justify-end py-5 z-40 p-1.5 rounded-bl-2xl shadow-lg pb-[9px] overflow-hidden transition-all duration-500 ease-in-out">
+        <a href="index.html" class="text-sm text-white hover:text-[#fbb801] transition duration-200 mx-4">HOME</a>
+        <a href="index.html#about"
+            class="text-sm text-white hover:text-[#fbb801] transition duration-200 mx-4">ABOUT</a>
+        <a href="#donate" class="hover:scale-105 transition-transform duration-200 mx-1">
+            <img src="images/donatenow.png" alt="Donate Now" class="h-auto w-auto xl:h-20 xl:w-20" />
+        </a>
+        <a href="#signin" class="hover:scale-105 transition-transform duration-200 mx-1">
+            <img src="images/signinmobile.png" alt="Sign In" class="h-auto w-auto xl:h-20 xl:w-20" />
+        </a>
+    </div>
+
+    <!-- Main Section -->
+    <div id="top" class="flex-grow flex justify-center px-4 mt-24">
+        <div class="w-full max-w-[1300px] h-auto min-h-[600px] md:h-[986px] bg-white rounded-3xl overflow-hidden">
+            <div class="h-auto md:h-[228px] w-full bg-white flex flex-col md:flex-row items-center justify-between p-8">
+                <!-- Left Side: Welcome and Logo -->
+                <div class="w-full md:w-[337px] ml-0 md:ml-14">
+                    <h1 class="text-[28px] md:text-[40px] font-bold text-[#FBB901] w-full md:w-[349px]"
+                        style="font-family: 'Rubik Mono One', monospace;">WELCOME TO</h1>
+                    <img src="images/Neukai Logo.svg" alt="Neukai Logo" class="mt-2 w-[160px] md:w-auto">
+                </div>
+                <!-- Right Side: Selections -->
+                <div class="w-full md:w-[757px] mt-8 md:mt-0">
+                    <h2 class="text-xl md:text-2xl font-bold mb-4">Sort charities to match your clothing donations</h2>
+                    <!-- Selection Buttons -->
+                    <div class="flex flex-wrap gap-4">
+                        <button
+                            class="selection-btn w-[80px] md:w-[103px] h-[35px] md:h-[43px] bg-gray-200 rounded-lg flex items-center justify-center transition-all duration-300">
+                            <span class="text-sm md:text-base">Option 1</span>
+                        </button>
+                        <button
+                            class="selection-btn w-[80px] md:w-[103px] h-[35px] md:h-[43px] bg-gray-200 rounded-lg flex items-center justify-center transition-all duration-300">
+                            <span class="text-sm md:text-base">Option 2</span>
+                        </button>
+                        <button
+                            class="selection-btn w-[80px] md:w-[103px] h-[35px] md:h-[43px] bg-gray-200 rounded-lg flex items-center justify-center transition-all duration-300">
+                            <span class="text-sm md:text-base">Option 3</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="w-full px-8 py-12">
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-auto">
+                    <div
+                        class="relative h-[276px] w-full rounded-lg overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl group">
+                        <img src="images/test.jpg" alt="Charity 1" class="w-full h-full object-cover">
+                        <div
+                            class="absolute bottom-0 left-0 w-full p-4 text-white transition-all duration-300 group-hover:-translate-y-16">
+                            <p class="text-[18px] font-poppins">Location: Kyusi</p>
+                            <p class="text-[24px] font-poppins font-bold">Gabriel Chavez</p>
+                        </div>
+                        <button
+                            class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[calc(100%-20px)] h-[53px] bg-green-600 text-white px-6 py-3 rounded-lg opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:-translate-y-4 font-bold text-[16px]">
+                            DONATE
+                        </button>
+                    </div>
+                    <div
+                        class="relative h-[276px] w-full rounded-lg overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl group">
+                        <img src="images/shirt.jpg" alt="Charity 1" class="w-full h-full object-cover">
+                        <div
+                            class="absolute bottom-0 left-0 w-full p-4 text-white transition-all duration-300 group-hover:-translate-y-16">
+                            <p class="text-[18px] font-poppins">Location: Kyusi</p>
+                            <p class="text-[24px] font-poppins font-bold">Queen Samantha</p>
+                        </div>
+                        <button
+                            class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[calc(100%-20px)] h-[53px] bg-green-600 text-white px-6 py-3 rounded-lg opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:-translate-y-4 font-bold text-[16px]">
+                            DONATE
+                        </button>
+                    </div>
+                    <div
+                        class="relative h-[276px] w-full rounded-lg overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl group">
+                        <img src="images/test.jpg" alt="Charity 1" class="w-full h-full object-cover">
+                        <div
+                            class="absolute bottom-0 left-0 w-full p-4 text-white transition-all duration-300 group-hover:-translate-y-16">
+                            <p class="text-[18px] font-poppins">Location: Kyusi</p>
+                            <p class="text-[24px] font-poppins font-bold">Rox Bruno Mars</p>
+                        </div>
+                        <button
+                            class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[calc(100%-20px)] h-[53px] bg-green-600 text-white px-6 py-3 rounded-lg opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:-translate-y-4 font-bold text-[16px]">
+                            DONATE
+                        </button>
+                    </div>
+
+                    <div
+                        class="relative h-[276px] w-full rounded-lg overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl group">
+                        <img src="images/shirt.jpg" alt="Charity 1" class="w-full h-full object-cover">
+                        <div
+                            class="absolute bottom-0 left-0 w-full p-4 text-white transition-all duration-300 group-hover:-translate-y-16">
+                            <p class="text-[18px] font-poppins">Location: Kyusi</p>
+                            <p class="text-[24px] font-poppins font-bold">Louise Moreno</p>
+                        </div>
+                        <button
+                            class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[calc(100%-20px)] h-[53px] bg-green-600 text-white px-6 py-3 rounded-lg opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:-translate-y-4 font-bold text-[16px]">
+                            DONATE
+                        </button>
+                    </div>
+                    <div
+                        class="relative h-[276px] w-full rounded-lg overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl group">
+                        <img src="images/test1.jpg" alt="Charity 1" class="w-full h-full object-cover">
+                        <div
+                            class="absolute bottom-0 left-0 w-full p-4 text-white transition-all duration-300 group-hover:-translate-y-16">
+                            <p class="text-[18px] font-poppins">Location: Kyusi</p>
+                            <p class="text-[24px] font-poppins font-bold">Heila</p>
+                        </div>
+                        <button
+                            class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[calc(100%-20px)] h-[53px] bg-green-600 text-white px-6 py-3 rounded-lg opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:-translate-y-4 font-bold text-[16px]">
+                            DONATE
+                        </button>
+                    </div>
+                    <div
+                        class="relative h-[276px] w-full rounded-lg overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl group">
+                        <img src="images/shirt.jpg" alt="Charity 1" class="w-full h-full object-cover">
+                        <div
+                            class="absolute bottom-0 left-0 w-full p-4 text-white transition-all duration-300 group-hover:-translate-y-16">
+                            <p class="text-[18px] font-poppins">Location: Kyusi</p>
+                            <p class="text-[24px] font-poppins font-bold">Ayebram</p>
+                        </div>
+                        <button
+                            class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[calc(100%-20px)] h-[53px] bg-green-600 text-white px-6 py-3 rounded-lg opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:-translate-y-4 font-bold text-[16px]">
+                            DONATE
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <!--Footer -->
+    <footer class="w-full bg-black py-12 mt-auto">
+        <div class="container mx-auto px-5 sm:px-8 lg:px-16">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10">
+                <!-- First Column -->
+                <div class="flex flex-col space-y-4">
+                    <img src="images/Neukai Logo White.svg" alt="NEUKAI Logo" class="w-40 h-auto">
+                    <p class="text-lg text-white font-semibold">Follow us!</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-200">
+                            <img src="images/Facebook.svg" alt="Facebook" class="w-6 h-6">
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-200">
+                            <img src="images/Twitter.svg" alt="Twitter" class="w-6 h-6">
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-200">
+                            <img src="images/Instagram.svg" alt="Instagram" class="w-6 h-6">
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Second Column -->
+                <div class="flex flex-col space-y-4">
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-200">Privacy Policy</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-200">Terms of Use</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-200">Our Team</a>
+                </div>
+
+                <!-- Third Column -->
+                <div class="flex flex-col space-y-4">
+                    <p class="text-gray-400">Contact Us</p>
+                    <p class="text-gray-400">0987-543-2103</p>
+                    <p class="text-gray-400">justin@gmail.com</p>
+                </div>
+
+                <!-- Fourth Column -->
+                <div class="flex flex-col space-y-4">
+                    <a href="#top" class="text-gray-400 hover:text-white transition duration-200">Return to Top</a>
+                    <p class="text-gray-400">Copyright ©2025</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Parallax Background -->
+    <div class="fixed top-0 left-0 w-full h-full bg-cover bg-center bg-fixed z-[-1] parallax"
+        style="background-image: url('images/background.png');">
+        <div class="w-full h-full bg-gradient-to-b from-transparent via-black/50 to-black"></div>
+    </div>
+</body>
+
+</html>
