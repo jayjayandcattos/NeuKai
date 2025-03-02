@@ -4,15 +4,15 @@ Updates
 
 New Features
 
-✅ PHP Transition✅ Included Transition✅ Section Folder Added:
-
+✅ PHP Transition
+✅ Included Transition
+✅ Section Folder Added:
 ✅ Navbar
-
 ✅ Mobile Menu
-
 ✅ Footer
-
-✅ Parallax Background✅ Charity Page✅ Charity Modal Pop-Up
+✅ Parallax Background
+✅ Charity Page
+✅ Charity Modal Pop-Up
 
 To-Do
 
