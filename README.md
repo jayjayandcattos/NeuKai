@@ -1,20 +1,24 @@
-NEUKAI!
+**Version DEV 2.1**
 
-###Version DEV 2.1
+Updates
 
-Do the number pagination.
-	
-Replace donatenow.png with an actual button 
+New Features
 
+✅ PHP Transition✅ Included Transition✅ Section Folder Added:
 
-✔ PHP Transition
-✔ Include Transition; 
-Section Folder Added:
--Navbar ✔
--Mobile Menu ✔
--Footer ✔
--Parallax Background ✔
-✔ Charity Page
-✔ Charity Modal Pop-Up
+✅ Navbar
 
+✅ Mobile Menu
 
+✅ Footer
+
+✅ Parallax Background✅ Charity Page✅ Charity Modal Pop-Up
+
+To-Do
+
+🔲 Implement number pagination - Dono Page
+🔲 Replace all svg buttons
+🔲 Sign-In
+🔲 Donors Profile & Application
+
+- Justin
