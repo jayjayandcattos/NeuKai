@@ -24,7 +24,7 @@ function updateProgress() {
         step2Form.classList.remove('hidden');
 
         stepTitle.textContent = "Step 2";
-        stepDescription.textContent = "Contact Person";
+        stepDescription.textContent = "CONTACT PERSON";
         nextStep.textContent = "Next: Address & Documents";
 
         currentStep = 2;
@@ -37,15 +37,15 @@ function updateProgress() {
         step3Form.classList.remove('hidden');
 
         stepTitle.textContent = "Step 3";
-        stepDescription.textContent = "Address & Documents";
-        nextStep.textContent = "Next: Complete";
+        stepDescription.textContent = "ADDRESS & DOCUMENTS";
+        nextStep.textContent = "Next: Pending for Approval";
 
         currentStep = 3;
         actionButton.textContent = "Complete";
     } else if (currentStep === 3) {
         modal.classList.remove('hidden');
         setTimeout(() => {
-            modal.classList.add('active'); // Apply animation
+            modal.classList.add('active'); 
         }, 10);
     }
 }

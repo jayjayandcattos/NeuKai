@@ -80,8 +80,8 @@
             <div class="flex flex-col md:flex-row p-8 h-[calc(600px-114px)]">
                 <!-- Left Section: Step Info -->
                 <div class="w-full md:w-1/3 mb-8 md:mb-0 ml-[32px]">
-                    <h2 id="stepTitle" class="text-3xl font-bold mb-2 text-[#000000]">STEP 1</h2>
-                    <p id="stepDescription" class="text-xl mb-4 text-gray-700">Charity Details</p>
+                    <h2 id="stepTitle" class="text-xl mb-2 text-[#000000]">STEP 1</h2>
+                    <p id="stepDescription" class="text-2xl font-bold mb-4 text-blue-700">CHARITY DETAILS</p>
                     <p id="nextStep" class="text-lg text-gray-500">Next: Contact Person</p>
                 </div>
 
