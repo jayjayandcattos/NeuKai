@@ -13,6 +13,25 @@
     <link rel="icon" href="images/TempIco.png" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-color: black;
+            color: black;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        main {
+            flex: 1;
+        }
+
+        footer {
+            flex-shrink: 0;
+        }
+    </style>
 </head>
 
 <body class="relative min-h-screen flex flex-col">
@@ -23,42 +42,10 @@
     </div>
 
     <!-- Navbar -->
-    <div id="navbar"
-        class="fixed top-0 w-full flex justify-between items-center px-4 md:px-12 py-4 bg-black/50 backdrop-blur-md z-50 transition-all duration-500 ease-in-out">
-        <a href="index.html">
-            <img src="images/NEUKAI Logo.svg" alt="Logo" class="w-[120px] md:w-[163px] h-auto" />
-        </a>
-        <button id="menu-toggle" class="md:hidden focus:outline-none">
-            <svg id="hamburger-icon" class="w-8 h-8" fill="none" stroke="#FFFFFF" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-        </button>
-        <div id="nav-links" class="hidden md:flex space-x-6 items-center">
-            <a href="index.html" class="text-white md:text-base hover:text-[#fbb801] transition duration-200">HOME</a>
-            <a href="index.html#about"
-                class="text-white md:text-base hover:text-[#fbb801] transition duration-200">ABOUT</a>
-            <a href="#donate" class="hover:scale-105 transition-transform duration-200">
-                <img src="images/donatenow.png" alt="Donate Now" class="h-9 md:h-10 object-contain" />
-            </a>
-            <a href="#signin" class="hover:scale-105 transition-transform duration-200">
-                <img src="images/signin.png" alt="Sign In" class="h-8 md:h-8 object-contain" />
-            </a>
-        </div>
-    </div>
+    <?php include 'section/desktopnavbar.php'; ?>
 
     <!-- Mobile Menu -->
-    <div id="mobile-menu"
-        class="menu-closed md:hidden bg-black/50 backdrop-blur-md fixed top-20 right-0 w-full max-h-[200px] flex flex-row items-center justify-end py-5 z-40 p-1.5 rounded-bl-2xl shadow-lg pb-[9px] overflow-hidden transition-all duration-500 ease-in-out">
-        <a href="index.html" class="text-sm text-white hover:text-[#fbb801] transition duration-200 mx-4">HOME</a>
-        <a href="index.html#about"
-            class="text-sm text-white hover:text-[#fbb801] transition duration-200 mx-4">ABOUT</a>
-        <a href="#donate" class="hover:scale-105 transition-transform duration-200 mx-1">
-            <img src="images/donatenow.png" alt="Donate Now" class="h-auto w-auto xl:h-20 xl:w-20" />
-        </a>
-        <a href="#signin" class="hover:scale-105 transition-transform duration-200 mx-1">
-            <img src="images/signinmobile.png" alt="Sign In" class="h-auto w-auto xl:h-20 xl:w-20" />
-        </a>
-    </div>
+    <?php include 'section/mobilenavbar.php'; ?>
 
     <!-- Main Section -->
     <div id="top" class="flex-grow flex justify-center px-4 mt-24">
@@ -177,55 +164,12 @@
     </div>
     </div>
 
-    <!--Footer -->
-    <footer class="w-full bg-black py-12 mt-auto">
-        <div class="container mx-auto px-5 sm:px-8 lg:px-16">
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10">
-                <!-- First Column -->
-                <div class="flex flex-col space-y-4">
-                    <img src="images/Neukai Logo White.svg" alt="NEUKAI Logo" class="w-40 h-auto">
-                    <p class="text-lg text-white font-semibold">Follow us!</p>
-                    <div class="flex space-x-4">
-                        <a href="#" class="text-gray-400 hover:text-white transition duration-200">
-                            <img src="images/Facebook.svg" alt="Facebook" class="w-6 h-6">
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-white transition duration-200">
-                            <img src="images/Twitter.svg" alt="Twitter" class="w-6 h-6">
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-white transition duration-200">
-                            <img src="images/Instagram.svg" alt="Instagram" class="w-6 h-6">
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Second Column -->
-                <div class="flex flex-col space-y-4">
-                    <a href="#" class="text-gray-400 hover:text-white transition duration-200">Privacy Policy</a>
-                    <a href="#" class="text-gray-400 hover:text-white transition duration-200">Terms of Use</a>
-                    <a href="#" class="text-gray-400 hover:text-white transition duration-200">Our Team</a>
-                </div>
-
-                <!-- Third Column -->
-                <div class="flex flex-col space-y-4">
-                    <p class="text-gray-400">Contact Us</p>
-                    <p class="text-gray-400">0987-543-2103</p>
-                    <p class="text-gray-400">justin@gmail.com</p>
-                </div>
-
-                <!-- Fourth Column -->
-                <div class="flex flex-col space-y-4">
-                    <a href="#top" class="text-gray-400 hover:text-white transition duration-200">Return to Top</a>
-                    <p class="text-gray-400">Copyright ©2025</p>
-                </div>
-            </div>
-        </div>
-    </footer>
+    <!-- Footer -->
+    <?php include 'section/footer.php'; ?>
 
     <!-- Parallax Background -->
-    <div class="fixed top-0 left-0 w-full h-full bg-cover bg-center bg-fixed z-[-1] parallax"
-        style="background-image: url('images/background.png');">
-        <div class="w-full h-full bg-gradient-to-b from-transparent via-black/50 to-black"></div>
-    </div>
+    <?php include 'section/parallaxbg.php'; ?>
+
 </body>
 
 </html>

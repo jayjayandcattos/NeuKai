@@ -1,0 +1,99 @@
+
+.form-input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+    background-color: white;
+    color: #1f2937;
+    font-size: 1rem;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: #1C3AE6;
+    box-shadow: 0 0 0 2px rgba(28, 58, 230, 0.2);
+}
+
+
+
+.btn {
+    padding: 0.75rem 1.5rem;
+    border-radius: 28px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+    text-align: center;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    width: 216px;
+    height: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+
+.btn-primary {
+    background: linear-gradient(45deg, #1C3AE6, #3b82f6);
+    color: white;
+    box-shadow: 0 4px 6px rgba(28, 58, 230, 0.2);
+}
+
+.btn-primary:hover {
+    background: linear-gradient(45deg, #1631b3, #2563eb);
+    transform: scale(1.05);
+    box-shadow: 0 6px 8px rgba(28, 58, 230, 0.3);
+}
+
+.btn-primary:active {
+    transform: scale(0.95);
+}
+
+
+.btn-secondary {
+    background: linear-gradient(45deg, #6b7280, #9ca3af);
+    color: white;
+    box-shadow: 0 4px 6px rgba(107, 114, 128, 0.2);
+}
+
+.btn-secondary:hover {
+    background: linear-gradient(45deg, #4b5563, #6b7280);
+    transform: scale(1.05);
+    box-shadow: 0 6px 8px rgba(107, 114, 128, 0.3);
+}
+
+.btn-secondary:active {
+    transform: scale(0.95);
+}
+
+
+#modal {
+    transform: scale(0.95);
+    opacity: 0;
+    transition: opacity 0.6s ease, transform 0.6s ease-in-out;
+}
+
+#modal.active {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.modal-content {
+    width: 502px;
+    height: 325px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 24px;
+    animation: slideUp 0.5s ease-out;
+}

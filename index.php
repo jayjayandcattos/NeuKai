@@ -42,39 +42,12 @@
         class="fixed inset-0 bg-black flex items-center justify-center z-50 opacity-0 pointer-events-none transition-opacity duration-300">
         <img src="images/Neukai Logo.svg" alt="Loading" class="loading-logo w-50 h-50" />
     </div>
+
     <!-- Navbar -->
-    <div id="navbar"
-        class="fixed top-0 w-full flex justify-between items-center px-12 py-4 bg-black/50 backdrop-blur-md z-50 transition-all duration-500 ease-in-out">
-        <img src="images/NEUKAI Logo.svg" alt="Logo" class="w-[163px] h-[43.21px]" />
-        <button id="menu-toggle" class="md:hidden focus:outline-none">
-            <svg id="hamburger-icon" class="w-8 h-8" fill="none" stroke="#FFFFFF" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-        </button>
-        <div id="nav-links" class="hidden md:flex space-x-6 items-center">
-            <a href="#home" class="text-sm md:text-base hover:text-[#fbb801] transition duration-200">HOME</a>
-            <a href="#about" class="text-sm md:text-base hover:text-[#fbb801] transition duration-200">ABOUT</a>
-            <a href="donor.html" class="hover:scale-105 transition-transform duration-200">
-                <img src="images/donatenow.png" alt="Donate Now" class="h-9 md:h-10 object-contain" />
-            </a>
-            <a href="#signin" class="hover:scale-125 transition-transform duration-200">
-                <img src="images/signin.png" alt="Sign In    class="h-8 md:h-8 object-contain" />
-            </a>
-        </div>
-    </div>
+    <?php include 'section/desktopnavbar.php'; ?>
 
     <!-- Mobile Menu -->
-    <div id="mobile-menu"
-        class="menu-closed md:hidden bg-black/50 backdrop-blur-md fixed top-20 right-0 w-full max-h-[200px] flex flex-row items-center justify-end py-5 z-40 p-1.5 rounded-bl-2xl shadow-lg pb-[9px] overflow-hidden transition-all duration-500 ease-in-out">
-        <a href="#home" class="text-sm text-white hover:text-[#fbb801] transition duration-200 mx-4">HOME</a>
-        <a href="#about" class="text-sm text-white hover:text-[#fbb801] transition duration-200 mx-4">ABOUT</a>
-        <a href="donor.html" class="hover:scale-105 transition-transform duration-200 mx-1">
-            <img src="images/donatenow.png" alt="Donate Now" class="h-auto w-auto xl:h-20 xl:w-20" />
-        </a>
-        <a href="#signin" class="hover:scale-105 transition-transform duration-200 mx-1">
-            <img src="images/signinmobile.png" alt="Sign In" class="h-auto w-auto xl:h-20 xl:w-20" />
-        </a>
-    </div>
+    <?php include 'section/mobilenavbar.php'; ?>
 
     <!-- Main Content -->
     <main class="flex-grow">
@@ -111,18 +84,18 @@
                             but I fell for your tricks, now I'm the casualty.
                         </p>
                         <div class="flex gap-4 mt-6 md:justify-start justify-center">
-                            <a href="donor.html" class="w-full md:w-auto">
+                            <a href="donor.php" class="w-full md:w-auto">
                                 <button class="donor-btn shadow-lg shadow-[#FF5722]/70 font-poppins font-bold w-full md:w-[291px]">
                                     Become a Donor
                                 </button>
                             </a>
-                            <a href="charity.html" class="w-full md:w-auto">
+                            <a href="charity.php" class="w-full md:w-auto">
                                 <button class="charity-btn shadow-lg shadow-[#0D0DAF]/70 font-poppins font-bold w-full md:w-[291px]">
                                     Apply as Charity
                                 </button>
                             </a>
                         </div>
-                        
+
                     </div>
 
                     <!-- Right Section (Ellipse) -->
@@ -238,60 +211,12 @@
         </div>
     </main>
 
-    <body class="bg-black text-white">
+    <!-- Footer -->
+    <?php include 'section/footer.php'; ?>
 
-        <!-- Footer -->
-        <footer class="w-full bg-black py-12">
-            <div class="container mx-auto px-5 sm:px-8 lg:px-16 flex justify-evenly">
-                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10">
-                    <!-- First  -->
-                    <div class="flex flex-col space-y-4 mr-10">
-                        <img src="images/Neukai Logo White.svg" alt="NEUKAI Logo" class="w-40 h-auto">
-                        <p class="text-lg font-semibold">Follow us!</p>
+    <!-- Parallax Background -->
+    <?php include 'section/parallaxbg.php'; ?>
 
-                        <!-- Icons -->
-                        <div class="flex space-x-4">
-                            <a href="#" class="text-gray-400 hover:text-white transition duration-200">
-                                <img src="images/Facebook.svg" alt="Facebook" class="w-6 h-6">
-                            </a>
-                            <a href="#" class="text-gray-400 hover:text-white transition duration-200">
-                                <img src="images/Twitter.svg" alt="Twitter" class="w-6 h-6">
-                            </a>
-                            <a href="#" class="text-gray-400 hover:text-white transition duration-200">
-                                <img src="images/Instagram.svg" alt="Instagram" class="w-6 h-6">
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Second  -->
-                    <div class="flex flex-col space-y-4 mr-10">
-                        <a href="#" class="text-gray-400 hover:text-white transition duration-200">Privacy Policy</a>
-                        <a href="#" class="text-gray-400 hover:text-white transition duration-200">Terms of Use</a>
-                        <a href="#" class="text-gray-400 hover:text-white transition duration-200">Our Team</a>
-                    </div>
-
-                    <!-- Third  -->
-                    <div class="flex flex-col space-y-4 mr-10">
-                        <p class="text-gray-400">Contact Us</p>
-                        <p class="text-gray-400">0987-543-2103</p>
-                        <p class="text-gray-400">justin@gmail.com</p>
-                    </div>
-
-                    <!-- Fourth  -->
-                    <div class="flex flex-col space-y-4">
-                        <a href="#home" class="text-gray-400 hover:text-white transition duration-200">Return to Top</a>
-                        <p class="text-gray-400">Copyright ©2025</p>
-                    </div>
-                </div>
-            </div>
-        </footer>
-
-        <!-- Parallax Background -->
-        <div class="absolute top-0 left-0 w-full h-full bg-cover bg-center bg-fixed z-[-1] parallax"
-            style="background-image: url('images/background.png');">
-            <div class="w-full h-full bg-gradient-to-b from-transparent via-black/50 to-black"></div>
-        </div>
-
-    </body>
+</body>
 
 </html>

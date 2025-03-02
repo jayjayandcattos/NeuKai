@@ -1,3 +1,20 @@
+// ARCHIVED (FOR NOWWWWW)
+// ARCHIVED (FOR NOWWWWW)
+// ARCHIVED (FOR NOWWWWW)
+// ARCHIVED (FOR NOWWWWW)
+// ARCHIVED (FOR NOWWWWW)
+// ARCHIVED (FOR NOWWWWW)
+// ARCHIVED (FOR NOWWWWW)
+// ARCHIVED (FOR NOWWWWW)
+// ARCHIVED (FOR NOWWWWW)
+// ARCHIVED (FOR NOWWWWW)
+// ARCHIVED (FOR NOWWWWW)
+// ARCHIVED (FOR NOWWWWW)
+// ARCHIVED (FOR NOWWWWW)
+// ARCHIVED (FOR NOWWWWW)
+// ARCHIVED (FOR NOWWWWW)
+// ARCHIVED (FOR NOWWWWW)
+
 console.log("kung nakita mo 'to edi tanginamo hahgah de jk spread love - justin r");
 console.log("yikes daming error sa tailwind, pero dedma kasi gumagana naman (di ko nainstall nang maayos) - justin r");
 document.addEventListener("DOMContentLoaded", () => {
@@ -18,5 +35,25 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
+// ARCHIVED (FOR NOWWWWW)
+
+// ARCHIVED (FOR NOWWWWW)
+
+// ARCHIVED (FOR NOWWWWW)
+
+// ARCHIVED (FOR NOWWWWW)
+
+// ARCHIVED (FOR NOWWWWW)
+
+// ARCHIVED (FOR NOWWWWW)
+
+// ARCHIVED (FOR NOWWWWW)
+
+// ARCHIVED (FOR NOWWWWW)
+
+// ARCHIVED (FOR NOWWWWW)
+
+// ARCHIVED (FOR NOWWWWW)
 
 // ARCHIVED (FOR NOWWWWW)
