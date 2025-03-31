@@ -23,9 +23,9 @@
 
             <!-- Second  -->
             <div class="flex flex-col space-y-4 mr-10">
-                <a href="#" class="text-gray-400 hover:text-white transition duration-200">Privacy Policy</a>
-                <a href="#" class="text-gray-400 hover:text-white transition duration-200">Terms of Use</a>
-                <a href="#" class="text-gray-400 hover:text-white transition duration-200">Our Team</a>
+                <a href="about.php#privacy" class="text-gray-400 hover:text-white transition duration-200">Privacy Policy</a>
+                <a href="about.php#terms" class="text-gray-400 hover:text-white transition duration-200">Terms of Use</a>
+                <a href="about.php#team" class="text-gray-400 hover:text-white transition duration-200">Our Team</a>
             </div>
 
             <!-- Third  -->

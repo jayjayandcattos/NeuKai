@@ -34,6 +34,7 @@ body {
     width: 100%;
     z-index: 999;
 }
+
 .parallax {
     position: fixed;
     top: 0;
@@ -362,3 +363,4 @@ next-btn {
   font-weight: 600;
   transition: background-color 0.3s ease;
 }
+

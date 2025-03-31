@@ -88,7 +88,7 @@
     height: 325px;
     background-color: white;
     border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 30px 30px rgb(0, 0, 0);
     display: flex;
     flex-direction: column;
     justify-content: center;

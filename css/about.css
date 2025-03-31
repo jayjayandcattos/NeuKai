@@ -1,0 +1,151 @@
+.neukai-mobile-nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    max-width: 300px;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: -5px 0 25px rgba(0, 0, 0, 0.5);
+}
+
+.neukai-mobile-nav.active {
+    right: 0;
+}
+
+.neukai-menu-link {
+    position: relative;
+    overflow: hidden;
+}
+
+.neukai-menu-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #FBB901;
+    transition: width 0.3s ease;
+}
+
+.neukai-menu-link:hover::after {
+    width: 100%;
+}
+
+.neukai-menu-toggle {
+    position: fixed;
+    top: 25px;
+    right: 10px;
+    width: 32px;  
+    height: 32px; 
+    border-radius: 50%;
+    background: linear-gradient(135deg, #FBB901, #FF6B00);
+    box-shadow: 0 4px 15px rgba(251, 185, 1, 0.3);
+    z-index: 1001;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.neukai-menu-toggle:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(251, 185, 1, 0.4);
+}
+
+.neukai-menu-toggle span {
+    position: relative;
+    width: 18px;  
+    height: 2px;
+    background-color: white;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+.neukai-menu-toggle span::before,
+.neukai-menu-toggle span::after {
+    content: '';
+    position: absolute;
+    width: 18px; 
+    height: 2px;
+    background-color: white;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+.neukai-menu-toggle span::before {
+    transform: translateY(-6px);
+}
+
+.neukai-menu-toggle span::after {
+    transform: translateY(6px);
+}
+
+.neukai-menu-toggle.active span {
+    background-color: transparent;
+}
+
+.neukai-menu-toggle.active span::before {
+    transform: translateY(0) rotate(45deg);
+}
+
+.neukai-menu-toggle.active span::after {
+    transform: translateY(0) rotate(-45deg);
+}
+
+
+.neukai-menu-item {
+    opacity: 0;
+    transform: translateX(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    transition-delay: 0.1s;
+}
+
+.neukai-menu-item:nth-child(2) {
+    transition-delay: 0.2s;
+}
+
+.neukai-menu-item:nth-child(3) {
+    transition-delay: 0.3s;
+}
+
+.neukai-menu-item:nth-child(4) {
+    transition-delay: 0.4s;
+}
+
+.neukai-menu-item:nth-child(5) {
+    transition-delay: 0.5s;
+}
+
+.neukai-mobile-nav.active .neukai-menu-item {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.neukai-nav-indicator {
+    position: absolute;
+    left: 0;
+    width: 4px;
+    height: 0;
+    background: linear-gradient(to bottom, #FBB901, #FF6B00);
+    border-radius: 0 4px 4px 0;
+    transition: all 0.3s ease;
+}
+
+@keyframes neukai-ripple {
+    0% {
+        transform: scale(0);
+        opacity: 0.6;
+    }
+
+    100% {
+        transform: scale(2.5);
+        opacity: 0;
+    }
+}

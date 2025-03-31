@@ -76,7 +76,7 @@
                 </div>
             </div>
 
-            <!-- Form Sections -->
+            <!-- Form Sections -->  
             <div class="flex flex-col md:flex-row p-8 h-[calc(600px-114px)]">
                 <!-- Left Section: Step Info -->
                 <div class="w-full md:w-1/3 mb-8 md:mb-0 ml-[32px]">
@@ -155,7 +155,7 @@
     </div>
     </div>
     <!-- Modal -->
-    <div id="modal" class="hidden fixed inset-0 bg-black bg-opacity-50 backdrop-blur-md flex items-center justify-center z-50">
+    <div id="modal" class="hidden fixed inset-0 backdrop-blur-md flex items-center justify-center z-50">
         <div class="bg-white w-[502px] h-[325px] rounded-lg shadow-2xl flex flex-col items-center justify-center p-8 animate-slide-up">
             <h2 class="text-2xl font-bold mb-4 text-[#000000] font-poppins">Application Submitted!</h2>
             <p class="text-lg text-gray-700 mb-8 font-poppins text-center">Please check your email and wait for approval. Thank you!</p>
