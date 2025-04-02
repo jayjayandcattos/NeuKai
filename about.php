@@ -11,6 +11,7 @@
     <script src="js/slideAnimation.js" defer></script>
     <script src="js/aboutNav.js" defer></script>
     <script src="js/loading.js" defer></script>
+    <script src="js/indexAos.js" defer></script>
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/about.css">
     <link rel="icon" href="images/TempIco.png" type="image/x-icon">
@@ -188,37 +189,37 @@
             <div class="flex-1 h-auto overflow-y-scroll pr-4 scrollbar-hidden lg:ml-[400px] -mt-8">
                 <section id="aboutus" class="flex flex-col text-left pt-24 md:pt-24 px-4">
                     <div class="flex flex-col items-center text-center mb-16">
-                        <img src="images/NEUKAI LOGO.svg" alt="NEUKAI Logo" class="w-[220px] sm:w-[320px] md:w-[640.38px] h-auto mb-8" />
-                        <h1 class="text-2xl sm:text-3xl md:text-5xl font-rubik font-extrabold text-[#FBB901] tracking-[2px]"
+                        <img src="images/NEUKAI LOGO.svg" alt="NEUKAI Logo" class="w-[220px] sm:w-[320px] md:w-[640.38px] h-auto mb-8 aos fade-in-down" data-aos-delay="400" />
+                        <h1 class="text-2xl sm:text-3xl md:text-5xl font-rubik font-extrabold text-[#FBB901] tracking-[2px] aos fade-in-down" data-aos-delay="600"
                             style="-webkit-text-stroke:1px black;">NEW + UKAY</h1>
-                        <p class="text-xs sm:text-sm md:text-base text-white mt-3 mx-4 max-w-xl">
+                        <p class="text-xs sm:text-sm md:text-base text-white mt-3 mx-4 max-w-xl aos fade-in-down" data-aos-delay="700">
                             Sustainable fashion isn't just a trend—it's a movement. Pass it forward and make a difference, one outfit at a time!
                         </p>
                     </div>
 
                     <!-- About Us  -->
-                    <h2 class="text-xl sm:text-2xl md:text-3xl mx-4 sm:ml-32 font-poppins font-bold text-white mb-4">About Us</h2>
-                    <p class="text-xs sm:text-sm md:text-base mx-4 sm:ml-32 font-poppins text-white mb-16 max-w-3xl">
+                    <h2 class="text-xl sm:text-2xl md:text-3xl mx-4 sm:ml-32 font-poppins font-bold text-white mb-4 aos fade-in-up" data-aos-delay="200">About Us</h2>
+                    <p class="text-xs sm:text-sm md:text-base mx-4 sm:ml-32 font-poppins text-white mb-16 max-w-3xl aos fade-in-left" data-aos-delay="300">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                     </p>
 
                     <!-- 3 REKTANGOL -->
                     <div class="mx-4 sm:ml-32 flex flex-col sm:flex-row gap-4 items-center sm:items-start mb-16">
-                        <div class="w-[720px] h-[140px]overflow-hidden max-w-full">
+                    <div class="w-[720px] h-[140px] overflow-hidden max-w-full aos fade-in-left" data-aos-delay="200">
                             <img src="images/slideshow1.png" alt="Image1" class="w-full h-full object-cover">
                         </div>
-                        <div class="w-[720px] h-[140px]overflow-hidden max-w-full">
+                        <div class="w-[720px] h-[140px] overflow-hidden max-w-full aos fade-in-left" data-aos-delay="300">
                             <img src="images/slideshow2.png" alt="Image1" class="w-full h-full object-cover">
                         </div>
-                        <div class="w-[720px] h-[140px]overflow-hidden max-w-full">
+                        <div class="w-[720px] h-[140px] overflow-hidden max-w-full aos fade-in-left" data-aos-delay="400">
                             <img src="images/slideshow3.png" alt="Image3" class="w-full h-full object-cover">
                         </div>
                     </div>
 
 
                     <!-- Privacy Policy  -->
-                    <h2 id="privacy" class="text-xl sm:text-2xl md:text-3xl mx-4 sm:ml-32 font-poppins font-bold text-white mb-4">Privacy Policy</h2>
-                    <p class="text-xs sm:text-sm md:text-base mx-4 sm:ml-32 font-poppins text-white mb-16 max-w-3xl">
+                    <h2 id="privacy" class="text-xl sm:text-2xl md:text-3xl mx-4 sm:ml-32 font-poppins font-bold text-white mb-4 aos fade-in-up" data-aos-delay="200">Privacy Policy</h2>
+                    <p class="text-xs sm:text-sm md:text-base mx-4 sm:ml-32 font-poppins text-white mb-16 max-w-3xl aos fade-in-left" data-aos-delay="300">
                         Neukai values your privacy. This policy outlines how we handle your information:<br><br>
                         <span class="font-semibold">Information Collection</span><br>
                         We collect personal details (e.g., name, email) for account creation, donations, and communication purposes, along with non-personal data (e.g., IP address) for analytics.<br><br>
@@ -238,8 +239,8 @@
                     </p>
 
                     <!-- Terms of Use  -->
-                    <h2 id="terms" class="text-xl sm:text-2xl md:text-3xl mx-4 sm:ml-32 font-poppins font-bold text-white mb-4">Terms of Use</h2>
-                    <p class="text-xs sm:text-sm md:text-base mx-4 sm:ml-32 font-poppins text-white mb-16 max-w-3xl">
+                    <h2 id="terms" class="text-xl sm:text-2xl md:text-3xl mx-4 sm:ml-32 font-poppins font-bold text-white mb-4 aos fade-in-up" data-aos-delay="200">Terms of Use</h2>
+                    <p class="text-xs sm:text-sm md:text-base mx-4 sm:ml-32 font-poppins text-white mb-16 max-w-3xl aos fade-in-left" data-aos-delay="300">
                         By using our website, you agree to the following terms:<br><br>
                         <span class="font-semibold">Purpose</span><br>
                         Our platform facilitates clothing donations to those in need. Use it responsibly and lawfully.<br><br>
@@ -259,24 +260,24 @@
                     </p>
 
 
-                    <h2 id="team" class="text-xl sm:text-2xl md:text-3xl mx-4 sm:ml-32 font-poppins font-bold text-white mb-4">Our Team</h2>
+                    <h2 id="team" class="text-xl sm:text-2xl md:text-3xl mx-4 sm:ml-32 font-poppins font-bold text-white mb-4 aos fade-in-up" data-aos-delay="200">Our Team</h2>
                     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mx-4 sm:ml-32 mb-16 max-w-5xl">
                         <!-- Row 1 -->
-                        <div class="flex items-center">
+                        <div class="flex items-center aos zoom-in" data-aos-delay="200">
                             <img src="images/egoist1.jpeg" alt="Team Member" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full mr-4">
                             <div>
                                 <span class="font-bold text-white block text-sm sm:text-base">Justin Rivera</span>
                                 <span class="text-white text-xs sm:text-sm">THE LIVING NIGHTMARE</span>
                             </div>
                         </div>
-                        <div class="flex items-center">
+                        <div class="flex items-center aos zoom-in" data-aos-delay="300">
                             <img src="images/test1.jpg" alt="Team Member" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full mr-4">
                             <div>
                                 <span class="font-bold text-white block text-sm sm:text-base">Name 2</span>
                                 <span class="text-white text-xs sm:text-sm">Role 2</span>
                             </div>
                         </div>
-                        <div class="flex items-center">
+                        <div class="flex items-center aos zoom-in" data-aos-delay="400">
                             <img src="images/shirt.jpg" alt="Team Member" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full mr-4">
                             <div>
                                 <span class="font-bold text-white block text-sm sm:text-base">Name 3</span>
@@ -285,21 +286,21 @@
                         </div>
 
                         <!-- Row 2 -->
-                        <div class="flex items-center">
+                        <div class="flex items-center aos zoom-in" data-aos-delay="200">
                             <img src="images/test1.jpg" alt="Team Member" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full mr-4">
                             <div>
                                 <span class="font-bold text-white block text-sm sm:text-base">Name 4</span>
                                 <span class="text-white text-xs sm:text-sm">Role 4</span>
                             </div>
                         </div>
-                        <div class="flex items-center">
+                        <div class="flex items-center aos zoom-in" data-aos-delay="300">
                             <img src="images/test1.jpg" alt="Team Member" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full mr-4">
                             <div>
                                 <span class="font-bold text-white block text-sm sm:text-base">Name 5</span>
                                 <span class="text-white text-xs sm:text-sm">Role 5</span>
                             </div>
                         </div>
-                        <div class="flex items-center">
+                        <div class="flex items-center aos zoom-in" data-aos-delay="400">
                             <img src="images/test1.jpg" alt="Team Member" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full mr-4">
                             <div>
                                 <span class="font-bold text-white block text-sm sm:text-base">Name 6</span>
@@ -308,21 +309,21 @@
                         </div>
 
                         <!-- Row 3 -->
-                        <div class="flex items-center">
+                        <div class="flex items-center aos zoom-in" data-aos-delay="200">
                             <img src="images/test1.jpg" alt="Team Member" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full mr-4">
                             <div>
                                 <span class="font-bold text-white block text-sm sm:text-base">Name 7</span>
                                 <span class="text-white text-xs sm:text-sm">Role 7</span>
                             </div>
                         </div>
-                        <div class="flex items-center">
+                        <div class="flex items-center aos zoom-in" data-aos-delay="300">
                             <img src="images/test1.jpg" alt="Team Member" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full mr-4">
                             <div>
                                 <span class="font-bold text-white block text-sm sm:text-base">Name 8</span>
                                 <span class="text-white text-xs sm:text-sm">Role 8</span>
                             </div>
                         </div>
-                        <div class="flex items-center">
+                        <div class="flex items-center aos zoom-in" data-aos-delay="400">
                             <img src="images/test1.jpg" alt="Team Member" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full mr-4">
                             <div>
                                 <span class="font-bold text-white block text-sm sm:text-base">Name 9</span>
@@ -331,18 +332,18 @@
                         </div>
                     </div>
 
-                    <h2 id="contact" class="text-xl sm:text-2xl md:text-3xl mx-4 sm:ml-32 font-poppins font-bold text-white mb-4">Contact Us</h2>
-                    <p class="text-xs sm:text-sm md:text-base mx-4 sm:ml-32 font-poppins text-white mb-8 max-w-3xl">
+                    <h2 id="contact" class="text-xl sm:text-2xl md:text-3xl mx-4 sm:ml-32 font-poppins font-bold text-white mb-4 aos fade-in-up" data-aos-delay="200">Contact Us</h2>
+                    <p class="text-xs sm:text-sm md:text-base mx-4 sm:ml-32 font-poppins text-white mb-8 max-w-3xl aos fade-in-left" data-aos-delay="300">
                         If you have any questions, concerns, or need assistance, feel free to reach out to us:
                     </p>
 
                     <div class="mx-4 sm:ml-32 mb-16 space-y-4">
-                        <div class="flex items-center">
+                    <div class="flex items-center aos fade-in-right" data-aos-delay="200">
                             <img src="images/email.svg" alt="Email" class="w-5 h-5 sm:w-6 sm:h-6 mr-4">
                             <span class="text-white font-poppins text-xs sm:text-sm md:text-base">test.gmail.com</span>
                         </div>
 
-                        <div class="flex items-center">
+                        <div class="flex items-center aos fade-in-right" data-aos-delay="300">
                             <img src="images/Call.svg" alt="Phone" class="w-5 h-5 sm:w-6 sm:h-6 mr-4">
                             <span class="text-white font-poppins text-xs sm:text-sm md:text-base">69-6969</span>
                         </div>
