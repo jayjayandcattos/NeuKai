@@ -75,7 +75,7 @@
                             <span class="text-sm md:text-base">Option 3</span>
                         </button>
                     </div>
-                </div>
+                </div>  
             </div>
             <div class="w-full px-8 py-12">
                 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-auto">

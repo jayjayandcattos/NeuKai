@@ -12,6 +12,10 @@ body, html {
 
 }
 
+input {
+  color: black;
+}
+
 body {
     padding-top: 20px;
 }
@@ -438,3 +442,279 @@ next-btn {
 .aos-animate.flip {
   transform: perspective(400px) rotateY(0);
 }
+
+
+
+
+/* LOGIN */
+
+
+.input-group {
+  margin-bottom: 20px;
+}
+
+.input-label {
+  display: block;
+  color: #a0aec0;
+  font-size: 14px;
+  margin-bottom: 8px;
+  margin-left: 12rem;
+}
+
+.input-container {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background-color: transparent;
+  border-bottom: 1px solid #000000; 
+  width: 50%;
+  margin-left: 12rem;
+  padding: 5px;
+}
+
+.icon-container {
+  padding: 0 15px;
+  align-items: center;
+  position: sticky;
+}
+
+.icon {
+  width: 32PX;
+  height: 32PX;
+}
+
+input {
+  flex: 1;
+  padding: 8px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  color: #a0aec0;
+}
+
+.forgot-password {
+  text-align: center;
+  margin-top: 8px;
+}
+
+.forgot-password a {
+  color: #a0aec0;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.forgot-password a:hover {
+  text-decoration: underline;
+}
+
+.login-button {
+  width: 200px; 
+  height: 45px;
+  background: linear-gradient(135deg, #48bb78 0%, #38a169 100%); 
+  color: white;
+  border: none;
+  border-radius: 30px; 
+  padding: 0px 30px;
+  font-weight: 100; 
+  font-size: 20px; 
+  cursor: pointer;
+  margin: 30px auto; 
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  transition: all 0.4s ease-out;
+  display: block; 
+  letter-spacing: 1px; 
+  box-shadow: 0 4px 15px rgba(72, 187, 120, 0.4); 
+}
+
+.login-button:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: all 0.6s ease-in-out;
+  z-index: -1;
+}
+
+.login-button:hover:before {
+  left: 100%;
+}
+
+.login-button:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 20px rgba(72, 187, 120, 0.4);
+}
+
+.login-button:active {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 15px rgba(72, 187, 120, 0.4);
+}
+
+.login-button:after {
+  content: '→';
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.login-button:hover:after {
+  opacity: 1;
+  right: 15px;
+}
+
+.signup-text {
+  text-align: center;
+  font-size: 14px;
+  color: #718096;
+}
+
+.signup-text a {
+  color: #000;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.signup-text a:hover {
+  text-decoration: underline;
+}
+
+
+
+
+@media (min-width: 1024px) {
+  .input-label {
+    margin-left: 12rem;
+  }
+  
+  .input-container {
+    width: 50%;
+    margin-left: 12rem;
+  }
+}
+
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .input-label {
+    margin-left: 8rem;
+    font-size: 13px;
+  }
+  
+  .input-container {
+    width: 60%;
+    margin-left: 8rem;
+  }
+  
+  .icon {
+    width: 28px;
+    height: 28px;
+  }
+  
+  .login-button {
+    width: 180px;
+    height: 42px;
+    font-size: 18px;
+  }
+}
+
+
+@media (min-width: 481px) and (max-width: 767px) {
+  .input-label {
+    margin-left: 4rem;
+    font-size: 12px;
+  }
+  
+  .input-container {
+    width: 70%;
+    margin-left: 4rem;
+  }
+  
+  .icon-container {
+    padding: 0 10px;
+  }
+  
+  .icon {
+    width: 24px;
+    height: 24px;
+  }
+  
+  input {
+    padding: 6px;
+    font-size: 13px;
+  }
+  
+  .login-button {
+    width: 160px;
+    height: 40px;
+    font-size: 16px;
+    margin: 25px auto;
+  }
+  
+  .forgot-password a,
+  .signup-text {
+    font-size: 12px;
+  }
+}
+
+
+@media (max-width: 480px) {
+  .input-group {
+    margin-bottom: 15px;
+  }
+  
+  .input-label {
+    margin-left: 0;
+    text-align: center;
+    font-size: 12px;
+  }
+  
+  .input-container {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    border-bottom-width: 1px;
+  }
+  
+  .icon-container {
+    padding: 0 8px;
+  }
+  
+  .icon {
+    width: 20px;
+    height: 20px;
+  }
+  
+  input {
+    padding: 5px;
+    font-size: 12px;
+  }
+  
+  .login-button {
+    width: 140px;
+    height: 38px;
+    font-size: 15px;
+    margin: 20px auto;
+  }
+  
+  .login-button:after {
+    right: 15px;
+  }
+  
+  .login-button:hover:after {
+    right: 10px;
+  }
+  
+  .forgot-password a,
+  .signup-text {
+    font-size: 11px;
+  }
+}
+
+
+      

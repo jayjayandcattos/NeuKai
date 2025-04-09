@@ -7,7 +7,7 @@
     <div id="nav-links" class="hidden md:flex space-x-6 items-center">
         <a href="index.php#home" class="text-sm md:text-white hover:text-[#fbb801] transition duration-200">HOME</a>
         <a href="about.php" class="text-sm md:text-white hover:text-[#fbb801] transition duration-200">ABOUT</a>  
-        <a href="#signin" class="hover:scale-125 transition-transform duration-200">
+        <a href="login.php" class="hover:scale-125 transition-transform duration-200">
             <img src="images/signin.png" alt="Sign In" class="h-8 md:h-8 object-contain" />
         </a>
     </div>

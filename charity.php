@@ -34,6 +34,7 @@
         footer {
             flex-shrink: 0;
         }
+
     </style>
 </head>
 
@@ -54,12 +55,15 @@
     <div id="top" class="flex justify-center px-4 mt-24">
         <div class="w-full max-w-[1200px] h-auto min-h-[1010px] bg-white rounded-3xl overflow-hidden">
             <div class="h-auto md:h-[114px] w-full bg-[#1C3AE6] flex flex-col md:flex-row items-center justify-around p-8 md:p-4">
-                <div class="flex items-center justify-start space-x-4 md:space-x-5 w-full ml-[48px]">
+                <div class="flex items-center space-x-4 md:space-x-5 w-full ml-[48px]">
                     <img src="images/charity.png" alt="Icon" class="w-8 h-8 md:w-8 md:h-8" />
-                    <h1 class="text-white text-lg md:text-3xl font-bold">CHARITY APPLICATION</h1>
+                    <div class="flex justify-center items-center">
+                        <h1 class="text-white text-lg md:text-3xl font-bold text-center">CHARITY APPLICATION</h1>
+                    </div>
+
                 </div>
                 <!-- Progress Tracker -->
-                <div class="flex items-center space-x-2 md:space-x-2 mt-4 md:mt-0 mr-24">
+                <div class="flex items-center space-x-2 md:space-x-2 mt-4 md:mt-0 ">
                     <div class="flex items-center">
                         <div id="step1" class="w-8 h-8 md:w-10 md:h-10 rounded-full bg-white flex items-center justify-center">
                             <div class="w-6 h-6 md:w-8 md:h-8 rounded-full bg-green-500"></div>
@@ -76,7 +80,7 @@
                 </div>
             </div>
 
-            <!-- Form Sections -->  
+            <!-- Form Sections -->
             <div class="flex flex-col md:flex-row p-8 h-[calc(600px-114px)]">
                 <!-- Left Section: Step Info -->
                 <div class="w-full md:w-1/3 mb-8 md:mb-0 ml-[32px]">

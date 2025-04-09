@@ -44,8 +44,6 @@
     width: 32px;  
     height: 32px; 
     border-radius: 50%;
-    background: linear-gradient(135deg, #FBB901, #FF6B00);
-    box-shadow: 0 4px 15px rgba(251, 185, 1, 0.3);
     z-index: 1001;
     display: flex;
     align-items: center;
@@ -56,7 +54,6 @@
 
 .neukai-menu-toggle:hover {
     transform: scale(1.05);
-    box-shadow: 0 6px 20px rgba(251, 185, 1, 0.4);
 }
 
 .neukai-menu-toggle span {
@@ -104,11 +101,15 @@
     opacity: 0;
     transform: translateX(20px);
     transition: opacity 0.3s ease, transform 0.3s ease;
-    transition-delay: 0.1s;
+    transition-delay: 0.3s;
+}
+
+.neukai-menu-item:nth-child(1) {
+    transition-delay: 0.3s;
 }
 
 .neukai-menu-item:nth-child(2) {
-    transition-delay: 0.2s;
+    transition-delay: 0.4s;
 }
 
 .neukai-menu-item:nth-child(3) {
@@ -120,6 +121,10 @@
 }
 
 .neukai-menu-item:nth-child(5) {
+    transition-delay: 0.5s;
+}
+
+.neukai-menu-item:nth-child(6) {
     transition-delay: 0.5s;
 }
 
