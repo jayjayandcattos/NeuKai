@@ -1,0 +1,148 @@
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal.show {
+    display: flex;
+    opacity: 1;
+}
+
+.modal-content {
+    background-color: white;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 450px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+
+.modal.show .modal-content {
+    transform: scale(1);
+}
+
+.modal-header {
+    background-color: #FF8000;
+    color: white;
+    padding: 15px;
+    text-align: center;
+}
+
+.modal-header h3 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.modal-body {
+    padding: 30px 20px;
+    text-align: center;
+    color: #333;
+}
+
+.modal-footer {
+    padding: 15px;
+    text-align: center;
+    border-top: 1px solid #eee;
+}
+
+.modal-close {
+    background: linear-gradient(45deg, #FF8000, #FF5000);
+    border: none;
+    color: white;
+    padding: 10px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.modal-close:hover {
+    background: linear-gradient(45deg, #FF5000, #FF3000);
+    transform: translateY(-2px);
+}
+
+
+.background {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: #FF8000;
+    position: absolute;
+}
+
+.checkmark-circle {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: #FF8000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+}
+
+.checkmark-circle svg {
+    stroke: white;
+    stroke-width: 3;
+    width: 40px;
+    height: 40px;
+}
+
+
+.fancy-button {
+    position: relative;
+    background: linear-gradient(45deg, #FF8000, #FF5000);
+    border: none;
+    outline: none;
+    color: white;
+    font-weight: 600;
+    padding: 12px;
+    border-radius: 8px;
+    box-shadow: 0 6px 24px -2px rgba(255, 128, 0, 0.5);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    width: 70%;
+    align-self: center;
+}
+
+.fancy-button:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: all 0.6s ease;
+}
+
+.fancy-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px -5px rgba(255, 128, 0, 0.7);
+}
+
+.fancy-button:hover:before {
+    left: 100%;
+}
+
+.fancy-button:active {
+    transform: translateY(1px);
+    box-shadow: 0 4px 16px -4px rgba(255, 128, 0, 0.4);
+}
+
+#successModal {
+    transition: all 0.4s ease-out;
+}
