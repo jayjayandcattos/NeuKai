@@ -40,8 +40,23 @@ if (!$result) {
     die("Query failed: " . $conn->error);
 }
 
-if ($row = $result->fetch_assoc()) {
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donation Summary</title>
+    <!-- Link to the CSS File -->
+    <link rel="stylesheet" href="../css/cr-summary.css">
+</head>
+<body>
 
+
+
+<?php
+if ($row = $result->fetch_assoc()) {
+    echo "<a href='c-received.php'>Back</a>";
     echo "<h2>Donation Summary for " . htmlspecialchars($row['first_name']) . "</h2>";
     echo "<table class='summary-table'>
         <tr>
@@ -67,8 +82,10 @@ if ($row = $result->fetch_assoc()) {
     } while ($row = $result->fetch_assoc());
 
     echo "</table>";
-    echo "<a href='c-received.php'>Back</a>";
 } else {
     echo "<p>No items found for this donator.</p>";
 }
 ?>
+
+</body>
+</html>

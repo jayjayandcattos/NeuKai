@@ -1,4 +1,6 @@
 <?php
+
+
 session_start();
 require('../configuration/db_connect.php');
 
@@ -132,92 +134,186 @@ if (isset($_POST['update'])) {
 }
 ?>
 
+<?php 
 
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Profile</title>
+    <link rel="stylesheet" href="../css/charity_dashboard.css">
 </head>
 <body>
-<a href='charity_dashboard.php'>Profile</a>
-<a href='c-received.php'>Received</a>
-<a href='c-request.php'>Request</a>
 
-    <h2>Edit Charity Profile</h2>
-    <form action="" method="POST" enctype="multipart/form-data">
-        <h3>Charity Details</h3>
-        <label for="charityname">Charity Name:</label>
-        <input type="text" id="charityname" name="charityname" value="<?php echo htmlspecialchars($charity['charity_name']); ?>"><br>
+<div class="container">
+    <!-- Sidebar -->
+    <div class="left-column">
+        <h2>Charity Dashboard</h2>
+        <a href="#charitydetails">CHARITY DETAILS</a>
+        <a href="#addressdetails">ADDRESS DETAILS</a>
+        <a href="#contactperson">CONTACT PERSON</a>
+        <a href="#login">LOGIN DETAILS</a>
+        <a href="#profilepicture">PROFILE PICTURE</a>
+    </div>
 
-        <label for="charitynumber">Charity Number:</label>
-        <input type="text" id="charitynumber" name="charitynumber" value="<?php echo htmlspecialchars($charity['charity_reg_no']); ?>"><br>
+    <!-- Main Content -->
+    <div class="right-column">
+        <!-- Navigation -->
+        <div class="navigation">
+            <?php include('navigation_links.php'); ?>
+        </div>
 
-        <label for="establishmentdate">Establishment Date:</label>
-        <input type="date" id="establishmentdate" name="establishmentdate" value="<?php echo htmlspecialchars($charity['establishment_date']); ?>"><br>
+        <!-- Form Wrapper -->
+        <div class="form-wrapper">
+            <form action="" method="POST" enctype="multipart/form-data">
 
-        <label for="charitydesc">Charity Description:</label>
-        <input type="text" id="charitydesc" name="charitydesc" value="<?php echo htmlspecialchars($charity['charity_description']); ?>"><br>
+                <!-- Charity Details -->
+                <h3 id="charitydetails">CHARITY DETAILS</h3>
+                <div class="cd">
+                    <div class="cd-column">
+                        <label for="charityname">Charity Name:</label>
+                        <input type="text" id="charityname" name="charityname" value="<?= htmlspecialchars($charity['charity_name']) ?>">
+                    </div>
 
-        <label for="website">Website:</label>
-        <input type="url" id="website" name="website" value="<?php echo htmlspecialchars($charity['website']); ?>"><br>
+                    <div class="cd-column">
+                        <label for="charitynumber">Charity Number:</label>
+                        <input type="text" id="charitynumber" name="charitynumber" value="<?= htmlspecialchars($charity['charity_reg_no']) ?>">
+                    </div>
+                </div>
 
-        <h3>Address Details</h3>
-        <label for="streetaddress">Street Address:</label>
-        <input type="text" id="streetaddress" name="streetaddress" value="<?php echo htmlspecialchars($charity['street_address']); ?>"><br>
+                <div class="cd">
+                    <div class="cd-column">
+                        <label for="establishmentdate">Establishment Date:</label>
+                        <input type="date" id="establishmentdate" name="establishmentdate" value="<?= htmlspecialchars($charity['establishment_date']) ?>">
+                    </div>
 
-        <label for="barangay">Barangay:</label>
-        <input type="text" id="barangay" name="barangay" value="<?php echo htmlspecialchars($charity['barangay']); ?>"><br>
+                    <div class="cd-column">
+                        <label for="website">Website:</label>
+                        <input type="url" id="website" name="website" value="<?= htmlspecialchars($charity['website']) ?>">
+                    </div>
+                </div>
 
-        <label for="municipality">Municipality:</label>
-        <input type="text" id="municipality" name="municipality" value="<?php echo htmlspecialchars($charity['municipality']); ?>"><br>
+                <div class="cd">
+                    <div class="cd-column">
+                        <label for="charitydesc">Charity Description:</label>
+                        <input type="text" id="charitydesc" name="charitydesc" value="<?= htmlspecialchars($charity['charity_description']) ?>">
+                    </div>
+                </div>
 
-        <label for="province">Province:</label>
-        <input type="text" id="province" name="province" value="<?php echo htmlspecialchars($charity['province']); ?>"><br>
+                <!-- Address Details -->
+                <h3 id="addressdetails">ADDRESS DETAILS</h3>
+                <div class="cd">
+                    <div class="cd-column">
+                        <label for="streetaddress">Street Address:</label>
+                        <input type="text" id="streetaddress" name="streetaddress" value="<?= htmlspecialchars($charity['street_address']) ?>">
+                    </div>
 
-        <h3>Contact Person</h3>
-        <label for="firstname">First Name:</label>
-        <input type="text" id="firstname" name="firstname" value="<?php echo htmlspecialchars($contact_person['first_name']); ?>"><br>
+                    <div class="cd-column">
+                        <label for="barangay">Barangay:</label>
+                        <input type="text" id="barangay" name="barangay" value="<?= htmlspecialchars($charity['barangay']) ?>">
+                    </div>
+                </div>
 
-        <label for="middlename">Middle Name:</label>
-        <input type="text" id="middlename" name="middlename" value="<?php echo htmlspecialchars($contact_person['middle_name']); ?>"><br>
+                <div class="cd">
+                    <div class="cd-column">
+                        <label for="municipality">Municipality:</label>
+                        <input type="text" id="municipality" name="municipality" value="<?= htmlspecialchars($charity['municipality']) ?>">
+                    </div>
 
-        <label for="lastname">Last Name:</label>
-        <input type="text" id="lastname" name="lastname" value="<?php echo htmlspecialchars($contact_person['last_name']); ?>"><br>
+                    <div class="cd-column">
+                        <label for="province">Province:</label>
+                        <input type="text" id="province" name="province" value="<?= htmlspecialchars($charity['province']) ?>">
+                    </div>
+                </div>
 
-        <label for="cp_email">Email:</label>
-        <input type="email" id="cp_email" name="cp_email" value="<?php echo htmlspecialchars($contact_person['email']); ?>"><br>
+                <!-- Contact Person -->
+                <h3 id="contactperson">CONTACT PERSON</h3>
+                <div class="cd">
+                    <div class="cd-column">
+                        <label for="firstname">First Name:</label>
+                        <input type="text" id="firstname" name="firstname" value="<?= htmlspecialchars($contact_person['first_name']) ?>">
+                    </div>
 
-        <label for="phone">Phone:</label>
-        <input type="tel" id="phone" name="phone" value="<?php echo htmlspecialchars($contact_person['contact_no']); ?>"><br>
+                    <div class="cd-column">
+                        <label for="middlename">Middle Name:</label>
+                        <input type="text" id="middlename" name="middlename" value="<?= htmlspecialchars($contact_person['middle_name']) ?>">
+                    </div>
 
-        <h3>Login Details</h3>
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($login_details['email']); ?>"><br>
+                    <div class="cd-column">
+                        <label for="lastname">Last Name:</label>
+                        <input type="text" id="lastname" name="lastname" value="<?= htmlspecialchars($contact_person['last_name']) ?>">
+                    </div>
+                </div>
 
-        <label for="old_password">Old Password:</label>
-        <input type="password" id="old_password" name="old_password"><br>
+                <div class="cd">
+                    <div class="cd-column">
+                        <label for="cp_email">Email:</label>
+                        <input type="email" id="cp_email" name="cp_email" value="<?= htmlspecialchars($contact_person['email']) ?>">
+                    </div>
 
-        <label for="new_password">New Password:</label>
-        <input type="password" id="new_password" name="new_password"><br>
+                    <div class="cd-column">
+                        <label for="phone">Phone:</label>
+                        <input type="tel" id="phone" name="phone" value="<?= htmlspecialchars($contact_person['contact_no']) ?>">
+                    </div>
+                </div>
 
-        <label for="confirm_new_password">Confirm New Password:</label>
-        <input type="password" id="confirm_new_password" name="confirm_new_password"><br>
+                <!-- Login Details -->
+                <h3 id="login">LOGIN DETAILS</h3>
+                <div class="cd">
+                    <div class="cd-column">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" value="<?= htmlspecialchars($login_details['email']) ?>">
+                    </div>
 
-        <h3>Profile Picture</h3>
-        <?php if (!empty($charity['charity_photo'])) {
-                    echo "<div>
-                            <img src='data:image/jpeg;base64," . base64_encode($charity['charity_photo']) . "' alt='Charity Image' width='100' height='100' />
-                        </div>";
-                } else {
-                    echo "<p>No image available.</p>";
-                }
-                ?>
-        <label for="charity_image">Upload New Charity Image:</label>
-        <input type="file" id="charity_image" name="charity_image"><br>
+                    <div class="cd-column">
+                        <label for="old_password">Old Password:</label>
+                        <input type="password" id="old_password" name="old_password">
+                    </div>
+                </div>
 
-        <button type="submit" name="update">Update Profile</button>
-    </form>
+                <div class="cd">
+                    <div class="cd-column">
+                        <label for="new_password">New Password:</label>
+                        <input type="password" id="new_password" name="new_password">
+                    </div>
+
+                    <div class="cd-column">
+                        <label for="confirm_new_password">Confirm New Password:</label>
+                        <input type="password" id="confirm_new_password" name="confirm_new_password">
+                    </div>
+                </div>
+
+                <!-- Profile Picture -->
+                <h3 id="profilepicture">PROFILE PICTURE</h3>
+                <div class="cd">
+                    <div class="cd-column">
+                        <?php if (!empty($charity['charity_photo'])): ?>
+                            <img src="data:image/jpeg;base64,<?= base64_encode($charity['charity_photo']) ?>" alt="Charity Image" width="100" height="100" />
+                        <?php else: ?>
+                            <p>No image available.</p>
+                        <?php endif; ?>
+                    </div>
+                </div>
+
+                <div class="cd">
+                    <div class="cd-column">
+                        <label for="charity_image">Upload New Charity Image:</label>
+                        <div class="file-upload-wrapper">
+                            <input type="file" id="charity_image" name="charity_image" class="custom-file">
+                        </div>
+                    </div>
+
+                    <div class="cd-column">
+                        <button type="submit" name="update" class="update-button">Update Profile</button>
+                    </div>
+                </div>
+
+            </form>
+        </div> <!-- End of form-wrapper -->
+    </div> <!-- End of right-column -->
+</div> <!-- End of container -->
+
 </body>
 </html>
