@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* Global styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f8f9f9;
+    padding: 20px;
+    scroll-behavior: smooth;
+}
+
+/* Main container */
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+/* Left column stays fixed */
+.left-column {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 25%;
+    height: 100vh;
+    padding: 60px;
+    overflow-y: auto;
+    box-shadow: 4px 0 8px rgba(0, 0, 0, 0.1);
+    
+}
+
+.main{
+    font-size: 35px;
+    font-weight: 700;
+    margin-bottom: 60px;
+    text-align: center;
+}
+.left-column h2{
+    margin-bottom: 20px;
+    font-size: 30px;
+    text-align: left;
+    color: #1C3AE6;
+}
+.left-column h3 {
+    margin-bottom: 20px;
+    font-size: 20px;
+    text-align: left;
+    color: #000000;
+}
+
+.donation-count{
+    margin-bottom: 20px;
+    font-size: 50px;
+    text-align: left;
+    color: #000000;
+
+}
+
+/* Right column */
+.right-column {
+    margin-left: 25%;
+    width: 75%;
+    padding: 40px;
+    height: 100vh;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Moved navigation further up */
+.navigation {
+    position: fixed;
+    top: 20px;
+    left: 28%;
+    width: 50%;
+    z-index: 10;
+}
+
+/* Form wrapper for donation content */
+.form-wrapper {
+    margin-top: 90px; /* pushed further up since nav is fixed */
+    padding: 20px 30px;
+    width: 100%;
+    height: calc(100vh - 140px);
+    overflow-y: auto;
+    scrollbar-width: none;         /* Firefox */
+    -ms-overflow-style: none;      /* IE/Edge */
+}
+
+.form-wrapper::-webkit-scrollbar {
+    display: none;
+}
+
+/* Donations table */
+.received-table {
+    width: 100%;
+    margin-top: 30px;
+    border-collapse: collapse;
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.received-table th,
+.received-table td {
+    padding: 15px 20px;
+    text-align: left;
+    font-size: 18px;
+    border-bottom: 1px solid #ddd;
+}
+
+.received-table th {
+    background-color: #E7E6FC;
+    color: #9B9ABE;
+    font-weight: 600;
+}
+
+.received-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.received-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+.received-table a {
+    color: #1C3AE6;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.received-table a:hover {
+    text-decoration: underline;
+}
+
+/* Optional: Headings inside form-wrapper */
+.form-wrapper h2 {
+    font-size: 26px;
+    color: #1C3AE6;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
