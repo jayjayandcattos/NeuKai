@@ -106,7 +106,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <div id="loading-overlay"
         class="fixed inset-0 bg-black flex items-center justify-center z-50 opacity-0 pointer-events-none transition-opacity duration-300">
-        <img src="images/Neukai Logo.svg" alt="Loading" class="loading-logo w-50 h-50" />
+        <img src="../images/Neukai Logo.svg" alt="Loading" class="loading-logo w-50 h-50" />
     </div>
 
     <div id="top" class="flex-grow flex justify-center px-4 mt-[100px] min-h-screen z-0">
@@ -133,13 +133,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <?php if (isset($success)): ?>
                 <?php else: ?>
                     <form method="POST" class="space-y-6">
-                        <!-- Name Fields -->
                         <div class="space-y-2">
                             <label class="block text-sm font-medium text-black">Name</label>
                             <div class="grid grid-cols-3 gap-3">
-                                <input type="text" name="first_name" placeholder="Firstname"
+                                <input type="text" name="first_name" placeholder="First Name"
                                     class="text-black w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500">
-                                <input type="text" name="last_name" placeholder="Lastname"
+                                <input type="text" name="last_name" placeholder="Last Name"
                                     class="text-black w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500">
                                 <input type="text" name="middle_name" placeholder="Middle Name"
                                     class="text-black w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500">
@@ -152,7 +151,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                 <img src="../images/emailblack.svg" class="h-5 w-5" alt="Email Icon" />
                                 </div>
-                                <input type="email" name="email" placeholder="email@email.com"
+                                <input type="email" name="email" placeholder="Email"
                                     class="text-black block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500">
                             </div>
                         </div>
@@ -163,7 +162,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                 <img src="../images/callblack.svg" class="h-5 w-5" alt="Call Icon" />
                                 </div>
-                                <input type="text" name="contact_no" placeholder="1234-567-8901"
+                                <input type="text" name="contact_no" placeholder="63-XXX-XXX-XXXX"
                                     class="text-black block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500">
                             </div>
                         </div>
@@ -174,7 +173,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                 <img src="../images/lock.svg" class="h-5 w-5" alt="Lock Icon" />
                                 </div>
-                                <input type="password" name="password" placeholder="********"
+                                <input type="password" name="password" placeholder="Password"
                                     class="text-black block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500">
                             </div>
                         </div>
@@ -185,7 +184,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                 <img src="../images/lock.svg" class="h-5 w-5" alt="Lock Icon" />
                                 </div>
-                                <input type="password" name="confirm_password" placeholder="********"
+                                <input type="password" name="confirm_password" placeholder="Confirm Password"   
                                     class="text-black block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500">
                             </div>
                         </div>

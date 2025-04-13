@@ -214,7 +214,7 @@ body::-webkit-scrollbar {
   background: white;
   color: #FF5722;
   border-color: #FF5722;
-  border-width: 8px; 
+  border-width: 4px; 
   transform: translateY(-5px);
 }
 
@@ -228,7 +228,7 @@ body::-webkit-scrollbar {
   background: white;
   color: #0D0DAF;
   border-color: #0D0DAF;
-  border-width: 8px; 
+  border-width: 4px; 
   transform: translateY(-5px);
 }
 

@@ -1,6 +1,6 @@
 <?php
 session_start();
-require 'configuration/db_connect.php';
+require '../configuration/db_connect.php';
 
 date_default_timezone_set('Asia/Manila');
 

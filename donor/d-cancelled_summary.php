@@ -1,6 +1,6 @@
 <?php
 session_start();
-require('configuration/db_connect.php');
+require('../configuration/db_connect.php');
 
 // Check if transaction_id is provided
 if (!isset($_GET['transaction_id'])) {

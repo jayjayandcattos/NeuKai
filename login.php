@@ -38,14 +38,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt = $conn->prepare("SELECT * FROM tbl_donor WHERE email = ? AND status = 'Approved'");
     $stmt->bind_param("s", $email);
     $stmt->execute();
-    $result = $stmt->get_result();
+    $result = $stmt->get_result(); 
     $donor = $result->fetch_assoc();
     $stmt->close();
 
     if ($donor && password_verify($password, $donor['password'])) {
       $_SESSION['donator_id'] = $donor['donator_id'];
       $_SESSION['donor_email'] = $donor['email'];
-      header('Location: index.php');
+      header('Location: donorhome.php');
       exit;
     } else {
       $error = "Invalid email or password, or account not approved yet.";

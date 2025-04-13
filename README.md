@@ -1,24 +1,14 @@
-**Version DEV 2.1**
+**Version DEV 2.5**
 
 Updates
 
 New Features
 
-✅ PHP Transition
-✅ Included Transition
-✅ Section Folder Added:
-✅ Navbar
-✅ Mobile Menu
-✅ Footer
-✅ Parallax Background
-✅ Charity Page
-✅ Charity Modal Pop-Up
-
-To-Do
-
-🔲 Implement number pagination - Dono Page
-🔲 Replace all svg buttons
-🔲 Sign-In
-🔲 Donors Profile & Application
+✅ AOS (MAIN AND ABOUT PAGE)
+✅ Section Folder Added Dupes for Logged In Users
+✅ Sign-Up
+✅ Login Page
+✅ ++ Backend Files
+✅ Fixed Directories
 
 - Justin

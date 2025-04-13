@@ -45,10 +45,10 @@
     </div>
 
     <!-- Navbar -->
-    <?php include 'section/desktopnavbar.php'; ?>
+    <?php include 'section/LoggedInDonorNav.php'; ?>
 
     <!-- Mobile Menu -->
-    <?php include 'section/mobilenavbar.php'; ?>
+    <?php include 'section/LoggedInDonorNavMobile.php'; ?>
 
     <!-- Main Content -->
     <main class="flex-grow">
@@ -76,9 +76,9 @@
                             Welcome to NEUKAI! Our platform connects donors with charities, giving pre-loved clothing a second life where it's needed most. Sign up today and be part of a community that cares!
                         </p>
                         <div class="flex gap-4 mt-6 md:justify-start justify-center">
-                            <a href="login.php" class="w-full md:w-auto">
+                            <a href="donor.php" class="w-full md:w-auto">
                                 <button class="donor-btn shadow-lg shadow-[#FF5722]/70 font-poppins font-bold w-full md:w-[291px]">
-                                    Become a Donor
+                                  Donate Today?
                                 </button>
                             </a>
                             <a href="charity.php" class="w-full md:w-auto">
@@ -171,7 +171,7 @@
                                 easily connect with trusted organizations and <br>
                                 make a meaningful impact!</p>
                             <div class="mt-4">
-                                <a href="login.php" class="inline-block hover:scale-105 transition-transform duration-200">
+                                <a href="donor.php" class="inline-block hover:scale-105 transition-transform duration-200">
                                     <img src="images/donatenow.png" alt="Donate Now" class="h-8 sm:h-10 object-contain" />
                                 </a>
                             </div>

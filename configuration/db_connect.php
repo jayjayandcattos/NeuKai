@@ -4,8 +4,7 @@ $user = "root";
 $pass = "";           
 $dbname = "neukai"; 
 
-
-$conn = new mysqli($host, $user, $pass, $dbname);
+$conn = new mysqli($host, $user, $pass, $dbname, 3306);
 
 
 if ($conn->connect_error) {

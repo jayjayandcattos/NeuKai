@@ -42,10 +42,10 @@
     </div>
 
     <!-- Navbar -->
-    <?php include 'section/desktopnavbar.php'; ?>
+    <?php include 'section/LoggedInDonorNav.php'; ?>
 
     <!-- Mobile Menu -->
-    <?php include 'section/mobilenavbar.php'; ?>
+    <?php include 'section/LoggedInDonorNavMobile.php'; ?>
 
     <!-- Main Section -->
     <div id="top" class="flex-grow flex justify-center px-4 mt-24">

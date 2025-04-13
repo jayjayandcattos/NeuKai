@@ -39,12 +39,12 @@
 
 .neukai-menu-toggle {
     position: fixed;
-    top: 25px;
-    right: 10px;
+    top: 20px;
+    right: 30px;
     width: 32px;  
     height: 32px; 
     border-radius: 50%;
-    z-index: 1001;
+    z-index: 1001;  
     display: flex;
     align-items: center;
     justify-content: center;

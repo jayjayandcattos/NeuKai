@@ -1,8 +1,8 @@
 <?php
 session_start();
-require('configuration/db_connect.php');
+require('../configuration/db_connect.php');
 
-// Check if the user is logged in
+
 if (!isset($_SESSION['donator_id'])) {
     header("Location: login.php");
     exit();
@@ -82,7 +82,6 @@ $cancelled_donation_result = $cancelled_donation_stmt->get_result();
     </style>
 </head>
 <body>
-<a href='index.php'>Home</a>
     <h2>Profile</h2>
     <p><strong>
         <?php 

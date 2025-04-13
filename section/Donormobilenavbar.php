@@ -6,4 +6,4 @@
     <a href="../login.php" class="hover:scale-105 transition-transform duration-200 mx-1">
         <img src="../images/signinmobile.png" alt="Sign In" class="h-7 w-25 xl:h-8 xl:w-64" />
     </a>
-</div>
+</div>  

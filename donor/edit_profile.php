@@ -1,6 +1,6 @@
 <?php
 session_start();
-require('configuration/db_connect.php');
+require('../configuration/db_connect.php');
 
 // Check if the user is logged in
 if (!isset($_SESSION['donator_id'])) {
