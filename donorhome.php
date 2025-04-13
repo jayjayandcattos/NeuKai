@@ -33,6 +33,7 @@
         footer {
             flex-shrink: 0;
         }
+
     </style>
 
 </head>
@@ -55,7 +56,7 @@
         <!-- Logo Section -->
         <section id="home" class="flex flex-col items-center justify-center text-center pt-36 md:pt-44 px-4">
             <img src="images/NEUKAI LOGO.svg" alt="NEUKAI Logo" class="w-[320px] md:w-[640.38px] h-auto aos fade-in-up" data-aos-delay="300" />
-            <h1 class="text-3xl md:text-5xl font-rubik font-extrabold text-[#FBB901] mt-4 tracking-[2px] aos fade-in-up" data-aos-delay="400"
+            <h1 class="text-3xl md:text-5xl font-['Rubik_Mono_One'] text-[#FBB901] mt-4 tracking-[2px] aos fade-in-up" data-aos-delay="400"
                 style="-webkit-text-stroke:1px black;">NEW + UKAY</h1>
             <p class="text-sm md:text-base text-gray-300 mt-3 max-w-xl aos fade-in-up" data-aos-delay="700">
                 Sustainable fashion isn’t just a trend—it’s a movement. Pass it forward and make a difference, one outfit at a time!
@@ -77,13 +78,8 @@
                         </p>
                         <div class="flex gap-4 mt-6 md:justify-start justify-center">
                             <a href="donor.php" class="w-full md:w-auto">
-                                <button class="donor-btn shadow-lg shadow-[#FF5722]/70 font-poppins font-bold w-full md:w-[291px]">
+                                <button class="donor-btn shadow-lg shadow-[#FF5722]/70 font-poppins font-bold w-full md:w-[500px]">
                                   Donate Today?
-                                </button>
-                            </a>
-                            <a href="charity.php" class="w-full md:w-auto">
-                                <button class="charity-btn shadow-lg shadow-[#0D0DAF]/70 font-poppins font-bold w-full md:w-[291px] ">
-                                    Apply as Charity
                                 </button>
                             </a>
                         </div>
