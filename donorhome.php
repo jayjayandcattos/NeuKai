@@ -33,7 +33,6 @@
         footer {
             flex-shrink: 0;
         }
-
     </style>
 
 </head>
@@ -63,6 +62,8 @@
             </p><br>
         </section>
 
+        <!-- ADD WELCOME USER FETCH -->
+
         <!-- Main Section -->
         <div class="flex justify-center px-4">
             <div class="w-full max-w-[1300px] h-auto min-h-[600px] md:h-[2100px] bg-white rounded-3xl overflow-hidden">
@@ -77,9 +78,9 @@
                             Welcome to NEUKAI! Our platform connects donors with charities, giving pre-loved clothing a second life where it's needed most. Sign up today and be part of a community that cares!
                         </p>
                         <div class="flex gap-4 mt-6 md:justify-start justify-center">
-                            <a href="donor.php" class="w-full md:w-auto">
+                            <a href="donor/d-donate.php" class="w-full md:w-auto">
                                 <button class="donor-btn shadow-lg shadow-[#FF5722]/70 font-poppins font-bold w-full md:w-[500px]">
-                                  Donate Today?
+                                    Feeling generous today? Donate Now!
                                 </button>
                             </a>
                         </div>
@@ -133,7 +134,7 @@
                         Why donate your clothes?
                     </p>
                     <p class="text-[18px] font-['Poppins'] text-center text-gray-700 mb-2 aos fade-in-up" data-aos-delay="400">
-                        Hello! Last Update 04/09/2025 - Justin
+                        Hello! Last Update 04/14/2025 - Justin
                     </p>
                 </div>
                 <div class="flex flex-col md:flex-row justify-center items-center md:space-x-4 space-y-4 md:space-y-0 mt-4 px-4">
@@ -163,11 +164,11 @@
                             <p class="text-2xl sm:text-[40px] font-['Rubik_Mono_One'] font-bold uppercase mb-8">JOIN NEUKAI today!</p>
                             <p class="text-sm sm:text-[18px] font-['Poppins'] text-gray-200 mt-2 mb-8">
                                 Struggling to find the right charity for your <br>
-                                clothing donations? Donate with NUEKAI to <br>
+                                clothing donations? Donate with NEUKAI to <br>
                                 easily connect with trusted organizations and <br>
                                 make a meaningful impact!</p>
                             <div class="mt-4">
-                                <a href="donor.php" class="inline-block hover:scale-105 transition-transform duration-200">
+                                <a href="donor/d-donate.php" class="inline-block hover:scale-105 transition-transform duration-200">
                                     <img src="images/donatenow.png" alt="Donate Now" class="h-8 sm:h-10 object-contain" />
                                 </a>
                             </div>

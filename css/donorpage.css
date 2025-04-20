@@ -551,7 +551,7 @@ footer {
   overflow: hidden;
 }
 
-
+  
 .editing-buttons .update-button {
   background: linear-gradient(135deg, #01b464, #00AC5F);
   color: white;
@@ -638,3 +638,4 @@ footer {
     order: 2;
   }
 }
+

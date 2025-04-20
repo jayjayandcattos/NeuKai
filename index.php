@@ -137,7 +137,7 @@
                         Why donate your clothes?
                     </p>
                     <p class="text-[18px] font-['Poppins'] text-center text-gray-700 mb-2 aos fade-in-up" data-aos-delay="400">
-                        Hello! Last Update 04/09/2025 - Justin
+                        Hello! Last Update 04/14/2025 - Justin
                     </p>
                 </div>
                 <div class="flex flex-col md:flex-row justify-center items-center md:space-x-4 space-y-4 md:space-y-0 mt-4 px-4">
@@ -167,7 +167,7 @@
                             <p class="text-2xl sm:text-[40px] font-['Rubik_Mono_One'] font-bold uppercase mb-8">JOIN NEUKAI today!</p>
                             <p class="text-sm sm:text-[18px] font-['Poppins'] text-gray-200 mt-2 mb-8">
                                 Struggling to find the right charity for your <br>
-                                clothing donations? Donate with NUEKAI to <br>
+                                clothing donations? Donate with NEUKAI to <br>
                                 easily connect with trusted organizations and <br>
                                 make a meaningful impact!</p>
                             <div class="mt-4">

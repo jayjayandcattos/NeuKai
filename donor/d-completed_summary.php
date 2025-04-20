@@ -44,46 +44,144 @@ $stmt->bind_param("ii", $transaction_id, $donator_id);
 $stmt->execute();
 $result = $stmt->get_result();
 $stmt->close();
-
-// Check if any rows are returned
-if ($result->num_rows > 0) {
-    // Fetch the donator's first name (for a more personalized message)
-    $row = $result->fetch_assoc();
-    echo "<h2>Donation Summary for " . htmlspecialchars($row['charity_name']) . "</h2>";
-    echo "<table class='summary-table'>
-            <tr>
-                <th>Donated To</th>
-                <th>Donation Date</th>
-                <th>Item Category</th>
-                <th>Quantity</th>
-                <th>Image</th>
-            </tr>";
-
-    // Loop through each donation and display its details
-    do {
-        echo "<tr>
-                <td>" . htmlspecialchars($row['charity_name']) . "</td>
-                <td>" . htmlspecialchars($row['donation_date']) . "</td>
-                <td>" . htmlspecialchars($row['category']) . "</td>
-                <td>" . $row['quantity'] . "</td>
-                <td>";
-
-        // Display the image if it exists
-        if (!empty($row['image_path'])) {
-            echo "<div>
-                    <img src='data:image/jpeg;base64," . base64_encode($row['image_path']) . "' alt='Donation Image' width='100' height='100' />
-                  </div>";
-        } else {
-            echo "<p>No image available.</p>";
-        }
-
-        echo "</td></tr>";
-    } while ($row = $result->fetch_assoc());
-
-    echo "</table>";
-
-    echo "<a href='d-profile.php'>Back to Profile</a>";
-} else {
-    echo "<p>No donation records or items found for this transaction.</p>";
-}
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NEUKAI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="../js/loading.js" defer></script>
+    <script src="../js/mobilenav.js" defer></script>
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/invoice.css">
+    <link rel="stylesheet" href="../css/donorpage.css">
+    <link rel="icon" href="../images/TempIco.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Donation Receipt</title>
+<style>
+    :root {
+        --primary-color: #FF7F00;
+        --secondary-color: #FF9E44;
+        --accent-color: #FF5500;
+        --background-color: #f8f9fa;
+        --text-color: #212529;
+        --border-color: #FFD8B8;
+    }
+</style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <?php include '../section/LoggedInDonorNavFolder.php'; ?>
+
+    <!-- Mobile Menu -->
+    <?php include '../section/LoggedInDonorNavMobileFolder.php'; ?>
+    <div class="receipt-container">
+
+        <div id="loading-overlay"
+            class="fixed inset-0 bg-black flex items-center justify-center z-50 opacity-0 pointer-events-none transition-opacity duration-300">
+            <img src="../images/Neukai Logo.svg" alt="Loading" class="loading-logo w-50 h-50" />
+        </div>
+
+        <?php
+
+        if ($result->num_rows > 0) {
+
+            $row = $result->fetch_assoc();
+            $first_row = $row;
+
+
+            $result->data_seek(0);
+        ?>
+            <div class="receipt-header">
+                <div class="invoice-label">Receipt #<?php echo htmlspecialchars($transaction_id); ?></div>
+                <h2>Donation Receipt</h2>
+            </div>
+
+            <div class="receipt-body">
+                <div class="transaction-info">
+                    <p>
+                        <span class="label">Charity:</span>
+                        <span><?php echo htmlspecialchars($first_row['charity_name']); ?></span>
+                    </p>
+                    <p>
+                        <span class="label">Donation Date:</span>
+                        <span><?php echo htmlspecialchars($first_row['donation_date']); ?></span>
+                    </p>
+                    <p>
+                        <span class="label">Status:</span>
+                        <span class="status-delivered">Delivered</span>
+                    </p>
+                </div>
+
+                <h3>Donated Items</h3>
+                <table class="summary-table">
+                    <thead>
+                        <tr>
+                            <th>Item Category</th>
+                            <th>Quantity</th>
+                            <th>Image</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+
+                        do {
+                            echo "<tr>
+                                <td>" . htmlspecialchars($row['category']) . "</td>
+                                <td>" . $row['quantity'] . "</td>
+                                <td>";
+
+
+                            if (!empty($row['image_path'])) {
+                                echo "<img class='item-image' src='data:image/jpeg;base64," . base64_encode($row['image_path']) . "' alt='Donation Image' />";
+                            } else {
+                                echo "<p>No image available</p>";
+                            }
+
+                            echo "</td></tr>";
+                        } while ($row = $result->fetch_assoc());
+                        ?>
+                    </tbody>
+                </table>
+                <div class="flex justify-center items-center">
+
+                    <a href="d-profile.php" class="donor-btn">Back to Profile</a>
+                </div>
+            </div>
+
+            <div class="receipt-footer">
+                Thank you for your generous donation!
+            </div>
+        <?php
+        } else {
+        ?>
+            <div class="receipt-header">
+                <h2>Donation Receipt</h2>
+            </div>
+            <div class="no-records">
+                <p>No donation records or items found for this transaction.</p>
+                <a href="d-profile.php" class="back-btn">Back to Profile</a>
+            </div>
+        <?php
+        }
+        ?>
+    </div>
+
+
+    <!-- Parallax Background -->
+    <?php include '../section/donorparallax.php'; ?>
+</body>
+
+</html>

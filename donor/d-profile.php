@@ -47,7 +47,6 @@ $pending_donation_stmt->bind_param('i', $donator_id);
 $pending_donation_stmt->execute();
 $pending_donation_result = $pending_donation_stmt->get_result();
 
-// Fetch pending donation transactions for the donor, including charity name
 $cancelled_donation_query = "
     SELECT dt.transaction_id, dt.charity_id, dt.rejected_at, c.charity_name 
     FROM tbl_donation_transactions dt
