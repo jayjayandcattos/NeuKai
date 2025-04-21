@@ -8,7 +8,6 @@ if (!isset($_GET['transaction_id'])) {
 $transaction_id = $_GET['transaction_id'];
 
 if (!isset($_SESSION['charity_id'])) {
-   // die("User not logged in.");
     header("Location: ../login.php");
     exit();
 }
@@ -35,12 +34,24 @@ $query = "
 ";
 
 $result = $conn->query($query);
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Donation Summary</title>
 
+    <link rel="stylesheet" href="../css/cr-summary.css">
+</head>
+<body>
+
+<?php
 if (!$result) {
-    die("Query failed: " . $conn->error);
+    die("<p>Query failed: " . $conn->error . "</p>");
 }
-if ($row = $result->fetch_assoc()) {
 
+if ($row = $result->fetch_assoc()) {
+    echo "<a href='c-request.php'>Back</a>";
     echo "<h2>Donation Summary for " . htmlspecialchars($row['first_name']) . "</h2>";
     echo "<table class='summary-table'>
         <tr>
@@ -56,9 +67,7 @@ if ($row = $result->fetch_assoc()) {
                 <td>";
 
         if (!empty($row['image_path'])) {
-            echo "<div>
-                    <img src='data:image/jpeg;base64," . base64_encode($row['image_path']) . "' alt='Donation Image' width='100' height='100' />
-                  </div>";
+            echo "<img src='data:image/jpeg;base64," . base64_encode($row['image_path']) . "' alt='Donation Image' />";
         } else {
             echo "<p>No image available.</p>";
         }
@@ -67,8 +76,11 @@ if ($row = $result->fetch_assoc()) {
     } while ($row = $result->fetch_assoc());
 
     echo "</table>";
-    echo "<a href='c-request.php'>Back</a>";
+   
 } else {
     echo "<p>No items found for this donator.</p>";
 }
 ?>
+
+</body>
+</html>

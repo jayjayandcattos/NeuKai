@@ -11,7 +11,7 @@ if (!isset($_GET['charity_id'])) {
 $items = [];
 $donator_id = '';
 $charity_id = $_GET['charity_id'];
-$loggedin = isset($_SESSION['donator_id']);
+$loggedin = isset($_SESSION['donator_id']); 
 
 // Ensure the donator is logged in
 if (!$loggedin) {
@@ -22,10 +22,10 @@ $donator_id = $_SESSION['donator_id']; // Get the logged-in donator's ID
 
 // Fetch charity details
 $stmt = $conn->prepare("SELECT * FROM tbl_charity WHERE charity_id = ?");
-$stmt->bind_param("i", $charity_id);
+$stmt->bind_param("i", $charity_id); 
 $stmt->execute();
 $result = $stmt->get_result();
-$charity = $result->fetch_assoc();
+$charity = $result->fetch_assoc(); 
 $stmt->close();
 
 // Debugging: Check if charity data was fetched successfully
@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $total_donation = 0;
     $status = 'pending'; // Default status (change as needed)
     $donation_date = date('Y-m-d H:i:s');
-
+    
     // Insert donation details into tbl_donation
     $stmt = $conn->prepare("INSERT INTO tbl_donations (donator_id, donation_name, total_donation, status, donation_date) VALUES (?, ?, ?, ?, ?)");
     $stmt->bind_param("isiss", $donator_id, $donation_name, $total_donation, $status, $donation_date);
@@ -55,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $category = $item['category'];
         $description = $item['description'];
         $quantity = $item['quantity'];
-
+        
         // Handle file upload for images
         $image_path = '';
         if (isset($_FILES['items']['name']['image'])) {
@@ -94,7 +94,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt->close();
 
     // Redirect to a thank you or confirmation page
-    header("Location: d-profile.php");
+    header("Location: d-donate.php");
     exit();
 }
 ?>

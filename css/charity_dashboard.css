@@ -1,0 +1,232 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* =====================
+   GLOBAL RESET & BASE
+===================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f8f9f9;
+    padding: 20px;
+    scroll-behavior: smooth;
+}
+
+/* =====================
+   LAYOUT STRUCTURE
+===================== */
+.container {
+    display: flex;
+    align-items: flex-start;
+    gap: 30px;
+    padding-top: 40px;
+}
+
+/* Left Sidebar */
+.left-column {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 25%;
+    height: 100vh;
+    padding: 60px 40px;
+    background-color: #f8f9f9;  
+    box-shadow: 4px 0 8px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+}
+
+.left-column h2 {
+    font-size: 35px;
+    font-weight: 700;
+    margin-bottom: 60px;
+    text-align: center;
+}
+
+.left-column a {
+    display: block;
+    margin: 30px 0;
+    padding-left: 20px;
+    text-decoration: none;
+    color: rgba(87, 92, 146, 0.361);
+    font-weight: bold;
+    font-size: 25px;
+    transition: color 0.3s;
+}
+
+.left-column a:hover {
+    color: #1C3AE6;
+}
+
+/* Right Content Area */
+.right-column {
+    margin-left: 25%;
+    margin-top: 5px;
+    margin-bottom: 40px;
+    padding: 20px;
+    width: 80%;
+    height: calc(100vh - 100px);
+    overflow-y: auto;
+}
+
+.right-column::-webkit-scrollbar {
+    display: none;
+}
+
+/* Navigation (Optional Fixed Bar) */
+.navigation {
+    position: fixed;
+    top: 20px;
+    left: 28%;
+    width: 50%;
+    z-index: 10;
+}
+
+/* Form Wrapper */
+.form-wrapper {
+    margin-top: 70px;
+    padding: 10px;
+    width: 100%;
+    height: calc(100vh - 160px);
+    overflow-y: auto;
+    scrollbar-width: none;         /* Firefox */
+    -ms-overflow-style: none;      /* IE/Edge */
+}
+
+.form-wrapper::-webkit-scrollbar {
+    display: none;
+}
+
+/* =====================
+   HEADINGS
+===================== */
+.right-column h2 {
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.right-column h3 {
+    font-size: 30px;
+    font-weight: 600;
+    color: #1C3AE6;
+}
+
+/* =====================
+   FORM ELEMENTS
+===================== */
+label {
+    display: block;
+    margin: 20px 0 10px;
+    font-size: 18px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="url"],
+input[type="date"],
+input[type="tel"],
+input[type="password"],
+input[type="file"] {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 20px;
+    font-size: 20px;
+    border: none;
+    border-bottom: 2px solid #ccc;
+    background-color: transparent;
+}
+
+/* Inputs inside CD layout */
+.cd-column input {
+    font-size: 25px;
+    border: none;
+    border-bottom: 2px solid #d6d1f4;
+    padding: 5px 0;
+    outline: none;
+    background: transparent;
+    color: #000;
+}
+
+/* =====================
+   BUTTONS
+===================== */
+.update-button {
+    background-color: #37bb1f;
+    color: white;
+    border: none;
+    padding: 20px;
+    border-radius: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 40px;
+}
+
+.update-button:hover {
+    background-color: #7ce742;
+}
+
+/* =====================
+   FORM LAYOUT - FLEX
+===================== */
+.cd {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 1rem;
+}
+
+.cd-column {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.cd-column label {
+    font-size: 20px;
+    color: #9a91c2; /* Soft purple */
+    margin-bottom: 0.3rem;
+}
+
+/* =====================
+   IMAGE STYLING
+===================== */
+.cd-column img {
+    width: 300px;
+    height: 300px;
+    margin: 20px 0 50px;
+    object-fit: cover;
+    border-radius: 15px;
+    border: 2px solid #e0eaff;
+    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.4);
+}
+
+/* =====================
+   FILE UPLOAD STYLE
+===================== */
+.custom-file {
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #37bb1f;
+    color: #fff;
+    cursor: pointer;
+    max-width: 300px;
+}
+
+.custom-file::file-selector-button {
+    background-color: #7ce742;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    margin-right: 10px;
+    cursor: pointer;
+    font-size: 14px;
+}
