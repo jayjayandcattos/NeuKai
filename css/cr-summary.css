@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* Reset & Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f8f9f9;
+    padding: 30px;
+}
+
+/* Page Heading */
+h2 {
+    font-size: 32px;
+    color: #1C3AE6;
+    font-weight: 700;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+/* Summary Table */
+.summary-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    text-align: center; /* Center all text */
+}
+
+.summary-table th,
+.summary-table td {
+    padding: 20px 25px;
+    font-size: 30px;
+    text-align: center;           /* Horizontal centering */
+    vertical-align: middle;       /* Vertical centering */
+    border-bottom: 1px solid #ddd;
+}
+
+.summary-table th {
+    background-color: #E7E6FC;
+    color: #9B9ABE;
+    font-weight: 600;
+}
+
+/* Alternate row shading */
+.summary-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.summary-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Image cell styling */
+.summary-table td img {
+    display: block;
+    margin: 0 auto;
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 2px solid #ddd;
+}
+
+/* Back Button */
+a {
+    display: inline-block;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    padding: 14px 30px;
+    background-color: #1C3AE6;
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 18px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+    position: relative;
+    top: -10px; /* Slightly move the button upward */
+}
+
+a:hover {
+    background-color: #0f2bb8;
+}

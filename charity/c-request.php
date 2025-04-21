@@ -7,7 +7,7 @@ if (!isset($_SESSION['charity_id'])) {
     exit();
 }
 
-$charity_id = $_SESSION['charity_id'];  
+$charity_id = $_SESSION['charity_id'];
 
 $query = "
     SELECT 
@@ -33,54 +33,76 @@ $stmt = $conn->prepare($query);
 $stmt->bind_param('i', $charity_id);
 $stmt->execute();
 $result = $stmt->get_result();
-
-echo "<a href='charity_dashboard.php'>Profile</a>
-<a href='c-received.php'>Received</a>
-<a href='c-request.php'>Request</a>";
-
-if ($result->num_rows > 0) {
-   
-    $row = $result->fetch_assoc();  
-    echo "<h2>Donations Summary for Charity: " . htmlspecialchars($row['charity_name']) . "</h2>";  
-
-    echo "<table class='request-table'>
-        <tr>
-            <th>View</th>
-            <th>Donator Name</th>
-            <th>Received Date</th>
-        </tr>";
-
-    do {
-        echo "<tr>
-                <td><a href='c-request_summary.php?transaction_id=" . $row['transaction_id'] . "'>View</a></td>
-                <td>" . htmlspecialchars($row['first_name']) . "</td>
-                <td>" . htmlspecialchars($row['created_at']) . "</td>
-              </tr>";
-    } while ($row = $result->fetch_assoc());
-
-    echo "</table>";
-} else {
-
-    $query_charity_name = "SELECT charity_name FROM tbl_charity WHERE charity_id = ?";
-    $stmt_name = $conn->prepare($query_charity_name);
-    $stmt_name->bind_param('i', $charity_id);
-    $stmt_name->execute();
-    $result_name = $stmt_name->get_result();
-    $charity_row = $result_name->fetch_assoc();
-
-    echo "<h2>Donations Summary for Charity: " . htmlspecialchars($charity_row['charity_name']) . "</h2>";
-    echo "<p>No donations request found for this charity.</p>";
-
-
-    $stmt_name->close();
-}
-
-echo "<div class='logout-container'>
-        <a href='../logout.php'>
-            <span>Logout</span>
-        </a>
-      </div>";
-
-$stmt->close();
-$conn->close();
+$total_donations = $result->num_rows;
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Approved Donations</title>
+    <link rel="stylesheet" href="../css/c-received.css"> <!-- Use same CSS file for layout -->
+</head>
+<body>
+
+<div class="dashboard-wrapper">
+    <!-- LEFT COLUMN -->
+    <div class="left-column">
+        <h1 class="main">Charity Dashboard</h1>
+        <h2>REQUESTS</h2>
+        <h3>Total Approved Donations</h3>
+        <h1 class="donation-count"><?php echo $total_donations; ?></h1>
+    </div>
+
+    <!-- RIGHT COLUMN -->
+    <div class="right-column">
+        <!-- Navigation -->
+        <div class="navigation">
+            <?php include('navigation_links.php'); ?>
+        </div>
+
+        <div class="form-wrapper">
+            <?php
+            if ($total_donations > 0) {
+                $row = $result->fetch_assoc();
+                echo "<h2>Donations Summary for Charity: " . htmlspecialchars($row['charity_name']) . "</h2>";
+
+                echo "<table class='received-table'>
+                        <tr>
+                            <th>View</th>
+                            <th>Donator Name</th>
+                            <th>Requested Date</th>
+                        </tr>";
+
+                do {
+                    echo "<tr>
+                            <td><a href='c-request_summary.php?transaction_id=" . $row['transaction_id'] . "'>View</a></td>
+                            <td>" . htmlspecialchars($row['first_name']) . "</td>
+                            <td>" . htmlspecialchars($row['created_at']) . "</td>
+                          </tr>";
+                } while ($row = $result->fetch_assoc());
+
+                echo "</table>";
+            } else {
+                $query_charity_name = "SELECT charity_name FROM tbl_charity WHERE charity_id = ?";
+                $stmt_name = $conn->prepare($query_charity_name);
+                $stmt_name->bind_param('i', $charity_id);
+                $stmt_name->execute();
+                $result_name = $stmt_name->get_result();
+                $charity_row = $result_name->fetch_assoc();
+
+                echo "<h2>Donations Summary for Charity: " . htmlspecialchars($charity_row['charity_name']) . "</h2>";
+                echo "<p>No approved donation requests found for this charity.</p>";
+
+                $stmt_name->close();
+            }
+
+            $stmt->close();
+            $conn->close();
+            ?>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
