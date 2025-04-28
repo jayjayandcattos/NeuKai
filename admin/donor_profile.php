@@ -54,9 +54,10 @@ $donations = $stmt->get_result();
 $stmt->close();
 
 // Update donation status
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['status']) && isset($_POST['donation_id'])) {
-    $status = $_POST['status'];
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['donation_id'])) {
+    $status = 'delivered';
     $donation_id = intval($_POST['donation_id']);
+    // $admin_id = intval($_POST['admin_id']);
 
     // Update status in tbl_donations
     $update_stmt = $conn->prepare("UPDATE tbl_donations SET status = ? WHERE donation_id = ?");
@@ -68,39 +69,36 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['status']) && isset($_P
     $update_result = $update_stmt->execute();
     $update_stmt->close();
 
-    // If updating tbl_donations was successful, update tbl_donation_items as well
     if ($update_result) {
-        // Check if the status is pending or rejected to update tbl_donation_items
-        if ($status == 'pending' || $status == 'rejected' || $status == 'approved') {
-            // Update status in tbl_donation_items
-            $update_items_stmt = $conn->prepare("UPDATE tbl_donation_items SET status = ? WHERE donation_id = ?");
-            if ($update_items_stmt === false) {
-                die('Error preparing SQL query: ' . $conn->error);
-            }
 
-            $update_items_stmt->bind_param("si", $status, $donation_id);
-            $update_items_stmt->execute();
-            $update_items_stmt->close();
-        }
-
-        // Optionally, update status in tbl_donation_transactions (if needed)
-        // This is redundant as we already updated tbl_donation_transactions above, but can be kept if needed:
-        $update_transaction_stmt = $conn->prepare("UPDATE tbl_donation_transactions SET status = ? WHERE donation_id = ?");
+        // Update status in tbl_donation_transactions
+        $current_timestamp = date("Y-m-d H:i:s");
+        $admin_id = intval($_SESSION['admin_id']);
+        $delivered_at = ($status === 'delivered') ? $current_timestamp : null;
+        
+        $update_transaction_stmt = $conn->prepare("
+            UPDATE tbl_donation_transactions 
+            SET status = ?, updated_at = ?, delivered_at = ?, admin_id = ? 
+            WHERE donation_id = ?
+        ");
+        
         if ($update_transaction_stmt === false) {
             die('Error preparing SQL query: ' . $conn->error);
         }
-
-        $update_transaction_stmt->bind_param("si", $status, $donation_id);
+        
+        $update_transaction_stmt->bind_param("sssii", $status, $current_timestamp, $delivered_at, $admin_id, $donation_id);
         $update_transaction_stmt->execute();
         $update_transaction_stmt->close();
+        
 
         // Refresh the page after successful update
-        header("Location: " . $_SERVER['PHP_SELF'] . "?donator_id=" . $donator_id); // Refresh the page
+        header("Location: " . $_SERVER['PHP_SELF'] . "?donator_id=" . $donator_id);
         exit;
     } else {
         echo "Error updating status in donations.";
     }
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -133,9 +131,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['status']) && isset($_P
     <a href="charity_list.php">Charity</a>
     <a href="donor_list.php" class="active">Donors</a>
     <a href="admin_list.php">Admins</a>
-    <a href="../logout.php">Logout</a>
+    <a href="admin_reset_request.php">Reset Requests</a>
+    <a href="logout.php">Logout</a>
 </div>
-
 <!-- Main Content -->
 <div class="main-content">
 
@@ -145,10 +143,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['status']) && isset($_P
         <tr><th>Email:</th><td><?= htmlspecialchars($donor['email']) ?></td></tr>
         <tr><th>Contact:</th><td><?= htmlspecialchars($donor['contact_no']) ?></td></tr>
         <tr><th>Status:</th>
-            <td>
-                <?= ($donor['status'] == 'pending') ? '<span class="pending">Pending</span>' : '<span class="approved">Approved</span>' ?>
-            </td>
-        </tr>
+<td>
+    <?php $status = trim($donor['status']); ?>
+    <?php if ($status == 'Pending'): ?>
+        <span class="pending">Pending</span>
+    <?php elseif ($status == 'Approved'): ?>
+        <span class="approved">Approved</span>
+    <?php elseif ($status == 'Declined'): ?>
+        <span class="rejected">Declined</span>
+    <?php else: ?>
+        <span style="color: gray;">Unknown</span>
+    <?php endif; ?>
+</td>
+</tr>
+
+
     </table>
 
     <h2>Donation History</h2>
@@ -164,7 +173,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['status']) && isset($_P
         </tr>
         <?php while ($donation = $donations->fetch_assoc()): ?>
         <tr>
-            <td><a href="donor_summary.php?donator_id=<?= $donation['donator_id'] ?>"><?= htmlspecialchars($donation['donation_name']) ?></a></td>
+        <td><a href="donor_summary.php?donator_id=<?= $donation['donator_id'] ?>&donation_id=<?= $donation['donation_id'] ?>"><?= htmlspecialchars($donation['donation_name']) ?></a></td>
+
             <td><?= htmlspecialchars($donation['total_donation']) ?></td>
             <td><?= htmlspecialchars($donation['charity_name']) ?></td>
             <td>
@@ -182,17 +192,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['status']) && isset($_P
             </td>
 
             <td><?= htmlspecialchars($donation['donation_date']) ?></td>
+            <?php
+            $is_disabled = in_array($donation['status'], ['pending', 'rejected', 'delivered']);
+            ?>
             <td>
                 <form action="" method="POST">
+                <input type="hidden" name="admin_id" value="<?= $_SESSION['admin_id'] ?>">
                     <input type="hidden" name="donation_id" value="<?= $donation['donation_id'] ?>">
-                    <label>Edit Status:</label>
-                    <select name="status">
-                        <option value="pending" <?= $donation['status'] == 'pending' ? 'selected' : '' ?>>Pending</option>
-                        <option value="approved" <?= $donation['status'] == 'approved' ? 'selected' : '' ?>>Approved</option>
-                        <option value="rejected" <?= $donation['status'] == 'rejected' ? 'selected' : '' ?>>Rejected</option>
-                        <option value="delivered" <?= $donation['status'] == 'delivered' ? 'selected' : '' ?>>Delivered</option>
-                    </select>
-                    <button type="submit" class="btn">Update Status</button>
+                    <input type="hidden" name="status" value="delivered">
+                    <button type="submit"
+                        class="btn"
+                        style="background: <?= $is_disabled ? '#ccc' : '#007bff' ?>;
+                            color: white;
+                            border: none;
+                            cursor: <?= $is_disabled ? 'not-allowed' : 'pointer' ?>;
+                            display: inline-block;
+                            padding: 8px 12px;
+                            border-radius: 5px;"
+                        <?= $is_disabled ? 'disabled' : '' ?>>
+                    Delivered
+                </button>
                 </form>
             </td>
         </tr>
@@ -201,6 +220,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['status']) && isset($_P
     <?php else: ?>
         <p>No donation records found.</p>
     <?php endif; ?>
+    
     <a href='donor_list.php'>Back</a>
 </div>
 </body>

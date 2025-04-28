@@ -8,6 +8,7 @@ if (!isset($_GET['transaction_id'])) {
 $transaction_id = $_GET['transaction_id'];
 
 if (!isset($_SESSION['charity_id'])) {
+   // die("User not logged in.");
     header("Location: ../login.php");
     exit();
 }
@@ -28,30 +29,34 @@ $query = "
     JOIN 
         tbl_donation_items items ON items.donation_id = t.donation_id
     WHERE 
-        t.status = 'pending'
+        t.status = 'rejected'
         AND t.charity_id = '$charity_id'
         AND t.transaction_id = '$transaction_id'
 ";
 
 $result = $conn->query($query);
+
+if (!$result) {
+    die("Query failed: " . $conn->error);
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Donation Summary</title>
-
+    <!-- Link to the CSS File -->
     <link rel="stylesheet" href="../css/cr-summary.css">
 </head>
 <body>
 
-<?php
-if (!$result) {
-    die("<p>Query failed: " . $conn->error . "</p>");
-}
 
+
+<?php
 if ($row = $result->fetch_assoc()) {
-    echo "<a href='c-request.php'>Back</a>";
+    echo "<a href='c-rejected.php'>Back</a>";
     echo "<h2>Donation Summary for " . htmlspecialchars($row['first_name']) . "</h2>";
     echo "<table class='summary-table'>
         <tr>
@@ -59,7 +64,6 @@ if ($row = $result->fetch_assoc()) {
             <th>Quantity</th>
             <th>Image</th>
         </tr>";
-
     do {
         echo "<tr>
                 <td>" . htmlspecialchars($row['category']) . "</td>
@@ -67,7 +71,9 @@ if ($row = $result->fetch_assoc()) {
                 <td>";
 
         if (!empty($row['image_path'])) {
-            echo "<img src='data:image/jpeg;base64," . base64_encode($row['image_path']) . "' alt='Donation Image' />";
+            echo "<div>
+                    <img src='data:image/jpeg;base64," . base64_encode($row['image_path']) . "' alt='Donation Image' width='100' height='100' />
+                  </div>";
         } else {
             echo "<p>No image available.</p>";
         }
@@ -76,7 +82,6 @@ if ($row = $result->fetch_assoc()) {
     } while ($row = $result->fetch_assoc());
 
     echo "</table>";
-   
 } else {
     echo "<p>No items found for this donator.</p>";
 }

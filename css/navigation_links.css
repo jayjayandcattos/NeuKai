@@ -1,0 +1,36 @@
+.navigation-links {
+    position: sticky;
+    top: 10px;
+    z-index: 10;
+    display: flex;
+    gap: 25px;
+    padding-top: 5px;
+    margin-bottom: 30px;
+}
+
+.navigation-links a {
+    padding: 15px 30px;
+    background-color: #E7E6FC;
+    color: #9B9ABE; 
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 20px;
+    font-size: 20px;
+    transition: background-color 0.3s;
+}
+
+.navigation-links a:hover {
+    background-color: #1C3AE6;
+    color: #E7E6FC;
+}
+
+/* Specific style for logout button */
+.navigation-links .logout-button {
+    background-color: #E7E6FC;
+    color: #9B9ABE;
+}
+
+.navigation-links .logout-button:hover {
+    background-color: #c72929;
+    color: #ffffff;
+}

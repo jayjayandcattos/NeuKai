@@ -34,7 +34,7 @@ JOIN tbl_donation_transactions t ON d.donation_id = t.donation_id
 JOIN tbl_charity c ON t.charity_id = c.charity_id
 JOIN tbl_donation_items i ON d.donation_id = i.donation_id
 WHERE t.transaction_id = ? AND d.donator_id = ? 
-AND i.status = 'pending' AND t.status = 'pending'
+AND t.status = 'pending'
 ");
 if ($stmt === false) {
     die('Error preparing SQL query: ' . $conn->error);

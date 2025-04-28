@@ -50,29 +50,55 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $donation_id = $stmt->insert_id; // Get the inserted donation ID
     $stmt->close();
 
-    // Insert items into tbl_donation_items
-    foreach ($_POST['items'] as $item) {
-        $category = $item['category'];
-        $description = $item['description'];
-        $quantity = $item['quantity'];
-        
-        // Handle file upload for images
-        $image_path = '';
-        if (isset($_FILES['items']['name']['image'])) {
-            $image_path = 'uploads/' . basename($_FILES['items']['name']['image']);
-            move_uploaded_file($_FILES['items']['tmp_name']['image'], $image_path);
+// Insert items into tbl_donation_items
+foreach ($_POST['items'] as $index => $item) {
+    $category = $item['category'];
+    $description = $item['description'];
+    $quantity = $item['quantity'];
+    
+    $image_data = null; 
+    if (isset($_FILES['items']['name'][$index]['image'])) {
+        if ($_FILES['items']['error'][$index]['image'] === UPLOAD_ERR_OK) {
+            $image_data = file_get_contents($_FILES['items']['tmp_name'][$index]['image']);
+            if ($image_data === false) {
+                die("Error reading the uploaded image. Please try again.");
+            }
+
+            $finfo = new finfo(FILEINFO_MIME_TYPE);
+            $fileType = $_FILES['items']['type'][$index]['image'];
+            $allowedTypes = ['image/jpeg', 'image/png', 'image/jpg']; 
+            if (!in_array($fileType, $allowedTypes)) {
+                die("Error: Invalid file type. Only JPEG, JPG, and PNG are allowed.");
+            }
+        } else {
+           
+            $errorCode = $_FILES['items']['error'][$index]['image'];
+            $errorMessages = [
+                UPLOAD_ERR_INI_SIZE => "The uploaded file exceeds the upload_max_filesize directive in php.ini.",
+                UPLOAD_ERR_FORM_SIZE => "The uploaded file exceeds the MAX_FILE_SIZE directive specified in the HTML form.",
+                UPLOAD_ERR_PARTIAL => "The uploaded file was only partially uploaded.",
+                UPLOAD_ERR_NO_FILE => "No file was uploaded.",
+            ];
+
+            $errorMessage = $errorMessages[$errorCode] ?? "An unknown error occurred during file upload.";
+            die("Error uploading the image: $errorMessage. Please try again.");
         }
-
-        // Insert each item into tbl_donation_items
-        $stmt = $conn->prepare("INSERT INTO tbl_donation_items (donation_id, category, description, quantity, image_path, status, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, NOW(), NOW())");
-        $stmt->bind_param("isssis", $donation_id, $category, $description, $quantity, $image_path, $status);
-        $stmt->execute();
-        $stmt->close();
-
-        // Update total donation amount (you can modify this based on the donation's value or item price)
-        $total_donation += $quantity; // For simplicity, assuming quantity equals amount donated
+    } else {
+        die("No file upload detected for item $index. Please try again.");
     }
 
+    // Prepare the SQL statement (remove 'status' column and no need to bind NOW() for created_at/updated_at)
+$stmt = $conn->prepare("INSERT INTO tbl_donation_items (donation_id, category, description, quantity, image_path, created_at, updated_at) VALUES (?, ?, ?, ?, ?, NOW(), NOW())");
+
+// Bind parameters for the columns (5 variables)
+$stmt->bind_param("issss", $donation_id, $category, $description, $quantity, $image_data);  // 5 variables, no 'status'
+$stmt->send_long_data(5, $image_data);  // Send the binary image data (the 5th parameter is for image_path)
+$stmt->execute();
+$stmt->close();
+
+
+    $total_donation += $quantity; 
+}
     // Update total donation amount in tbl_donation
     $stmt = $conn->prepare("UPDATE tbl_donations SET total_donation = ? WHERE donation_id = ?");
     $stmt->bind_param("ii", $total_donation, $donation_id);

@@ -101,12 +101,13 @@ mysqli_close($conn);
 
     <!-- Sidebar -->
     <div class="sidebar">
-        <h2 style="text-align: center;">Admin Panel</h2>
-        <a href="admin_dashboard.php">Dashboard</a>
-        <a href="charity_list.php">Charity</a>
-        <a href="donor_list.php">Donors</a>
-        <a href="admin_list.php">Admin</a>
-        <a href="../logout.php" style="color: red;">Logout</a>
+    <h2 style="text-align: center;">Admin Panel</h2>
+    <a href="admin_dashboard.php">Dashboard</a>
+    <a href="charity_list.php">Charity</a>
+    <a href="donor_list.php" class="active">Donors</a>
+    <a href="admin_list.php">Admins</a>
+    <a href="admin_reset_request.php">Reset Requests</a>
+    <a href="logout.php">Logout</a>
     </div>
 
     <!-- Main Content -->

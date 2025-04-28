@@ -188,7 +188,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
               <input type="password" name="password" placeholder="**********" class="text-black" required>
             </div>
             <div class="forgot-password">
-              <a href="#">Forgot Password?</a>
+            <a href="forgot_password.php">Forgot Password?</a>
             </div>
           </div>
 

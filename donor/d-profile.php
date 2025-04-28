@@ -37,7 +37,7 @@ $completed_donation_result = $completed_donation_stmt->get_result();
 
 // Fetch pending donation transactions for the donor, including charity name
 $pending_donation_query = "
-    SELECT dt.transaction_id, dt.charity_id, dt.approved_at, c.charity_name 
+    SELECT dt.transaction_id, dt.charity_id, dt.created_at, c.charity_name 
     FROM tbl_donation_transactions dt
     JOIN tbl_charity c ON dt.charity_id = c.charity_id
     WHERE dt.donator_id = ? AND dt.status = 'pending'
@@ -186,7 +186,7 @@ $cancelled_donation_result = $cancelled_donation_stmt->get_result();
                             <tr>
                                 <th>View</th>
                                 <th>Charity Name</th>
-                                <th>Approved Date</th>
+                                <th>Requested Date</th>
                             </tr>';
 
                     while ($donation = $pending_donation_result->fetch_assoc()) {
@@ -200,7 +200,7 @@ $cancelled_donation_result = $cancelled_donation_stmt->get_result();
                                     </a>
                                 </td>
                                 <td>' . htmlspecialchars($donation['charity_name']) . '</td>
-                                <td>' . htmlspecialchars($donation['approved_at']) . '</td>
+                                <td>' . htmlspecialchars($donation['created_at']) . '</td>
                             </tr>';
                     }
 
