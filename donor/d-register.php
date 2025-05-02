@@ -110,24 +110,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
 
     <div id="top" class="flex-grow flex justify-center px-4 mt-[100px] min-h-screen z-0">
-        <div class="w-full max-w-[800px] h-auto max-h-[770px] md:h-auto bg-white rounded-3xl overflow-hidden">
+        <div class="w-full max-w-[800px] h-auto max-h-[770px] md:h-auto bg-white rounded-3xl overflow-auto scrollbar-hidden">
 
             <!-- Header Section -->
             <div class="relative flex flex-col items-center justify-center p-6 bg-[#FF8000]">
-                <div class="absolute inset-0 bg-black/10 backdrop-blur-lg z-0"></div>
-                <div class="relative z-10 flex flex-col items-center">
-                    <img src="../images/signin.png" alt="Sign In" class="w-8 h-8 mb-2 object-contain" />
-                    <span class="text-2xl font-bold text-white">DONOR SIGN UP</span>
-                </div>
+            <div class="absolute inset-0 bg-black/10 cbackdrop-blur-lg z-0"></div>
+            <div class="relative z-10 flex flex-col items-center">
+                <img src="../images/signin.png" alt="Sign In" class="w-8 h-8 mb-2 object-contain" />
+                <span class="text-2xl font-bold text-white">DONOR SIGN UP</span>
+            </div>
             </div>
 
             <div class="p-8">
-                <?php if (!empty($errors)): ?>
-                    <div class="error mb-4 text-red-500">
-                        <?php foreach ($errors as $error): ?>
-                            <p><?= htmlspecialchars($error) ?></p>
-                        <?php endforeach; ?>
-                    </div>
+            <?php if (!empty($errors)): ?>
+                <div class="error mb-4 text-red-500">
+                <?php foreach ($errors as $error): ?>
+                    <p><?= htmlspecialchars($error) ?></p>
+                <?php endforeach; ?>
+                </div>
                 <?php endif; ?>
 
                 <?php if (isset($success)): ?>

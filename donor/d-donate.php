@@ -29,8 +29,6 @@ while ($row = $result->fetch_assoc()) {
 if (empty($charityTypes)) {
     $charityTypes = [
         'Clothing' => ['count' => count($charities) > 0 ? ceil(count($charities)/3) : 0, 'name' => 'Clothing'],
-        'Food' => ['count' => count($charities) > 0 ? ceil(count($charities)/3) : 0, 'name' => 'Food'],
-        'Shelter' => ['count' => count($charities) > 0 ? floor(count($charities)/3) : 0, 'name' => 'Shelter']
     ];
     
    

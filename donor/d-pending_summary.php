@@ -18,24 +18,23 @@ if (!isset($_SESSION['donator_id'])) {
 
 $donator_id = $_SESSION['donator_id'];
 
-// Fetch all necessary data in one query
+// First query: Get the donation details and charity name (non-repeating data)
 $stmt = $conn->prepare("
 SELECT 
+    d.donation_id,
     d.donation_name, 
     d.total_donation, 
     d.status AS donation_status, 
     d.donation_date, 
-    c.charity_name, 
-    i.category, 
-    i.quantity, 
-    i.image_path
+    c.charity_name
 FROM tbl_donations d
 JOIN tbl_donation_transactions t ON d.donation_id = t.donation_id
 JOIN tbl_charity c ON t.charity_id = c.charity_id
-JOIN tbl_donation_items i ON d.donation_id = i.donation_id
 WHERE t.transaction_id = ? AND d.donator_id = ? 
 AND t.status = 'pending'
+LIMIT 1
 ");
+
 if ($stmt === false) {
     die('Error preparing SQL query: ' . $conn->error);
 }
@@ -43,7 +42,39 @@ if ($stmt === false) {
 $stmt->bind_param("ii", $transaction_id, $donator_id);
 $stmt->execute();
 $result = $stmt->get_result();
+$donation_data = $result->fetch_assoc();
 $stmt->close();
+
+// Only if we found donation data, fetch the donation items
+$items = [];
+if ($donation_data) {
+    $donation_id = $donation_data['donation_id'];
+    
+    // Second query: Get all items for this donation
+    $items_stmt = $conn->prepare("
+    SELECT 
+        category, 
+        quantity, 
+        image_path
+    FROM tbl_donation_items
+    WHERE donation_id = ?
+    ");
+    
+    if ($items_stmt === false) {
+        die('Error preparing items SQL query: ' . $conn->error);
+    }
+    
+    $items_stmt->bind_param("i", $donation_id);
+    $items_stmt->execute();
+    $items_result = $items_stmt->get_result();
+    
+    // Store all items in an array
+    while ($item = $items_result->fetch_assoc()) {
+        $items[] = $item;
+    }
+    
+    $items_stmt->close();
+}
 ?>
 
 <!DOCTYPE html>
@@ -99,16 +130,7 @@ $stmt->close();
             <img src="../images/Neukai Logo.svg" alt="Loading" class="loading-logo w-50 h-50" />
         </div>
 
-        <?php
-
-        if ($result->num_rows > 0) {
-
-            $row = $result->fetch_assoc();
-            $first_row = $row;
-
-
-            $result->data_seek(0);
-        ?>
+        <?php if ($donation_data): ?>
             <div class="receipt-header">
                 <div class="invoice-label">Transaction #<?php echo htmlspecialchars($transaction_id); ?></div>
                 <h2>Pending Donation Summary</h2>
@@ -118,11 +140,11 @@ $stmt->close();
                 <div class="transaction-info">
                     <p>
                         <span class="label">Charity:</span>
-                        <span><?php echo htmlspecialchars($first_row['charity_name']); ?></span>
+                        <span><?php echo htmlspecialchars($donation_data['charity_name']); ?></span>
                     </p>
                     <p>
                         <span class="label">Donation Date:</span>
-                        <span><?php echo htmlspecialchars($first_row['donation_date']); ?></span>
+                        <span><?php echo htmlspecialchars($donation_data['donation_date']); ?></span>
                     </p>
                     <p>
                         <span class="label">Status:</span>
@@ -140,28 +162,22 @@ $stmt->close();
                         </tr>
                     </thead>
                     <tbody>
-                        <?php
-
-                        do {
-                            echo "<tr>
-                                <td>" . htmlspecialchars($row['category']) . "</td>
-                                <td>" . $row['quantity'] . "</td>
-                                <td>";
-
-
-                            if (!empty($row['image_path'])) {
-                                echo "<img class='item-image' src='data:image/jpeg;base64," . base64_encode($row['image_path']) . "' alt='Donation Image' />";
-                            } else {
-                                echo "<p>No image available</p>";
-                            }
-
-                            echo "</td></tr>";
-                        } while ($row = $result->fetch_assoc());
-                        ?>
+                        <?php foreach ($items as $item): ?>
+                            <tr>
+                                <td><?php echo htmlspecialchars($item['category']); ?></td>
+                                <td><?php echo $item['quantity']; ?></td>
+                                <td>
+                                    <?php if (!empty($item['image_path'])): ?>
+                                        <img class='item-image' src='data:image/jpeg;base64,<?php echo base64_encode($item['image_path']); ?>' alt='Donation Image' />
+                                    <?php else: ?>
+                                        <p>No image available</p>
+                                    <?php endif; ?>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
                 <div class="flex justify-center items-center">
-
                     <a href="d-profile.php" class="donor-btn">Back to Profile</a>
                 </div>
             </div>
@@ -169,9 +185,7 @@ $stmt->close();
             <div class="receipt-footer">
                 Thank you for your generous donation! Your items are awaiting approval.
             </div>
-        <?php
-        } else {
-        ?>
+        <?php else: ?>
             <div class="receipt-header">
                 <h2>Pending Donation Summary</h2>
             </div>
@@ -179,11 +193,8 @@ $stmt->close();
                 <p>No pending donation records or items found for this transaction.</p>
                 <a href="d-profile.php" class="back-btn">Back to Profile</a>
             </div>
-        <?php
-        }
-        ?>
+        <?php endif; ?>
     </div>
-
 
     <!-- Parallax Background -->
     <?php include '../section/donorparallax.php'; ?>

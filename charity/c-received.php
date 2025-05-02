@@ -7,7 +7,17 @@ if (!isset($_SESSION['charity_id'])) {
     exit();
 }
 
-$charity_id = $_SESSION['charity_id'];  
+$charity_id = $_SESSION['charity_id'];
+
+// Fetch charity name first, so it's available throughout the page
+$charity_query = "SELECT charity_name FROM tbl_charity WHERE charity_id = ?";
+$charity_stmt = $conn->prepare($charity_query);
+$charity_stmt->bind_param('i', $charity_id);
+$charity_stmt->execute();
+$charity_result = $charity_stmt->get_result();
+$charity_data = $charity_result->fetch_assoc();
+$charity_name = $charity_data['charity_name'];
+$charity_stmt->close();
 
 $query = "
     SELECT 
@@ -39,71 +49,202 @@ $total_delivered = $result->num_rows;
 ?>
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Donations Summary</title>
-    <link rel="stylesheet" href="../css/c-received.css">
-</head>
-<body>
 
-<div class="dashboard-wrapper">
-    <!-- LEFT COLUMN -->
-    <div class="left-column">
-        <h1 class="main">Charity Dashboard</h1>
-        <h2>RECEIVED</h2>
-        <h3>Total Confirmed Donations</h3>
-        <h1 class="donation-count"><?php echo $total_delivered; ?></h1> 
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NEUKAI - Received Donations Summary</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        neukai: {
+                            50: '#EFF6FF',
+                            100: '#DBEAFE',
+                            200: '#BFDBFE',
+                            300: '#93C5FD',
+                            400: '#60A5FA',
+                            500: '#3B82F6',
+                            600: '#2563EB',
+                            700: '#1D4ED8',
+                            800: '#1E40AF',
+                            900: '#1E3A8A'
+                        }
+                    },
+                    fontFamily: {
+                        poppins: ['Poppins', 'sans-serif'],
+                        rubik: ['Rubik Mono One', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+    <script src="../js/slideAnimation.js" defer></script>
+    <script src="../js/loading.js" defer></script>
+    <script src="../js/mobilenav.js" defer></script>
+    <link rel="icon" href="../images/TempIco.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/charity_dashboard.css">
+    <link rel="stylesheet" href="../css/navigation_links.css">
+</head>
+
+<body class="bg-white text-gray-800 font-poppins min-h-screen flex flex-col">
+    <!-- Loading Overlay -->
+    <div id="loading-overlay"
+        class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex items-center justify-center z-50 opacity-0 pointer-events-none transition-opacity duration-300">
+        <img src="../images/Neukai Logo.svg" alt="Loading" class="w-32 h-32 animate-pulse" />
     </div>
 
-    <!-- RIGHT COLUMN -->
-    <div class="right-column">
-        <div class="navigation">
-            <?php include('navigation_links.php'); ?>
+    <!-- Navbar -->
+    <?php include '../section/LoggedInCharityNav.php'; ?>
+
+    <!-- Main Content -->
+    <main class="flex-grow p-3 md:p-6 flex justify-center">
+        <div class="w-full max-w-6xl">
+            <!-- Page Header -->
+            <div class="text-center mb-6">
+                <h1 class="text-3xl font-bold text-neukai-700 mb-2">Charity Dashboard</h1>
+                <p class="text-white shadow-black">Welcome to <?php echo htmlspecialchars($charity_name); ?>'s dashboard</p>
+            </div>
+
+            <!-- Dashboard Content -->
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
+                
+                <!-- Stats Cards Row -->
+                <div class="md:col-span-12 grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                    <!-- Received Donations Card -->
+                    <div class="bg-white rounded-xl p-4 shadow border border-gray-100 flex items-center">
+                        <div class="rounded-full bg-green-100 p-3 mr-4">
+                            <i class="fas fa-check-circle text-xl text-green-600"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-sm text-gray-500 font-medium">Received Donations</h2>
+                            <p class="text-2xl font-bold text-green-600"><?php echo $total_delivered; ?></p>
+                        </div>
+                    </div>
+
+                    <!-- Charity Info Card -->
+                    <div class="bg-white rounded-xl p-4 shadow border border-gray-100 flex items-center">
+                        <div class="rounded-full bg-neukai-100 p-3 mr-4">
+                            <i class="fas fa-building-ngo text-xl text-neukai-600"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-sm text-gray-500 font-medium">Charity Name</h2>
+                            <p class="text-lg font-semibold text-neukai-800 truncate">
+                                <?php echo htmlspecialchars($charity_name); ?>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:col-span-12 bg-white rounded-xl shadow border border-gray-100 overflow-hidden h-[350px] flex-grow">
+                    <!-- Navigation Tabs -->
+                    <div class="border-b border-gray-200 px-4">
+                        <nav class="flex overflow-x-auto hide-scrollbar py-3">
+                            <?php include('navigation_links.php'); ?>
+                        </nav>
+                    </div>
+
+                    <!-- Donations Summary Section -->
+                    <div class="p-4">
+                        <?php
+                        if ($total_delivered > 0) {
+                            $row = $result->fetch_assoc();
+                            echo "<h2 class='text-xl font-bold text-neukai-700 mb-4'>Donations Summary for Charity: " . 
+                                htmlspecialchars($row['charity_name']) . "</h2>"; 
+
+                            // Reset result pointer to start
+                            $result->data_seek(0);
+                            
+                            echo '<div class="overflow-x-auto -mx-4 sm:mx-0">
+                                <table class="min-w-full divide-y divide-gray-200">
+                                    <thead>
+                                        <tr class="bg-gray-50">
+                                            <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">View</th>
+                                            <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Donator Name</th>
+                                            <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Received Date</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="bg-white divide-y divide-gray-200">';
+
+                            while ($row = $result->fetch_assoc()) {
+                                echo '<tr class="hover:bg-gray-50 transition-colors">
+                                        <td class="px-4 py-3 whitespace-nowrap text-sm">
+                                            <a href="c-received_summary.php?transaction_id=' . $row['transaction_id'] . '"
+                                                class="text-green-600 hover:text-green-800 font-medium">
+                                                <i class="fas fa-eye mr-1"></i> View
+                                            </a>
+                                        </td>
+                                        <td class="px-4 py-3 whitespace-nowrap text-sm">' . 
+                                            htmlspecialchars($row['first_name']) . 
+                                        '</td>
+                                        <td class="px-4 py-3 whitespace-nowrap text-sm">' . 
+                                            htmlspecialchars($row['delivered_at']) . 
+                                        '</td>
+                                      </tr>';
+                            }
+
+                            echo '</tbody>
+                                </table>
+                            </div>';
+                        } else {
+                            echo '<div class="text-center py-12 px-4">
+                                    <div class="inline-block p-4 rounded-full bg-green-100 mb-4">
+                                        <i class="fas fa-check-circle text-3xl text-green-600"></i>
+                                    </div>
+                                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Donations Summary for Charity: ' . 
+                                        htmlspecialchars($charity_name) . 
+                                    '</h3>
+                                    <p class="text-gray-500 max-w-md mx-auto">
+                                        No donations received found for this charity.
+                                    </p>
+                                </div>';
+                        }
+
+                        $stmt->close();
+                        $conn->close();
+                        ?>
+                    </div>
+                </div>
+            </div>
         </div>
+    </main>
 
-        <div class="form-wrapper">
-        <?php
-        if ($total_delivered > 0) {
-            $row = $result->fetch_assoc();  
-            echo "<h2>Donations Summary for Charity: " . htmlspecialchars($row['charity_name']) . "</h2>"; 
+    <!-- Footer -->
+    <?php include '../section/donorparallax.php'; ?>
 
-            echo "<table class='received-table'>
-                <tr>
-                    <th>View</th>
-                    <th>Donator Name</th>
-                    <th>Received Date</th>
-                </tr>";
-
-            do {
-                echo "<tr>
-                        <td><a href='c-received_summary.php?transaction_id=" . $row['transaction_id'] . "'>View</a></td>
-                        <td>" . htmlspecialchars($row['first_name']) . "</td>
-                        <td>" . htmlspecialchars($row['delivered_at']) . "</td>
-                      </tr>";
-            } while ($row = $result->fetch_assoc());
-
-            echo "</table>";
-        } else {
-            $query_charity_name = "SELECT charity_name FROM tbl_charity WHERE charity_id = ?";
-            $stmt_name = $conn->prepare($query_charity_name);
-            $stmt_name->bind_param('i', $charity_id);
-            $stmt_name->execute();
-            $result_name = $stmt_name->get_result();
-            $charity_row = $result_name->fetch_assoc();
-            
-            echo "<h2>Donations Summary for Charity: " . htmlspecialchars($charity_row['charity_name']) . "</h2>";
-            echo "<p>No donations received found for this charity.</p>";
-
-            $stmt_name->close();
+    <style>
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
         }
 
-        $stmt->close();
-        $conn->close();
-        ?>
-        </div>
-    </div>
-</div>
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
 
+        @media (max-width: 375px) {
+            .text-3xl {
+                font-size: 1.5rem;
+            }
+
+            .text-xl {
+                font-size: 1.125rem;
+            }
+
+            .px-4 {
+                padding-left: 0.75rem;
+                padding-right: 0.75rem;
+            }
+
+            table {
+                font-size: 0.75rem;
+            }
+        }
+    </style>
 </body>
 </html>

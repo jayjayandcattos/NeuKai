@@ -12,7 +12,7 @@
     <div id="nav-links" class="hidden md:flex space-x-6 items-center">
         <a href="../donorhome.php#home" class="text-sm md:text-white hover:text-[#fbb801] transition duration-200">HOME</a>
         <a href="../section/donorabout.php" class="text-sm md:text-white hover:text-[#fbb801] transition duration-200">ABOUT</a>  
-        <a href="d-profile.php" class="hover:scale-105 transition-transform duration-200 mx-1">
+        <a href="../donor/d-profile.php" class="hover:scale-105 transition-transform duration-200 mx-1">
         <img src="../images/signin.png" alt="Sign In" class="h-7 w-8 xl:h-8 xl:w-8" />
     </a>
     </div>

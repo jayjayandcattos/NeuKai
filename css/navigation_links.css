@@ -1,36 +1,52 @@
 .navigation-links {
     position: sticky;
-    top: 10px;
+    top: 0;
     z-index: 10;
     display: flex;
-    gap: 25px;
-    padding-top: 5px;
-    margin-bottom: 30px;
-}
-
-.navigation-links a {
-    padding: 15px 30px;
-    background-color: #E7E6FC;
-    color: #9B9ABE; 
+    align-items: center;
+    gap: 20px;
+    padding: 12px 20px;
+    margin-bottom: 25px;
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(5px);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  }
+  
+  .navigation-links a {
+    padding: 10px 20px;
+    background-color: #f5f5fa;
+    color: #6e6d8a;
     text-decoration: none;
-    font-weight: bold;
-    border-radius: 20px;
-    font-size: 20px;
-    transition: background-color 0.3s;
-}
-
-.navigation-links a:hover {
+    font-weight: 500;
+    border-radius: 12px;
+    font-size: 16px;
+    letter-spacing: 0.2px;
+    transition: all 0.2s ease;
+  }
+  
+  .navigation-links a:hover {
     background-color: #1C3AE6;
-    color: #E7E6FC;
-}
-
-/* Specific style for logout button */
-.navigation-links .logout-button {
-    background-color: #E7E6FC;
-    color: #9B9ABE;
-}
-
-.navigation-links .logout-button:hover {
-    background-color: #c72929;
     color: #ffffff;
-}
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(28, 58, 230, 0.2);
+  }
+  
+  .navigation-links .logout-button {
+    margin-left: auto;
+    padding: 8px 15px;
+    background-color: #f9f9f9;
+    color: #787878;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 400;
+    border: 1px solid #efefef;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  
+  .navigation-links .logout-button:hover {
+    background-color: #ffe5e5;
+    color: #c72929;
+    border-color: #ffcece;
+  }
