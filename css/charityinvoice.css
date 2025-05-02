@@ -1,0 +1,226 @@
+:root {
+    --primary-color: #001aff;
+    --accent-color: #005ce6;
+    --secondary-color: #757575;
+    --background-color: #f8f8f8;
+    --text-color: #333;
+    --border-color: #e0e0e0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+.receipt-container {
+    max-width: 900px;
+    margin: 2rem auto;
+    background-color: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.receipt-header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 20px;
+    position: relative;
+}
+
+.receipt-header h2 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.invoice-label {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 14px;
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 5px 15px;
+    border-radius: 30px;
+}
+
+.receipt-body {
+    padding: 20px;
+}
+
+.summary-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.summary-table th {
+    color: var(--text-color);
+    text-align: left;
+    padding: 12px 10px;
+    font-weight: 600;
+}
+
+.summary-table td {
+    padding: 12px 10px;
+    border-bottom: 1px solid var(--border-color);
+    vertical-align: middle;
+    word-break: break-word;
+}
+
+.summary-table tr:last-child td {
+    border-bottom: none;
+    width: 100%;
+}
+
+.summary-table tr:nth-child(even) {
+    background-color: #FFF9F5;
+}
+
+.item-image {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 5px;
+    display: block;
+    border: 1px solid var(--border-color);
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.back-btn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px 10px 12px;
+    background-color: #f5f5f5;
+    border: none;
+    border-radius: 8px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  }
+  
+  .back-btn:hover {
+    background-color: #ebebeb;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  .back-btn:active {
+    transform: translateY(0);   
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  }
+
+@media (max-width: 480px) {
+    .back-btn {
+        width: 100%;
+        font-size: 13px;
+        padding: 10px 0;
+    }
+}
+
+.receipt-footer {
+    margin-top: 40px;
+    padding: 20px;
+    background: linear-gradient(90deg, #fdfbfb 0%, #ebedee 100%);
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    text-align: center;
+    font-size: 12.5px;
+    color: #333;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    border-radius: 0 0 12px 12px;
+    box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.03);
+    transition: background 0.3s ease;
+}
+
+.receipt-footer:hover {
+    background: linear-gradient(90deg, #ffffff 0%, #f4f4f4 100%);
+}
+
+.receipt-footer {
+    padding: 15px;
+    background-color: #FFF0E6;
+    border-top: 1px solid var(--border-color);
+    text-align: center;
+    font-size: 13px;
+    color: var(--accent-color);
+}
+
+.transaction-info {
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px dashed var(--border-color);
+}
+
+.transaction-info p {
+    margin: 5px 0;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.transaction-info span.label {
+    font-weight: 600;
+    color: var(--accent-color);
+}
+
+@media screen and (max-width: 768px) {
+    .receipt-container {
+        width: 95%;
+        margin: 1rem auto;
+    }
+    
+    .summary-table {
+        display: block;
+        overflow-x: auto;
+    }
+    
+    .invoice-label {
+        position: static;
+        display: inline-block;
+        margin-top: 10px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .receipt-header h2 {
+        font-size: 18px;
+    }
+    
+    .item-image {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .summary-table th,
+    .summary-table td {
+        padding: 8px 6px;
+        font-size: 14px;
+    }
+    
+    .transaction-info p {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-bottom: 10px;
+    }
+}
