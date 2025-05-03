@@ -145,6 +145,18 @@ if (isset($_POST['update'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>NEUKAI</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    // Add scrollbar hiding utilities
+                    variants: {
+                        scrollbar: ['responsive']
+                    }
+                }
+            }
+        }
+    </script>
     <script src="../js/slideAnimation.js" defer></script>
     <script src="../js/loading.js" defer></script>
     <script src="../js/mobilenav.js" defer></script>
@@ -155,11 +167,32 @@ if (isset($_POST['update'])) {
     <link href="https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Hide scrollbar for mobile only */
+        @media only screen and (max-width: 768px) {
+            /* Hide scrollbar for Chrome, Safari and Opera */
+            body::-webkit-scrollbar,
+            .sidebar::-webkit-scrollbar,
+            .right-column::-webkit-scrollbar,
+            .form-wrapper::-webkit-scrollbar {
+                display: none;
+            }
+            
+            /* Hide scrollbar for IE, Edge and Firefox */
+            body,
+            .sidebar,
+            .right-column,
+            .form-wrapper {
+                -ms-overflow-style: none;  /* IE and Edge */
+                scrollbar-width: none;  /* Firefox */
+            }
+        }
+    </style>
 </head>
 
 <body class="relative min-h-screen text-black font-poppins">
 
-<div id="loading-overlay"
+    <div id="loading-overlay"
         class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex items-center justify-center z-50 opacity-0 pointer-events-none transition-opacity duration-300">
         <img src="../images/Neukai Logo.svg" alt="Loading" class="w-32 h-32 animate-pulse" />
     </div>
@@ -169,7 +202,7 @@ if (isset($_POST['update'])) {
 
     <div class="container">
 
-        <div class="sidebar">
+    <div class="sidebar">
             <h2>Charity Dashboard</h2>
             <a href="#charitydetails">CHARITY DETAILS</a>
             <a href="#addressdetails">ADDRESS DETAILS</a>
@@ -335,7 +368,7 @@ if (isset($_POST['update'])) {
         </div>
     </div>
 
-        <?php include '../section/donorparallax.php'; ?>
+    <?php include '../section/donorparallax.php'; ?>
 
 </body>
 
