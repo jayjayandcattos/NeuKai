@@ -95,7 +95,7 @@ $cancelled_donation_result = $cancelled_donation_stmt->get_result();
     <!-- Mobile Menu -->
     <?php include '../section/LoggedInDonorNavMobileFolder.php'; ?>
 
-    <div class="container">
+    <div class="container overflow-hidden overflow-y-hidden mt-[-20px]">
         <div class="sidebar">
             <div class="profile-section">
                 <div class="user-info">

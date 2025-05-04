@@ -1,5 +1,59 @@
+:root {
+    --primary-color: #1C3AE6;
+    --primary-hover: #1631b3;
+    --primary-light: rgba(28, 58, 230, 0.2);
+    --secondary-color: #6b7280;
+    --secondary-hover: #4b5563;
+}
 
-.form-input {
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: #f9fafb;
+}
+
+.charity-form-container {
+    max-height: 860px;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    background: linear-gradient(360deg, #ffffff, #fcfcfc, #f5f6f9, #d8e1f2);
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    overflow-y: auto;
+    scrollbar-width: none; 
+    -ms-overflow-style: none; 
+}
+
+.charity-form-container::-webkit-scrollbar {
+    display: none; 
+}
+
+.step h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+label {
+    display: block;
+    color: #374151;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+input[type="text"],
+input[type="url"],
+input[type="email"],
+input[type="tel"],
+input[type="date"],
+input[type="password"] {
     width: 100%;
     padding: 0.75rem;
     border: 1px solid #d1d5db;
@@ -8,17 +62,33 @@
     background-color: white;
     color: #1f2937;
     font-size: 1rem;
+    transition: all 0.3s ease;
 }
 
-.form-input:focus {
+input:focus {
     outline: none;
-    border-color: #1C3AE6;
-    box-shadow: 0 0 0 2px rgba(28, 58, 230, 0.2);
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px var(--primary-light);
+}
+
+input[type="file"] {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+    background-color: #f9fafb;
 }
 
 
+.btn-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1.5rem;
+    gap: 1rem;
+}
 
-.btn {
+button {
     padding: 0.75rem 1.5rem;
     border-radius: 28px;
     font-weight: 600;
@@ -28,72 +98,190 @@
     cursor: pointer;
     border: none;
     outline: none;
-    width: 216px;
     height: 46px;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     position: relative;
     overflow: hidden;
+    min-width: 120px;
 }
 
-
-.btn-primary {
-    background: linear-gradient(45deg, #1C3AE6, #3b82f6);
-    color: white;
-    box-shadow: 0 4px 6px rgba(28, 58, 230, 0.2);
-}
-
-.btn-primary:hover {
-    background: linear-gradient(45deg, #1631b3, #2563eb);
-    transform: scale(1.05);
-    box-shadow: 0 6px 8px rgba(28, 58, 230, 0.3);
-}
-
-.btn-primary:active {
-    transform: scale(0.95);
-}
-
-
-.btn-secondary {
+button[type="button"] {
     background: linear-gradient(45deg, #6b7280, #9ca3af);
     color: white;
     box-shadow: 0 4px 6px rgba(107, 114, 128, 0.2);
 }
 
-.btn-secondary:hover {
+button[type="button"]:hover {
     background: linear-gradient(45deg, #4b5563, #6b7280);
     transform: scale(1.05);
     box-shadow: 0 6px 8px rgba(107, 114, 128, 0.3);
 }
 
-.btn-secondary:active {
+button[type="submit"],
+button[onclick*="nextStep"] {
+    background: linear-gradient(45deg, #1C3AE6, #3b82f6);
+    color: white;
+    box-shadow: 0 4px 6px rgba(28, 58, 230, 0.2);
+}
+
+button[type="submit"]:hover,
+button[onclick*="nextStep"]:hover {
+    background: linear-gradient(45deg, #1631b3, #2563eb);
+    transform: scale(1.05);
+    box-shadow: 0 6px 8px rgba(28, 58, 230, 0.3);
+}
+
+button:active {
     transform: scale(0.95);
 }
 
 
-#modal {
-    transform: scale(0.95);
+.step {
+    display: none;
     opacity: 0;
-    transition: opacity 0.6s ease, transform 0.6s ease-in-out;
+    transform: translateY(20px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
 }
 
-#modal.active {
-    transform: scale(1);
+.step.active {
+    display: block;
     opacity: 1;
+    transform: translateY(0);
 }
 
-.modal-content {
-    width: 502px;
-    height: 325px;
-    background-color: white;
-    border-radius: 12px;
-    box-shadow: 0 30px 30px rgb(0, 0, 0);
+
+input.error {
+    border: 2px solid #ef4444;
+}
+
+.error-message {
+    color: #ef4444;
+    font-size: 0.875rem;
+    margin-bottom: 0.5rem;
+    margin-top: -0.5rem;
+}
+
+
+.progress-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.progress-container::before {
+    content: '';
+    position: absolute;
+    top: 25%;
+    left: 0;
+    right: 0;
+    height: 0.25rem;
+    background-color: #e5e7eb;
+    z-index: -1;
+    transform: translateY(-50%);
+}
+
+.progress-step {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    text-align: center;
-    padding: 24px;
-    animation: slideUp 0.5s ease-out;
+    z-index: 1;
+}
+
+.step-circle {
+    height: 2rem;
+    width: 2rem;
+    border-radius: 9999px;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000000;
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+    transition: all 0.3s ease;
+    border: black 0.2px solid;
+}
+
+.step-label {
+    font-size: 0.75rem;
+    color: #6b7280;
+    display: none;
+}
+
+.progress-step.active .step-circle {
+    background-color: #2563eb;
+    color: white;
+}
+
+.progress-step.completed .step-circle {
+    background-color: #10b981;
+    color: white;
+}
+
+
+@media (max-width: 640px) {
+    .charity-form-container {
+        padding: 1rem;
+        margin: 1rem;
+    }
+
+    button {
+        font-size: 0.875rem;
+        padding: 0.5rem 1rem;
+    }
+
+    .btn-container {
+        flex-direction: column;
+    }
+
+    button[type="button"],
+    button[type="submit"],
+    button[onclick*="nextStep"] {
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+}
+
+
+@media (max-width: 375px) {
+    .step h2 {
+        font-size: 1.125rem;
+    }
+
+    label {
+        font-size: 0.875rem;
+    }
+
+    input {
+        font-size: 0.875rem;
+        padding: 0.5rem;
+    }
+}
+
+@media (min-width: 640px) {
+    .step-label {
+        display: block;
+    }
+
+    .step-circle {
+        height: 2.5rem;
+        width: 2.5rem;
+    }
+
+    .btn-container {
+        flex-direction: row;
+    }
+}
+
+
+.form-error {
+    background-color: #fee2e2;
+    border-left: 4px solid #ef4444;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    border-radius: 0.25rem;
+    color: #b91c1c;
 }

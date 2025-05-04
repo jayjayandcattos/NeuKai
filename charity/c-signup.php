@@ -7,26 +7,26 @@ $charitynumber = '';
 $establishmentdate = '';
 $charitydesc = '';
 $website = '';
-$charity_image='';
+$charity_image = '';
 
 //step 2 form
 $streetaddress = '';
 $barangay = '';
 $municipality = '';
 $province = '';
-$reg_image=''; 
+$reg_image = '';
 
 //step 3 form
 $firstname = '';
 $middlename = '';
 $lastname = '';
 $cp_email = '';
-$phone=''; 
+$phone = '';
 
 //step 4 form
 $email = '';
 $password = '';
-$password_confirmation = ''; 
+$password_confirmation = '';
 
 if (isset($_POST['submit'])) {
     // user inputs
@@ -46,7 +46,7 @@ if (isset($_POST['submit'])) {
     $phone =  mysqli_real_escape_string($conn, $_POST['phone']);
     $email =  mysqli_real_escape_string($conn, $_POST['email']);
     $password = $_POST['password'];
-    $password_confirmation = $_POST['password_confirmation']; 
+    $password_confirmation = $_POST['password_confirmation'];
 
     if (!preg_match("/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/", $password)) {
         $error_message = "Password must be at least 8 characters long, include at least one uppercase letter, one lowercase letter, one number, and one special character.";
@@ -60,15 +60,15 @@ if (isset($_POST['submit'])) {
 
         if ($stmt->num_rows > 0) {
             $error_message = "Email already exists. Please use a different email.";
-        } else { 
+        } else {
 
             if (isset($_FILES['charity_image'])) {
 
-                $charity_image = $_FILES['charity_image']; 
+                $charity_image = $_FILES['charity_image'];
                 if ($_FILES['charity_image']['error'] === UPLOAD_ERR_OK) {
-                    
+
                     $fileType = $_FILES['charity_image']['type'];
-                    $allowedTypes = ['image/jpeg','image/png', 'image/jpg']; 
+                    $allowedTypes = ['image/jpeg', 'image/png', 'image/jpg'];
                     if (!in_array($fileType, $allowedTypes)) {
                         die("Error: Invalid file type. Only JPEG, JPG, and PNG are allowed.");
                     }
@@ -93,7 +93,7 @@ if (isset($_POST['submit'])) {
                         UPLOAD_ERR_PARTIAL => "The uploaded file was only partially uploaded.",
                         UPLOAD_ERR_NO_FILE => "No file was uploaded.",
                     ];
-        
+
                     $errorMessage = $errorMessages[$errorCode] ?? "An unknown error occurred during file upload.";
                     die("Error uploading the image: $errorMessage. Please try again.");
                 }
@@ -103,11 +103,11 @@ if (isset($_POST['submit'])) {
 
             if (isset($_FILES['reg_image'])) {
 
-                $reg_image = $_FILES['reg_image']; 
+                $reg_image = $_FILES['reg_image'];
                 if ($_FILES['reg_image']['error'] === UPLOAD_ERR_OK) {
-                    
+
                     $fileType = $_FILES['reg_image']['type'];
-                    $allowedTypes = ['image/jpeg','image/png', 'image/jpg']; 
+                    $allowedTypes = ['image/jpeg', 'image/png', 'image/jpg'];
                     if (!in_array($fileType, $allowedTypes)) {
                         die("Error: Invalid file type. Only JPEG, JPG, and PNG are allowed.");
                     }
@@ -132,7 +132,7 @@ if (isset($_POST['submit'])) {
                         UPLOAD_ERR_PARTIAL => "The uploaded file was only partially uploaded.",
                         UPLOAD_ERR_NO_FILE => "No file was uploaded.",
                     ];
-        
+
                     $errorMessage = $errorMessages[$errorCode] ?? "An unknown error occurred during file upload.";
                     die("Error uploading the image: $errorMessage. Please try again.");
                 }
@@ -150,182 +150,173 @@ if (isset($_POST['submit'])) {
 
                 $stmt = $conn->prepare("INSERT INTO tbl_charity_login (charity_id, email, password) VALUES (?, ?, ?)");
                 $stmt->bind_param('iss', $charity_id, $email, $hashed_password);
-                $stmt->execute(); 
+                $stmt->execute();
 
                 $stmt = $conn->prepare("INSERT INTO tbl_charity_contact_person (charity_id, first_name, middle_name, last_name, email, contact_no) VALUES (?, ?, ?, ?, ?, ?)");
                 $stmt->bind_param('isssss', $charity_id, $firstname, $middlename, $lastname, $cp_email, $phone);
-                $stmt->execute(); 
+                $stmt->execute();
 
                 $_POST = array();
-                header("Location: ../login.php"); 
-
+                header("Location: ../login.php");
             } else {
                 $error_message = "Error inserting customer details: " . $stmt->error;
             }
-
-        }    
+        }
     }
-
-
 }
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<style>
-    .step {
-        display: none;
-    }
-
-    .step.active {
-        display: block;
-    }
-</style>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../images/TempIco.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <script src="../js/loading.js" defer></script>
+    <script src="../js/mobilenav.js" defer></script>
+    <script src="../js/charitysignup.js" defer></script>
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/formStyles.css">
     <title>Charity Registration</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <div class="charity-form-container">
 
-                <form id="Registration_Steps"action="" method="POST" enctype="multipart/form-data">
-                <div class="step active" id="step1">
-                    <h2>STEP 1: CHARITY DETAILS</h2>
-                    <label for="charityname">Charity Name:</label>
-                    <input type="text" id="charityname" name="charityname" value="<?php echo htmlspecialchars(stripslashes($charityname)); ?>"  required autocomplete="off" maxlength="">
-                    
-                    <label for="charitynumber">Registered Charity Number:</label>
-                    <input type="text" id="charitynumber" name="charitynumber" value="<?php echo htmlspecialchars($charitynumber); ?>"  required autocomplete="off" maxlength="">
+    <!-- Navbar -->
+    <?php include '../section/desktopNavbar1.php'; ?>
 
-                    <label for="establishmentdate">Date of Establishment:</label>
-                    <input type="date" id="establishmentdate" name="establishmentdate" value="<?php echo htmlspecialchars($establishmentdate); ?>"  required autocomplete="off" maxlength="">
+    <!-- Mobile Menu -->
+    <?php include '../section/mobilenavbar1.php'; ?>
 
-                    <label for="charitydesc">Charity Description:</label>
-                    <input type="text" id="charitydesc" name="charitydesc" value="<?php echo htmlspecialchars($charitydesc); ?>"  required autocomplete="off" maxlength="">
+    <div id="loading-overlay"
+        class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex items-center justify-center z-50 opacity-0 pointer-events-none transition-opacity duration-300">
+        <img src="../images/Neukai Logo.svg" alt="Loading" class="w-32 h-32 animate-pulse" />
+    </div>
 
-                    <label for="website">Charity's Official Website (if available):</label>
-                    <input type="url" id="website" name="website" value="<?php echo htmlspecialchars($website); ?>"  placeholder="(optional)"autocomplete="off" maxlength="">
-                    
-                    <label for="charity_image">Charity Picture:</label>
-                    <input type="file" id="charity_image" name="charity_image" accept="image/png, image/jpeg, image/jpg" value="<?php echo htmlspecialchars($image); ?>" required>
-                    
+    <div class="charity-form-container mt-[4.2rem] w-full max-w-[700px] min-w-[100px] mx-auto">
+        <div class="progress-container">
+            <div class="progress-step active" id="progress-step1">
+                <div class="step-circle">1</div>
+                <div class="step-label">Charity Details</div>
+            </div>
+            <div class="progress-step" id="progress-step2">
+                <div class="step-circle">2</div>
+                <div class="step-label">Address</div>
+            </div>
+            <div class="progress-step" id="progress-step3">
+                <div class="step-circle">3</div>
+                <div class="step-label">Contact</div>
+            </div>
+            <div class="progress-step" id="progress-step4">
+                <div class="step-circle">4</div>
+                <div class="step-label">Account</div>
+            </div>
+        </div>
+
+        <?php if (isset($error_message)): ?>
+            <div class="form-error">
+                <?php echo $error_message; ?>
+            </div>
+        <?php endif; ?>
+
+        <form id="Registration_Steps" action="" method="POST" enctype="multipart/form-data">
+            <div class="step active" id="step1">
+                <h2>STEP 1: CHARITY DETAILS</h2>
+                <label for="charityname">Charity Name:</label>
+                <input type="text" id="charityname" name="charityname" value="<?php echo htmlspecialchars(stripslashes($charityname)); ?>" required autocomplete="off">
+
+                <label for="charitynumber">Registered Charity Number:</label>
+                <input type="text" id="charitynumber" name="charitynumber" value="<?php echo htmlspecialchars($charitynumber); ?>" required autocomplete="off">
+
+                <label for="establishmentdate">Date of Establishment:</label>
+                <input type="date" id="establishmentdate" name="establishmentdate" value="<?php echo htmlspecialchars($establishmentdate); ?>" required autocomplete="off">
+
+                <label for="charitydesc">Charity Description:</label>
+                <input type="text" id="charitydesc" name="charitydesc" value="<?php echo htmlspecialchars($charitydesc); ?>" required autocomplete="off">
+
+                <label for="website">Charity's Official Website (if available):</label>
+                <input type="url" id="website" name="website" value="<?php echo htmlspecialchars($website); ?>" placeholder="(optional)" autocomplete="off">
+
+                <label for="charity_image">Charity Picture:</label>
+                <input type="file" id="charity_image" name="charity_image" accept="image/png, image/jpeg, image/jpg" required>
+
+                <div class="btn-container">
+                    <div></div>
                     <button type="button" onclick="nextStep(1)">Next</button>
                 </div>
+            </div>
 
-                <div class="step" id="step2">
-                    <h2>STEP 2: ADDRESS AND DOCUMENT</h2>
-                    <label for="streetaddress">Street Address:</label>
-                    <input type="text" id="streetaddress" name="streetaddress" value="<?php echo htmlspecialchars($streetaddress); ?>"  required autocomplete="off" maxlength="">
+            <div class="step" id="step2">
+                <h2>STEP 2: ADDRESS AND DOCUMENT</h2>
+                <label for="streetaddress">Street Address:</label>
+                <input type="text" id="streetaddress" name="streetaddress" value="<?php echo htmlspecialchars($streetaddress); ?>" required autocomplete="off">
 
-                    <label for="barangay">Barangay:</label>
-                    <input type="text" id="barangay" name="barangay" value="<?php echo htmlspecialchars($barangay); ?>" required autocomplete="off" maxlength="">
+                <label for="barangay">Barangay:</label>
+                <input type="text" id="barangay" name="barangay" value="<?php echo htmlspecialchars($barangay); ?>" required autocomplete="off">
 
-                    <label for="municipality">Municipality:</label>
-                    <input type="text" id="municipality" name="municipality" value="<?php echo htmlspecialchars($municipality); ?>" required autocomplete="off" maxlength="">
-                    
-                    <label for="province">Province:</label>
-                    <input type="text" id="province" name="province" value="<?php echo htmlspecialchars($province); ?>"  required autocomplete="off" maxlength="">
+                <label for="municipality">Municipality:</label>
+                <input type="text" id="municipality" name="municipality" value="<?php echo htmlspecialchars($municipality); ?>" required autocomplete="off">
 
-                    <label for="reg_image">Charity Registration Certificate:</label>
-                    <input type="file" id="reg_image" name="reg_image" accept="image/png, image/jpeg, image/jpg" value="<?php echo htmlspecialchars($image); ?>" required>
-                    
+                <label for="province">Province:</label>
+                <input type="text" id="province" name="province" value="<?php echo htmlspecialchars($province); ?>" required autocomplete="off">
+
+                <label for="reg_image">Charity Registration Certificate:</label>
+                <input type="file" id="reg_image" name="reg_image" accept="image/png, image/jpeg, image/jpg" required>
+
+                <div class="btn-container">
                     <button type="button" onclick="prevStep(2)">Previous</button>
                     <button type="button" onclick="nextStep(2)">Next</button>
                 </div>
+            </div>
 
-                <div class="step" id="step3">
-                    <h2>STEP 3: CONTACT PERSON</h2>
-                    <label for="firstname">First Name:</label>
-                    <input type="text" id="firstname" name="firstname" value="<?php echo htmlspecialchars($firstname); ?>"  required autocomplete="off" maxlength="">
+            <div class="step" id="step3">
+                <h2>STEP 3: CONTACT PERSON</h2>
+                <label for="firstname">First Name:</label>
+                <input type="text" id="firstname" name="firstname" value="<?php echo htmlspecialchars($firstname); ?>" required autocomplete="off">
 
-                    <label for="middlename">Middle Name:</label>
-                    <input type="text" id="middlename" name="middlename" value="<?php echo htmlspecialchars($middlename); ?>" placeholder="(optional)" autocomplete="off" maxlength="">
+                <label for="middlename">Middle Name:</label>
+                <input type="text" id="middlename" name="middlename" value="<?php echo htmlspecialchars($middlename); ?>" placeholder="(optional)" autocomplete="off">
 
-                    <label for="lastname">Last Name:</label>
-                    <input type="text" id="lastname" name="lastname" value="<?php echo htmlspecialchars($lastname); ?>" required autocomplete="off" maxlength="">
+                <label for="lastname">Last Name:</label>
+                <input type="text" id="lastname" name="lastname" value="<?php echo htmlspecialchars($lastname); ?>" required autocomplete="off">
 
-                    <label for="cp_email">Email:</label>
-                    <input type="email" id="cp_email" name="cp_email" value="<?php echo htmlspecialchars($cp_email); ?>" required autocomplete="off" maxlength="">
-                    
-                    <label for="phone">Phone Number:</label>
-                    <input type="tel" id="phone" name="phone" value="<?php echo htmlspecialchars($phone); ?>" required autocomplete="off" maxlength="">
-                    
+                <label for="cp_email">Email:</label>
+                <input type="email" id="cp_email" name="cp_email" value="<?php echo htmlspecialchars($cp_email); ?>" required autocomplete="off">
+
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" name="phone" value="<?php echo htmlspecialchars($phone); ?>" required autocomplete="off">
+
+                <div class="btn-container">
                     <button type="button" onclick="prevStep(3)">Previous</button>
                     <button type="button" onclick="nextStep(3)">Next</button>
                 </div>
+            </div>
 
-                <div class="step" id="step4">
-                    <h2>STEP 4: Set Up Your Account</h2>
-                    <label for="email">Charity's Email:</label>
-                    <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($email); ?>" required autocomplete="off"maxlength="">
+            <div class="step" id="step4">
+                <h2>STEP 4: Set Up Your Account</h2>
+                <label for="email">Charity's Email:</label>
+                <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($email); ?>" required autocomplete="off">
 
-                    <label for="password">Password:</label>
-                    <input type="password" id="password" name="password"value="<?php echo htmlspecialchars($password); ?>"  onpaste="return false;"maxlength="">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" value="<?php echo htmlspecialchars($password); ?>" onpaste="return false;">
+                <div class="text-xs text-gray-500 mt-[-0.5rem] mb-2">Password must be at least 8 characters with uppercase, lowercase, number, and special character</div>
 
-                    <label for="password_confirmation">Confirm Password:</label>
-                    <input type="password" id="password_confirmation" name="password_confirmation" value="<?php echo htmlspecialchars($password_confirmation); ?>"  onpaste="return false;" maxlength="">
+                <label for="password_confirmation">Confirm Password:</label>
+                <input type="password" id="password_confirmation" name="password_confirmation" value="<?php echo htmlspecialchars($password_confirmation); ?>" onpaste="return false;">
 
+                <div class="btn-container">
                     <button type="button" onclick="prevStep(4)">Previous</button>
                     <button type="submit" name="submit">Submit</button>
                 </div>
-                </form>
-            
-                <script>
-                let currentStep = 1;
-
-                document.addEventListener("DOMContentLoaded", function () {
-                    showStep(currentStep);
-                });
-
-                function showStep(step) {
-                    document.querySelectorAll(".step").forEach((el) => el.classList.remove("active"));
-                    document.getElementById(`step${step}`).classList.add("active");
-                }
-
-                function nextStep(step) {
-                    const currentForm = document.getElementById(`step${step}`);
-                    const inputs = currentForm.querySelectorAll("input[required]");
-                    
-                    let isValid = true;
-
-                    inputs.forEach((input) => {
-                        if (!input.value.trim()) {
-                            isValid = false;
-                            input.style.border = "2px solid red"; // Highlight empty fields
-                        } else {
-                            input.style.border = "1px solid #ccc"; // Reset border if valid
-                        }
-
-                        if (input.type === "email") {
-                            const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-                            if (!emailPattern.test(input.value.trim())) {
-                                isValid = false;
-                                input.style.border = "2px solid red";
-                                alert("Please enter a valid email address.");
-                            }
-                        }
-                    });
-
-                    if (isValid) {
-                        currentStep++;
-                        showStep(currentStep);
-                    } else {
-                        alert("Please fill in all required fields correctly before proceeding.");
-                    }
-                }
-
-                function prevStep(step) {
-                    if (step > 1) {
-                        currentStep--;
-                        showStep(currentStep);
-                    }
-                }
-            </script>
-
-
+            </div>
+        </form>
     </div>
 
+       <?php include '../section/donorparallax.php'; ?>
 </body>
+
 </html>

@@ -81,7 +81,7 @@
                                     Become a Donor
                                 </button>
                             </a>
-                            <a href="charity.php" class="w-full md:w-auto">
+                            <a href="charity/c-signup.php" class="w-full md:w-auto">
                                 <button class="charity-btn shadow-lg shadow-[#0D0DAF]/70 font-poppins font-bold w-full md:w-[291px] ">
                                     Apply as Charity
                                 </button>
