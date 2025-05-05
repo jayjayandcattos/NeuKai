@@ -137,7 +137,6 @@
                         Why donate your clothes?
                     </p>
                     <p class="text-[18px] font-['Poppins'] text-center text-gray-700 mb-2 aos fade-in-up" data-aos-delay="400">
-                        Hello! Last Update 04/14/2025 - Justin
                     </p>
                 </div>
                 <div class="flex flex-col md:flex-row justify-center items-center md:space-x-4 space-y-4 md:space-y-0 mt-4 px-4">

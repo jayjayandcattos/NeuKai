@@ -1,3 +1,4 @@
+
 * {
   margin: 0;
   padding: 0;
@@ -7,17 +8,24 @@
 
 body {
   background:
-    linear-gradient(to top, rgb(0, 5, 14), rgba(0, 0, 0, 0) 40%),
+    linear-gradient(to top, rgb(0, 5, 14), rgba(0, 0, 0, 0) 90%),
     url('../images/background.png') no-repeat center center fixed;
   background-size: cover;
   min-height: 100vh;
   margin: 0;
-  overflow: hidden;
+  overflow-x: hidden;
+  -ms-overflow-style: none; 
+  scrollbar-width: none; 
+}
+
+body::-webkit-scrollbar {
+  display: none; 
 }
 
 h1 {
   font-family: 'Rubik Mono One', sans-serif;
   letter-spacing: 2px;
+  font-size: 1.5rem; 
 }
 
 h2,
@@ -58,7 +66,7 @@ h3 {
 }
 
 .navbar .site-name {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: bold;
   display: flex;
   align-items: center;
@@ -66,7 +74,7 @@ h3 {
 }
 
 .navbar .datetime {
-  font-size: 16px;
+  font-size: 14px;
 }
 
 /* M A I N */
@@ -90,6 +98,7 @@ h3 {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  transition: width 0.3s ease;
 }
 
 .sidebar .nav-links {
@@ -110,6 +119,9 @@ h3 {
   border-radius: 4px;
   transition: background-color 0.3s;
   display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .sidebar a:not(.active):not(.logout-link):hover {
@@ -151,24 +163,27 @@ h3 {
 }
 
 @keyframes slideInRight {
-from {
-transform: translateX(100%);
-opacity: 0;
-}
-to {
-transform: translateX(0%);
-opacity: 1;
-}
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0%);
+    opacity: 1;
+  }
 }
 
 .tab-content.animate-slide {
-animation: slideInRight 0.4s ease forwards;
+  animation: slideInRight 0.4s ease forwards;
 }
 
 /* D I V */
 .title {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 /* C O L L A P S I B L E  */
@@ -307,12 +322,14 @@ animation: slideInRight 0.4s ease forwards;
 .input-row {
   display: flex;
   gap: 15px;
+  flex-wrap: wrap;
 }
 
 .input-group {
   position: relative;
   flex: 1;
   margin-bottom: 20px;
+  min-width: 250px;
 }
 
 .input-group input:not([type="submit"]) {
@@ -353,6 +370,7 @@ animation: slideInRight 0.4s ease forwards;
   border: none;
   padding: 10px;
   border-radius: 10px;
+  width: 100%;
 }
 
 /* T A B L E */
@@ -361,6 +379,7 @@ animation: slideInRight 0.4s ease forwards;
   display: flex;
   flex-direction: column;
   width: 100%;
+  overflow-x: auto;
 }
 
 .admin-row {
@@ -390,3 +409,438 @@ animation: slideInRight 0.4s ease forwards;
   width: 100%;
 }
 
+
+.mobile-menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+
+.sidebar-collapsed .nav-text {
+  display: none;
+}
+
+/* ==== MEDIA QUERIES NG GOD === */
+
+
+@media screen and (max-width: 1200px) {
+  .sidebar {
+    width: 180px;
+  }
+  
+  .main {
+    margin: 15px;
+    padding: 10px;
+    gap: 10px;
+  }
+  
+  .collapsible-body.open {
+    padding: 20px;
+  }
+  
+  .collapsible-body form select {
+    width: 50%;
+  }
+}
+
+
+@media screen and (max-width: 991px) {
+  .mobile-menu-toggle {
+    display: block;
+  }
+  
+  .navbar .site-name {
+    gap: 15px;
+    font-size: 16px;
+  }
+  
+  .main {
+    margin: 10px;
+    height: calc(100vh - 70px - 20px);
+  }
+  
+  .sidebar {
+    width: 60px;
+    padding: 15px 10px;
+  }
+  
+  .sidebar h1 {
+    font-size: 0;
+    margin-bottom: 20px;
+  }
+  
+  .sidebar h1::first-letter {
+    font-size: 1.5rem;
+  }
+  
+  .sidebar a {
+    text-align: center;
+    padding: 8px 0;
+  }
+  
+  .sidebar a span {
+    display: none;
+  }
+  
+  .sidebar.expanded {
+    width: 180px;
+    position: absolute;
+    top: 70px;
+    left: 10px;
+    height: calc(100vh - 90px);
+    z-index: 999;
+  }
+  
+  .sidebar.expanded h1 {
+    font-size: 1.2rem;
+  }
+  
+  .sidebar.expanded a span {
+    display: inline;
+  }
+  
+  .sidebar.expanded a {
+    text-align: left;
+    padding: 8px;
+  }
+  
+  .tab-container {
+    padding: 15px;
+  }
+  
+  .collapsible-body {
+    margin: 0 5%;
+  }
+  
+  .collapsible-body.open {
+    padding: 15px;
+  }
+  
+  .btn {
+    width: 90px;
+    font-size: 14px;
+  }
+  
+  .input-group {
+    min-width: 220px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .main {
+    flex-direction: column;
+    height: auto;
+    min-height: calc(100vh - 70px - 20px);
+  }
+  
+  .sidebar {
+    width: 100%;
+    flex-direction: row;
+    padding: 10px;
+    position: relative;
+    top: 0;
+    left: 0;
+  }
+  
+  .sidebar h1 {
+    margin-bottom: 0;
+    font-size: 1.2rem;
+  }
+  
+  .sidebar .nav-links {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 5px;
+  }
+  
+  .sidebar a {
+    padding: 5px 10px;
+    display: inline-block;
+  }
+  
+  .sidebar a span {
+    display: inline;
+  }
+  
+  .logout {
+    margin-left: auto;
+  }
+  
+  .logout a {
+    padding: 5px 10px;
+  }
+  
+  .tab-container {
+    padding: 10px;
+  }
+  
+  .title {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .title h1 {
+    margin-bottom: 10px;
+  }
+  
+  .collapsible-header {
+    padding: 10px 15px;
+    font-size: 16px;
+  }
+  
+  .collapsible-body {
+    margin: 0;
+  }
+  
+  .collapsible-body.open {
+    padding: 15px 10px;
+  }
+  
+  .collapsible-body form select {
+    width: 100%;
+  }
+  
+  .collapsible-body form input[type="submit"] {
+    width: 100%;
+  }
+  
+  .input-row {
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .input-group {
+    margin-bottom: 15px;
+    min-width: 100%;
+  }
+  
+  .btn {
+    width: 100%;
+    margin-left: 0;
+  }
+  
+  .admin-table {
+    overflow-x: scroll;
+  }
+  
+  .admin-row {
+    min-width: 600px; 
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .navbar {
+    padding: 12px 15px;
+  }
+  
+  .navbar .site-name {
+    font-size: 15px;
+    gap: 10px;
+  }
+  
+  .navbar .datetime {
+    font-size: 12px;
+  }
+  
+  h1 {
+    font-size: 1.3rem;
+  }
+  
+  .sidebar h1 {
+    font-size: 0.9rem;
+  }
+  
+  .sidebar a {
+    font-size: 13px;
+    padding: 4px 8px;
+  }
+  
+  .tab-container {
+    padding: 10px 8px;
+  }
+  
+  .collapsible-header {
+    padding: 8px 12px;
+    font-size: 15px;
+  }
+  
+  .admin-cell {
+    padding: 6px 8px;
+    font-size: 13px;
+  }
+}
+
+
+@media screen and (max-width: 375px) {
+  body {
+    overflow-y: auto;
+  }
+  
+  .navbar {
+    padding: 8px 10px;
+  }
+  
+  .navbar .site-name {
+    font-size: 14px;
+    gap: 8px;
+  }
+  
+  .navbar .datetime {
+    font-size: 11px;
+  }
+  
+  .main {
+    margin: 5px;
+    padding: 5px;
+    gap: 5px;
+  }
+  
+  .sidebar {
+    padding: 8px 5px;
+  }
+  
+  .sidebar h1 {
+    font-size: 0.8rem;
+  }
+  
+  .sidebar a {
+    padding: 3px 6px;
+    font-size: 12px;
+  }
+  
+  .logout a {
+    padding: 3px 6px;
+    border-width: 2px;
+  }
+  
+  .tab-container {
+    padding: 8px 5px;
+  }
+  
+  h1 {
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+  }
+  
+  h2 {
+    font-size: 0.95rem;
+  }
+  
+  h3 {
+    font-size: 0.9rem;
+  }
+  
+  .collapsible-header {
+    padding: 8px 10px;
+    font-size: 14px;
+  }
+  
+  .collapsible-body.open {
+    padding: 12px 8px;
+  }
+  
+  .input-group {
+    margin-bottom: 12px;
+  }
+  
+  .input-group label {
+    font-size: 14px;
+  }
+  
+  .input-group input:not([type="submit"]) {
+    font-size: 14px;
+    padding: 8px 8px 8px 0;
+  }
+  
+  .input-group input:focus+label,
+  .input-group input:not(:placeholder-shown)+label {
+    top: -8px;
+    font-size: 11px;
+  }
+  
+  .input-group select {
+    padding: 8px;
+    font-size: 14px;
+  }
+  
+  .btn {
+    height: 36px;
+    font-size: 13px;
+    padding: 6px 10px;
+    margin-bottom: 10px;
+  }
+  
+  .admin-cell {
+    padding: 4px 6px;
+    font-size: 12px;
+  }
+  
+  .admin-row {
+    padding: 8px 0;
+    min-width: 480px;
+  }
+  
+  .collapsible-body form input[type="submit"] {
+    padding: 8px;
+    font-size: 14px;
+  }
+}
+
+
+@media screen and (max-width: 320px) {
+  .navbar {
+    padding: 6px 8px;
+  }
+  
+  .navbar .site-name {
+    font-size: 13px;
+    gap: 6px;
+  }
+  
+  .navbar .datetime {
+    font-size: 10px;
+  }
+  
+  h1 {
+    font-size: 1rem;
+    letter-spacing: 1px;
+  }
+  
+  .sidebar a {
+    padding: 3px 4px;
+    font-size: 11px;
+  }
+  
+  .input-group label {
+    font-size: 13px;
+  }
+  
+  .input-group input:not([type="submit"]) {
+    font-size: 13px;
+  }
+  
+  .collapsible-header {
+    padding: 6px 8px;
+    font-size: 13px;
+  }
+  
+  .btn {
+    height: 34px;
+    font-size: 12px;
+    padding: 5px 8px;
+  }
+  
+  .admin-cell {
+    padding: 3px 4px;
+    font-size: 11px;
+  }
+  
+  .admin-row {
+    min-width: 440px;
+  }
+}

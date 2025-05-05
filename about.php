@@ -200,7 +200,8 @@
                     <!-- About Us  -->
                     <h2 class="text-xl sm:text-2xl md:text-3xl mx-4 sm:ml-32 font-poppins font-bold text-white mb-4 aos fade-in-up" data-aos-delay="200">About Us</h2>
                     <p class="text-xs sm:text-sm md:text-base mx-4 sm:ml-32 font-poppins text-white mb-16 max-w-3xl aos fade-in-left" data-aos-delay="300">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    A dynamic donation platform dedicated to supporting communities through the sustainable reuse of pre-loved clothing. Our site connects benefactors, NGOs, and donation drives by streamlining ukay-ukay contributions into meaningful support for those in need.
+
                     </p>
 
                     <!-- 3 REKTANGOL -->
@@ -235,7 +236,7 @@
                         You may request access, correction, or deletion of your data, subject to legal obligations.<br><br>
                         <span class="font-semibold">Updates</span><br>
                         Changes to this policy will be posted on the website.<br><br>
-                        For questions or concerns, contact us at [Contact Email/Phone Number].
+                        For questions or concerns, contact us.
                     </p>
 
                     <!-- Terms of Use  -->
@@ -256,7 +257,7 @@
                         We provide services "as is" and are not liable for any damages.<br><br>
                         <span class="font-semibold">Updates</span><br>
                         Terms may change; continued use indicates acceptance.<br><br>
-                        For questions, contact us at [Contact Email/Phone Number].
+                        For questions, contact us.
                     </p>
 
 
@@ -264,70 +265,70 @@
                     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mx-4 sm:ml-32 mb-16 max-w-5xl">
                         <!-- Row 1 -->
                         <div class="flex items-center aos zoom-in" data-aos-delay="200">
-                            <img src="images/egoist1.jpeg" alt="Team Member" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full mr-4">
+                            <img src="images/TIN.jpg" alt="Team Member" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full mr-4">
                             <div>
                                 <span class="font-bold text-white block text-sm sm:text-base">Justin Rivera</span>
-                                <span class="text-white text-xs sm:text-sm">THE LIVING NIGHTMARE</span>
+                                <span class="text-white text-xs sm:text-sm">Team Leader & Front-End Developer</span>
                             </div>
                         </div>
                         <div class="flex items-center aos zoom-in" data-aos-delay="300">
-                            <img src="images/test1.jpg" alt="Team Member" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full mr-4">
+                            <img src="images/Ayebram.png" alt="Team Member" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full mr-4">
                             <div>
-                                <span class="font-bold text-white block text-sm sm:text-base">Name 2</span>
-                                <span class="text-white text-xs sm:text-sm">Role 2</span>
+                                <span class="font-bold text-white block text-sm sm:text-base">Ayebram Nambayan</span>
+                                <span class="text-white text-xs sm:text-sm">Technical Writer & Front-End Developer</span>
                             </div>
                         </div>
                         <div class="flex items-center aos zoom-in" data-aos-delay="400">
-                            <img src="images/shirt.jpg" alt="Team Member" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full mr-4">
+                            <img src="images/GAB.png" alt="Team Member" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full mr-4">
                             <div>
-                                <span class="font-bold text-white block text-sm sm:text-base">Name 3</span>
-                                <span class="text-white text-xs sm:text-sm">Role 3</span>
+                                <span class="font-bold text-white block text-sm sm:text-base">Gabriel Chavez</span>
+                                <span class="text-white text-xs sm:text-sm">Technical Writer & Front-End Developer</span>
                             </div>
                         </div>
 
                         <!-- Row 2 -->
                         <div class="flex items-center aos zoom-in" data-aos-delay="200">
-                            <img src="images/test1.jpg" alt="Team Member" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full mr-4">
+                            <img src="images/CHELS.jpg" alt="Team Member" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full mr-4">
                             <div>
-                                <span class="font-bold text-white block text-sm sm:text-base">Name 4</span>
-                                <span class="text-white text-xs sm:text-sm">Role 4</span>
+                                <span class="font-bold text-white block text-sm sm:text-base">Chelsea Burbos</span>
+                                <span class="text-white text-xs sm:text-sm">Technical Writer</span>
                             </div>
                         </div>
                         <div class="flex items-center aos zoom-in" data-aos-delay="300">
-                            <img src="images/test1.jpg" alt="Team Member" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full mr-4">
+                            <img src="images/HEILA.jpg" alt="Team Member" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full mr-4">
                             <div>
-                                <span class="font-bold text-white block text-sm sm:text-base">Name 5</span>
-                                <span class="text-white text-xs sm:text-sm">Role 5</span>
+                                <span class="font-bold text-white block text-sm sm:text-base">Heila Longaquit</span>
+                                <span class="text-white text-xs sm:text-sm">UI/UX Developer</span>
                             </div>
                         </div>
                         <div class="flex items-center aos zoom-in" data-aos-delay="400">
-                            <img src="images/test1.jpg" alt="Team Member" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full mr-4">
+                            <img src="images/LJ.jpg" alt="Team Member" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full mr-4">
                             <div>
-                                <span class="font-bold text-white block text-sm sm:text-base">Name 6</span>
-                                <span class="text-white text-xs sm:text-sm">Role 6</span>
+                                <span class="font-bold text-white block text-sm sm:text-base">Lois Jay Rimorin</span>
+                                <span class="text-white text-xs sm:text-sm">Technical Writer & Quality Assurance</span>
                             </div>
                         </div>
 
                         <!-- Row 3 -->
                         <div class="flex items-center aos zoom-in" data-aos-delay="200">
-                            <img src="images/test1.jpg" alt="Team Member" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full mr-4">
+                            <img src="images/REYES.jpg" alt="Team Member" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full mr-4">
                             <div>
-                                <span class="font-bold text-white block text-sm sm:text-base">Name 7</span>
-                                <span class="text-white text-xs sm:text-sm">Role 7</span>
+                                <span class="font-bold text-white block text-sm sm:text-base">Justin Reyes</span>
+                                <span class="text-white text-xs sm:text-sm">Backend Developer & Tester</span>
                             </div>
                         </div>
                         <div class="flex items-center aos zoom-in" data-aos-delay="300">
-                            <img src="images/test1.jpg" alt="Team Member" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full mr-4">
+                            <img src="images/ROX.jpg" alt="Team Member" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full mr-4">
                             <div>
-                                <span class="font-bold text-white block text-sm sm:text-base">Name 8</span>
-                                <span class="text-white text-xs sm:text-sm">Role 8</span>
+                                <span class="font-bold text-white block text-sm sm:text-base">Juliana Rox Laurencio</span>
+                                <span class="text-white text-xs sm:text-sm">Backend Developer & Tester</span>
                             </div>
                         </div>
                         <div class="flex items-center aos zoom-in" data-aos-delay="400">
-                            <img src="images/test1.jpg" alt="Team Member" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full mr-4">
+                            <img src="images/SAM.jpg" alt="Team Member" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full mr-4">
                             <div>
-                                <span class="font-bold text-white block text-sm sm:text-base">Name 9</span>
-                                <span class="text-white text-xs sm:text-sm">Role 9</span>
+                                <span class="font-bold text-white block text-sm sm:text-base">Samantha Jumuad</span>
+                                <span class="text-white text-xs sm:text-sm">Backend Developer & Tester</span>
                             </div>
                         </div>
                     </div>
@@ -340,12 +341,12 @@
                     <div class="mx-4 sm:ml-32 mb-16 space-y-4">
                     <div class="flex items-center aos fade-in-right" data-aos-delay="200">
                             <img src="images/email.svg" alt="Email" class="w-5 h-5 sm:w-6 sm:h-6 mr-4">
-                            <span class="text-white font-poppins text-xs sm:text-sm md:text-base">test.gmail.com</span>
+                            <span class="text-white font-poppins text-xs sm:text-sm md:text-base">rivera.justin.santilla@gmail.com</span>
                         </div>
 
                         <div class="flex items-center aos fade-in-right" data-aos-delay="300">
                             <img src="images/Call.svg" alt="Phone" class="w-5 h-5 sm:w-6 sm:h-6 mr-4">
-                            <span class="text-white font-poppins text-xs sm:text-sm md:text-base">69-6969</span>
+                            <span class="text-white font-poppins text-xs sm:text-sm md:text-base">63-999-683-1921</span>
                         </div>
                     </div>
 
