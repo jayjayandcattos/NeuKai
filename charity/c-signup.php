@@ -1,6 +1,6 @@
 <?php
 require('../configuration/db_connect.php');
-
+require 'charity-mail-function.php';
 //step 1 form
 $charityname = '';
 $charitynumber = '';
@@ -155,6 +155,8 @@ if (isset($_POST['submit'])) {
                 $stmt = $conn->prepare("INSERT INTO tbl_charity_contact_person (charity_id, first_name, middle_name, last_name, email, contact_no) VALUES (?, ?, ?, ?, ?, ?)");
                 $stmt->bind_param('isssss', $charity_id, $firstname, $middlename, $lastname, $cp_email, $phone);
                 $stmt->execute();
+
+                charityRegistrationEmail($email, $charityname);
 
                 $_POST = array();
                 header("Location: ../login.php");

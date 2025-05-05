@@ -1,7 +1,7 @@
 <?php
 session_start();
 include '../configuration/db_connect.php';
-
+require 'admin-mail-function.php';
 date_default_timezone_set('Asia/Manila');
 // Enable Error Reporting for Debugging
 error_reporting(E_ALL);
@@ -89,7 +89,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['donation_id'])) {
         $update_transaction_stmt->bind_param("sssii", $status, $current_timestamp, $delivered_at, $admin_id, $donation_id);
         $update_transaction_stmt->execute();
         $update_transaction_stmt->close();
-        
+
+        $donation_stmt = $conn->prepare("SELECT donation_name FROM tbl_donations WHERE donation_id = ?");
+        $donation_stmt->bind_param("i", $donation_id);
+        $donation_stmt->execute();
+        $donation_result = $donation_stmt->get_result();
+        $donation_data = $donation_result->fetch_assoc();
+        $donation_stmt->close();
+    
+        if ($donation_data) {
+            $donationName = $donation_data['donation_name'];
+            $fullName = $donor['first_name'] . ' ' . $donor['last_name'];
+            sendDeliveryConfirmationEmail($donor['email'], $fullName, $donationName);
+        }
 
         // Refresh the page after successful update
         header("Location: " . $_SERVER['PHP_SELF'] . "?donator_id=" . $donator_id);
@@ -100,40 +112,120 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['donation_id'])) {
 }
 
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Donor Profile</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard</title>
+    <link rel="icon" href="../images/TempIco.png" type="image/x-icon">
+    <link rel="stylesheet" href="a_styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+    
     <style>
-        body { font-family: Arial, sans-serif; margin: 0; display: flex; }
-        .sidebar { width: 250px; height: 100vh; background: #343a40; color: white; padding-top: 20px; position: fixed; }
-        .sidebar a { display: block; color: white; padding: 15px; text-decoration: none; }
-        .sidebar a:hover { background: #007bff; }
-        .main-content { margin-left: 250px; padding: 20px; width: calc(100% - 250px); }
-        table { width: 100%; border-collapse: collapse; }
-        th, td { border: 1px solid black; padding: 8px; text-align: left; }
-        .btn { display: inline-block; padding: 8px 12px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; }
-        .pending { color: orange; font-weight: bold; }
-        .approved { color: green; font-weight: bold; }
-        .rejected { color: red; font-weight: bold; }
-        .delivered { color: blue; font-weight: bold; }
-    </style>
-</head>
-<body>
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .main-content {
+        max-width: 900px;
+        margin: 60px auto;
+        background: #fff;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        overflow: scroll;
+        max-height: 700px;
+    }
+
+    h2 {
+        border-bottom: 2px solid #007bff;
+        padding-bottom: 8px;
+        color: #007bff;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+    }
+
+    table th, table td {
+        padding: 12px 15px;
+        border: 1px solid #ddd;
+        text-align: left;
+    }
+
+    table th {
+        background-color: #f1f1f1;
+        color: #333;
+    }
+
+    .pending {
+        background-color: #ffeeba;
+        color: #856404;
+        padding: 5px 10px;
+        border-radius: 5px;
+        display: inline-block;
+    }
+
+    .approved {
+        background-color: #c3e6cb;
+        color: #155724;
+        padding: 5px 10px;
+        border-radius: 5px;
+        display: inline-block;
+    }
+
+    .rejected {
+        background-color: #f8d7da;
+        color: #721c24;
+        padding: 5px 10px;
+        border-radius: 5px;
+        display: inline-block;
+    }
+
+    .delivered {
+        background-color: #d1ecf1;
+        color: #0c5460;
+        padding: 5px 10px;
+        border-radius: 5px;
+        display: inline-block;
+    }
+
+    a {
+        color: #007bff;
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    
+    .btn {
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .btn:hover:not(:disabled) {
+        background-color: #0056b3 !important;
+        transform: scale(1.03);
+    }
+
+    form {
+        margin: 0;
+    }
+
+    
+</style>
 
 <!-- Sidebar -->
-<div class="sidebar">
-    <h2 style="text-align: center;">Admin Panel</h2>
-    <a href="admin_dashboard.php">Dashboard</a>
-    <a href="charity_list.php">Charity</a>
-    <a href="donor_list.php" class="active">Donors</a>
-    <a href="admin_list.php">Admins</a>
-    <a href="admin_reset_request.php">Reset Requests</a>
-    <a href="logout.php">Logout</a>
-</div>
+<body>
+    
 <!-- Main Content -->
 <div class="main-content">
 
@@ -221,7 +313,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['donation_id'])) {
         <p>No donation records found.</p>
     <?php endif; ?>
     
-    <a href='donor_list.php'>Back</a>
+    <a href='admin_page.php#donor_list'>Back</a>
 </div>
 </body>
-</html>

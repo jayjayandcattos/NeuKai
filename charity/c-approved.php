@@ -150,8 +150,8 @@ $total_approved = $result->num_rows;
                         </nav>
                     </div>
 
-                    <!-- Donations Summary Section -->
-                    <div class="p-4">
+                 <!-- Donations Summary Section -->
+                 <div class="p-4">
                         <?php
                         if ($total_approved > 0) {
                             $row = $result->fetch_assoc();
@@ -159,7 +159,7 @@ $total_approved = $result->num_rows;
                                 htmlspecialchars($row['charity_name']) . "</h2>"; 
 
                             // Reset result pointer to start
-                            
+                            $result->data_seek(0);
                             
                             echo '<div class="overflow-x-auto -mx-4 sm:mx-0">
                                 <table class="min-w-full divide-y divide-gray-200">
@@ -176,7 +176,7 @@ $total_approved = $result->num_rows;
                                 echo '<tr class="hover:bg-gray-50 transition-colors">
                                         <td class="px-4 py-3 whitespace-nowrap text-sm">
                                             <a href="c-approved_summary.php?transaction_id=' . $row['transaction_id'] . '"
-                                                class="text-neukai-600 hover:text-neukai-800 font-medium">
+                                                class="text-red-600 hover:text-red-800 font-medium">
                                                 <i class="fas fa-eye mr-1"></i> View
                                             </a>
                                         </td>
@@ -194,8 +194,8 @@ $total_approved = $result->num_rows;
                             </div>';
                         } else {
                             echo '<div class="text-center py-12 px-4">
-                                    <div class="inline-block p-4 rounded-full bg-neukai-100 mb-4">
-                                        <i class="fas fa-check-circle text-3xl text-neukai-600"></i>
+                                    <div class="inline-block p-4 rounded-full bg-red-100 mb-4">
+                                        <i class="fas fa-times-circle text-3xl text-red-600"></i>
                                     </div>
                                     <h3 class="text-xl font-semibold text-gray-800 mb-2">Donations Summary for Charity: ' . 
                                         htmlspecialchars($charity_name) . 

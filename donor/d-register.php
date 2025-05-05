@@ -45,6 +45,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt->bind_param("ssssss", $firstName, $middleName, $lastName, $email, $contactNo, $hashedPassword);
             $stmt->execute();
 
+            require 'donor-mail-function.php';
+            $donorFullName = $firstName . ' ' . $lastName;
+            sendDonorRegistrationEmail($email, $donorFullName);
+            
             $success = "Registration successful! Your account is pending approval.";
             $stmt->close();
         } catch (Exception $e) {

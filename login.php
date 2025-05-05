@@ -74,8 +74,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($admin && password_verify($password, $admin['password'])) {
       $_SESSION['admin_id'] = $admin['admin_id'];
-      $_SESSION['admin_name'] = $admin['admin_name'];
-      header("Location: admin/admin_dashboard.php");
+      $_SESSION['admin_name'] = $admin['first_name'] . ' ' . $admin['last_name']; 
+      $_SESSION['role'] = $admin['role']; 
+      header("Location: admin/admin_page.php#admin_dashboard"); 
       exit();
     }
   }

@@ -119,6 +119,23 @@ $stmt->close();
     $stmt->execute();
     $stmt->close();
 
+    require 'donor-mail-function.php';
+
+    $emailData = prepareDonationEmail($conn, $donator_id, $charity_id, $donation_id);
+
+    sendDonationEmail(
+        $emailData['donor_email'],
+        $emailData['donor_name'],
+        $emailData['donor_subject'],
+        $emailData['donor_body']
+    );
+
+    sendDonationEmail(
+        $emailData['charity_email'],
+        $emailData['charity_name'],
+        $emailData['charity_subject'],
+        $emailData['charity_body']
+    );
     // Redirect to a thank you or confirmation page
     header("Location: d-donate.php");
     exit();

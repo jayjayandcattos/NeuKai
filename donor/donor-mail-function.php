@@ -94,7 +94,7 @@ function prepareDonationEmail($conn, $donator_id, $charity_id, $donation_id) {
         <p>You can track the status of your donation through your NEUKAI donor account.</p>
         <br>
         <p>With gratitude,</p>
-        <p>NEUKAI Team</p>
+        <strong>Neukai Team</strong>
     ";
 
     $charity_subject = "New Donation Received from {$donor['first_name']} {$donor['last_name']}";
@@ -105,7 +105,7 @@ function prepareDonationEmail($conn, $donator_id, $charity_id, $donation_id) {
         <p>Please log in to your NEUKAI charity account to review and process this donation.</p>
         <br>
         <p>Sincerely,</p>
-        <p>NEUKAI Team</p>
+        <strong>Neukai Team</strong>
     ";
 
     return [

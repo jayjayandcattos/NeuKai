@@ -1,0 +1,392 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background:
+    linear-gradient(to top, rgb(0, 5, 14), rgba(0, 0, 0, 0) 40%),
+    url('../images/background.png') no-repeat center center fixed;
+  background-size: cover;
+  min-height: 100vh;
+  margin: 0;
+  overflow: hidden;
+}
+
+h1 {
+  font-family: 'Rubik Mono One', sans-serif;
+  letter-spacing: 2px;
+}
+
+h2,
+h3 {
+  font-weight: bold;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #aaa;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3e475e;
+}
+
+/* N A V */
+
+.navbar {
+  position: sticky;
+  top: 0;
+  background-color: rgba(0, 10, 26, 0.3);
+  backdrop-filter: blur(10px);
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  color: white;
+}
+
+.navbar .site-name {
+  font-size: 20px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.navbar .datetime {
+  font-size: 16px;
+}
+
+/* M A I N */
+
+.main {
+  background-color: #F7F9FF;
+  margin: 20px;
+  display: flex;
+  padding: 15px;
+  gap: 15px;
+  height: calc(100vh - 70px - 40px);
+  border-radius: 10px;
+}
+
+.sidebar {
+  background-color: #000A19;
+  border-radius: 10px;
+  color: white;
+  padding: 15px;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.sidebar .nav-links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.sidebar h1 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.sidebar a {
+  color: white;
+  text-decoration: none;
+  padding: 8px;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+  display: block;
+}
+
+.sidebar a:not(.active):not(.logout-link):hover {
+  background-color: rgba(204, 211, 255, 0.1);
+}
+
+.sidebar a.active {
+  background-color: rgba(204, 211, 255, 0.3);
+  font-weight: bold;
+  pointer-events: none;
+}
+
+.logout a {
+  border: 2.5px solid white;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  padding: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.logout a:hover {
+  background-color: crimson;
+}
+
+.tab-container {
+  flex: 1;
+  background-color: #F7F9FF;
+  padding: 20px;
+  border-radius: 8px;
+  overflow-y: auto;
+  position: relative;
+}
+
+.tab-content {
+  background-color: #F7F9FF;
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes slideInRight {
+from {
+transform: translateX(100%);
+opacity: 0;
+}
+to {
+transform: translateX(0%);
+opacity: 1;
+}
+}
+
+.tab-content.animate-slide {
+animation: slideInRight 0.4s ease forwards;
+}
+
+/* D I V */
+.title {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* C O L L A P S I B L E  */
+
+.collapsible-wrapper {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px -12px rgba(0, 0, 0, 0.5);
+  margin-bottom: 20px;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.collapsible-header {
+  background-color: #000A19;
+  color: white;
+  padding: 12px 20px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.collapsible-header:hover {
+  background-color: #151F30;
+}
+
+.collapsible-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+  margin: 0 10%;
+}
+
+.collapsible-body.open {
+  padding: 30px;
+  max-height: 600px;
+}
+
+.collapsible-body form select {
+  width: 30%;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.collapsible-body form input[type="submit"] {
+  background-color: #00ac5f;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  padding: 10px;
+  border-radius: 50px;
+  width: 200px;
+}
+
+.collapsible-body form input[type="submit"]:hover {
+  background-color: #00de7a;
+}
+
+.rotate {
+  transform: rotate(90deg);
+  transition: transform 0.3s ease;
+}
+
+.rotate.down {
+  transform: rotate(-90deg);
+}
+
+/* B U T T O N S */
+
+.btn {
+  display: inline-block;
+  padding: 8px 12px;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  height: 40px;
+  width: 100px;
+  font-size: 15px;
+  text-align: center;
+  margin-left: 10px;
+  border: none;
+  margin-bottom: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+}
+
+.btn-danger:hover {
+  background-color: rgb(153, 17, 31);
+}
+
+.btn-update {
+  background-color: #aaa;
+  color: white;
+}
+
+.btn-update:hover {
+  background-color: #00ac5f;
+}
+
+.tab-link.disabled {
+  cursor: not-allowed;
+  color: #aaa;
+}
+
+/* F O R M */
+
+.form_admin {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.admin-form-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.admin-form-table .icon {
+  width: 100px;
+  text-align: center;
+  vertical-align: top;
+  padding-top: 10px;
+  color: #000A19;
+  font-size: 18px;
+}
+
+.input-row {
+  display: flex;
+  gap: 15px;
+}
+
+.input-group {
+  position: relative;
+  flex: 1;
+  margin-bottom: 20px;
+}
+
+.input-group input:not([type="submit"]) {
+  width: 100%;
+  padding: 10px 10px 10px 0;
+  font-size: 16px;
+  border: none;
+  border-bottom: 3px solid #ccc;
+  background: transparent;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.input-group input:not([type="submit"]):focus,
+.input-group input:not([type="submit"]):not(:placeholder-shown) {
+  border-bottom: 3px solid #000A19;
+}
+
+.input-group label {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  color: #888;
+  font-size: 16px;
+  pointer-events: none;
+  transition: all 0.2s ease;
+}
+
+.input-group input:focus+label,
+.input-group input:not(:placeholder-shown)+label {
+  top: -10px;
+  font-size: 12px;
+  color: #001737;
+}
+
+.input-group select {
+  background-color: #E8F0FE;
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+/* T A B L E */
+
+.admin-table {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.admin-row {
+  display: flex;
+  width: 100%;
+  border-bottom: 3px solid #E8F0FE;
+  padding: 10px 0;
+  align-items: center;
+}
+
+.admin-header {
+  background-color: #e8f0fe;
+  font-weight: bold;
+}
+
+.admin-cell {
+  flex: 1;
+  padding: 8px 12px;
+  display: flex;
+  flex-direction: row;
+  width: 20%;
+}
+
+.admin-cell input[type="text"],
+.admin-cell input[type="email"],
+.admin-cell select {
+  width: 100%;
+}
+

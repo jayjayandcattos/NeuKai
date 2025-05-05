@@ -1,5 +1,6 @@
 <?php
 session_start();
+require 'reset-password-mail-function.php';
 include 'configuration/db_connect.php';
 
 $success = '';
@@ -35,6 +36,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt = $conn->prepare("INSERT INTO password_reset_tickets (email, role, id_image_path, status) VALUES (?, ?, ?, 'Pending')");
             $stmt->bind_param("sss", $email, $role, $target_file);
             $stmt->execute();
+            $emailContent = prepareUserResetEmail($email, $role, $ticketId);
+sendResetRequestEmail($email, $emailContent['subject'], $emailContent['body']);
             $success = "Your reset request has been sent. Please wait for admin approval.";
         } else {
             $error = "Error uploading file.";

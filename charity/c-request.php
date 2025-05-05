@@ -1,5 +1,6 @@
 <?php
 session_start();
+require 'charity-mail-function.php';
 require('../configuration/db_connect.php');
 date_default_timezone_set('Asia/Manila');
 if (!isset($_SESSION['charity_id'])) {
@@ -59,6 +60,29 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['status']) && isset($_P
     $status = $_POST['status'];
     $donation_id = intval($_POST['donation_id']);
 
+    $donor_query = "
+    SELECT d.email, d.first_name, c.charity_name
+    FROM tbl_donations ds
+    JOIN tbl_donation_transactions t ON ds.donation_id = t.donation_id
+    JOIN tbl_donor d ON t.donator_id = d.donator_id
+    JOIN tbl_charity c ON t.charity_id = c.charity_id
+    WHERE ds.donation_id = ?
+    LIMIT 1
+";
+
+$donor_stmt = $conn->prepare($donor_query);
+$donor_stmt->bind_param("i", $donation_id);
+$donor_stmt->execute();
+$donor_result = $donor_stmt->get_result();
+$donor_data = $donor_result->fetch_assoc();
+$donor_stmt->close();
+
+if ($donor_data) {
+    $donor_email = $donor_data['email'];
+    $donor_name = $donor_data['first_name'];
+    $charity_name = $donor_data['charity_name'];
+}
+
     $current_timestamp = date('Y-m-d H:i:s');
     $approved_at = ($status == 'approved') ? $current_timestamp : null;
     $rejected_at = ($status == 'rejected') ? $current_timestamp : null;
@@ -88,7 +112,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['status']) && isset($_P
         $update_transaction_stmt->execute();
         $update_transaction_stmt->close();
 
-        // Fixed redirect - no need for donator_id parameter
+        sendDonationStatusEmail($donor_email, $donor_name, $status, $charity_name);
+        
         header("Location: " . $_SERVER['PHP_SELF']);
         exit;
     } else {

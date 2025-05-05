@@ -8,7 +8,7 @@ $loggedin = isset($_SESSION['donator_id']);
 
 $filter = isset($_GET['filter']) ? $_GET['filter'] : '';
 
-$query = "SELECT * FROM tbl_charity";
+$query = "SELECT * FROM tbl_charity WHERE status = 'approved'";
 $result = $conn->query($query);
 
 
