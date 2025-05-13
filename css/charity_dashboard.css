@@ -1,6 +1,9 @@
 /* Main layout styles */
 body {
-  background-color: #f5f5f5;
+  background:
+    linear-gradient(to top, rgb(0, 5, 14), rgba(0, 0, 0, 0) 90%),
+    url('../images/background.png') no-repeat center center fixed;
+  background-size: cover;
   padding-top: 150px;
   display: flex;
   flex-direction: column;
