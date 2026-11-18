@@ -1,0 +1,42 @@
+# NeuKai – root .htaccess
+#
+# This file only matters when the repository root is the Apache document root
+# (e.g. http://localhost/Neukai/). It forwards all traffic into /public and
+# refuses direct access to the application, vendor and storage folders.
+#
+# Preferred deployment: point the virtual host document root straight at
+# /public and ignore this file entirely.
+
+Options -Indexes
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Never serve application code, dependencies, secrets or stored uploads.
+    RewriteRule ^(app|vendor|storage|node_modules|_archive)(/|$) - [F,L,NC]
+
+    # Forward everything else into the public web root.
+    RewriteCond %{REQUEST_URI} !/public/
+    RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>
+
+# Belt and braces: block dotfiles such as .env / .git.
+<FilesMatch "^\.">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order allow,deny
+        Deny from all
+    </IfModule>
+</FilesMatch>
+
+<FilesMatch "\.(sql|sqlite|log|ini|md|json|lock|ya?ml|bak|old|dist)$">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order allow,deny
+        Deny from all
+    </IfModule>
+</FilesMatch>

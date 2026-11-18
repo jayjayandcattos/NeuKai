@@ -1,0 +1,27 @@
+# Uploaded donation images – static files only.
+# Disable every script engine so an uploaded file can never execute.
+<IfModule mod_php.c>
+    php_flag engine off
+</IfModule>
+<IfModule mod_php7.c>
+    php_flag engine off
+</IfModule>
+<IfModule mod_php8.c>
+    php_flag engine off
+</IfModule>
+
+RemoveHandler .php .phtml .php3 .php4 .php5 .php7 .php8 .phps .pht .shtml
+RemoveType .php .phtml .php3 .php4 .php5 .php7 .php8 .phps .pht .shtml
+AddType text/plain .php .phtml .php3 .php4 .php5 .php7 .php8 .phps .pht
+
+Options -Indexes -ExecCGI
+
+<FilesMatch "\.(php|phtml|phar|cgi|pl|py|sh|asp|aspx|jsp)$">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order allow,deny
+        Deny from all
+    </IfModule>
+</FilesMatch>

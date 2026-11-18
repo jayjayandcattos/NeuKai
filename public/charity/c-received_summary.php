@@ -1,0 +1,136 @@
+<?php require_once __DIR__ . '/../../app/bootstrap.php'; ?><?php
+
+if (!isset($_GET['transaction_id'])) {
+    die("No transaction specified.");
+}
+$transaction_id = (int) ($_GET['transaction_id'] ?? 0);
+
+require_charity();
+
+$charity_id = (int) $_SESSION['charity_id'];
+
+$stmt = $conn->prepare("
+    SELECT 
+        d.donator_id,
+        d.first_name,
+        items.category,
+        items.quantity,
+        items.image_path
+    FROM 
+        tbl_donation_transactions t
+    JOIN 
+        tbl_donor d ON t.donator_id = d.donator_id
+    JOIN 
+        tbl_donation_items items ON items.donation_id = t.donation_id
+    WHERE 
+        t.status = 'delivered'
+        AND t.charity_id = ?
+        AND t.transaction_id = ?
+");
+$stmt->bind_param('ii', $charity_id, $transaction_id);
+$stmt->execute();
+$result = $stmt->get_result();
+$stmt->close();
+
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NEUKAI - Delivered Donation Summary</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../assets/css/index.css">
+    <link rel="stylesheet" href="../assets/css/charityinvoice.css">
+    <link rel="stylesheet" href="../assets/css/donorpage.css">
+    <link rel="icon" href="../assets/images/TempIco.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --accent-color: #0069d9;
+        }
+
+        .back-btn {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .back-btn:hover {
+            background-color: #0069d9;
+        }
+    </style>
+</head>
+
+<body>
+<?php require_once __DIR__ . '/../../app/includes/LoggedInCharityNav.php'; ?>
+
+    <div class="receipt-container">
+        <div class="receipt-header">
+            <h2>Donation Summary</h2>
+            <div class="invoice-label">Delivered</div>
+        </div>
+
+        <div class="receipt-body">
+            <?php
+            if ($row = $result->fetch_assoc()) {
+                echo '<div class="transaction-info">
+                        <p>
+                            <span class="label">Transaction ID:</span>
+                            <span>' . htmlspecialchars($_GET['transaction_id']) . '</span>
+                        </p>
+                        <p>
+                            <span class="label">Donor Name:</span>
+                            <span>' . htmlspecialchars($row['first_name']) . '</span>
+                        </p>
+                        <p>
+                            <span class="label">Donor ID:</span>
+                            <span>' . htmlspecialchars($row['donator_id']) . '</span>
+                        </p>
+                        <p>
+                            <span class="label">Date:</span>
+                            <span>' . date("F j, Y") . '</span>
+                        </p>
+                    </div>';
+
+                echo '<table class="summary-table">
+                        <tr>
+                            <th>Item Category</th>
+                            <th>Quantity</th>
+                            <th>Image</th>
+                        </tr>';
+
+                do {
+                    echo '<tr>
+                            <td>' . htmlspecialchars($row['category']) . '</td>
+                            <td>' . $row['quantity'] . '</td>
+                            <td>';
+
+                    if (!empty($row['image_path'])) {
+                        echo '<img class="item-image" src="data:image/jpeg;base64,' . base64_encode($row['image_path']) . '" alt="Donation Image" />';
+                    } else {
+                        echo '<p>No image available.</p>';
+                    }
+
+                    echo '</td></tr>';
+                } while ($row = $result->fetch_assoc());
+                    
+                echo '</table>';
+
+                echo '<div class="button-container">';
+                echo '<a href="c-received.php" class="back-btn">Back to Delivered</a>';
+                echo '</div>';
+            } else {
+                echo '<p class="no-records">No items found for this donation.</p>';
+            }
+            ?>
+        </div>
+
+<?php require_once __DIR__ . '/../../app/includes/donorparallax.php'; ?>
+</body>
+
+</html>

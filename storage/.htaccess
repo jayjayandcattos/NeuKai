@@ -1,0 +1,9 @@
+# Private storage (ID verification images) – served only through
+# public/admin/id_image.php after an admin authentication check.
+<IfModule mod_authz_core.c>
+    Require all denied
+</IfModule>
+<IfModule !mod_authz_core.c>
+    Order allow,deny
+    Deny from all
+</IfModule>
